@@ -1,0 +1,26 @@
+HKCR
+{
+	VideoEdit.VideoClip.1 = s 'VideoClip Class'
+	{
+		CLSID = s '{0527F33C-C731-4AC4-B7AD-6072958B1179}'
+	}
+	VideoEdit.VideoClip = s 'VideoClip Class'
+	{
+		CLSID = s '{0527F33C-C731-4AC4-B7AD-6072958B1179}'
+		CurVer = s 'VideoEdit.VideoClip.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {0527F33C-C731-4AC4-B7AD-6072958B1179} = s 'VideoClip Class'
+		{
+			ProgID = s 'VideoEdit.VideoClip.1'
+			VersionIndependentProgID = s 'VideoEdit.VideoClip'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			'TypeLib' = s '{939B0CFC-B68F-48FE-85E9-0200E9367B0B}'
+		}
+	}
+}

@@ -1,0 +1,8 @@
+A definitive guid towards compiling ffmpeg
+------------------------------------------
+
+1. Install MingW and Msys
+2. Patch MingW and Msys with the updates to make pr available
+3. Install GCC 4.2 for MingW
+4. Set the path to the lib.exe file in your path
+5. Compile

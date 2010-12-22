@@ -1,0 +1,102 @@
+I've been experimenting with using ffmpeg (http://ffmpeg.sf.net) for converting videos to MP4 format so I can view them on my new Video iPod. If you have an older generation iPod, I highly recommend considering an upgrade. The Video iPod is nothing short of awesome. And with 30GB of space, you have quite a bit of room for music, videos and photos.
+
+So anyway, ffmpeg... It's an all purpose tool for transcoding video. I'm using it in particular because it seems to be one of the few tools that can output to MP4 video with an AAC audio stream. Since the Video iPod can't use MP3 audio streams in a video (although it can play MP3 audio files), AAC audio is a must. If you're interested in such things and you have a Linux box and a Video iPod handy (there's also a Windows version of FFMPEG), then read on...
+
+I found this site which gave me the basic information I needed to start transcoding video files. I started with an episode of Alias I had recorded from TV. From there, I used the following command-line to transcode the Xvid (open source Dvix codec) file to an MP4/AAC video:
+
+ffmpeg -vcodec xvid -b 350 -qmax 10 -bufsize 4096 -g 300 -acodec aac -ab 96 -ac 2 -i input.avi -s 320x240 -aspect 16:9 output.mp4
+
+So what do these options mean? Let's break it down:
+
+-vcodec xvid tells ffmpeg to use the xvid codec (MPEG4).
+
+-b 350 tells ffmpeg that we want a target video bitrate of 350Kbits/sec on our output video file.
+
+-qmax 10 tells ffmpeg that we should never let the quality of the output video go above 10 (lower is better quality). This can cause the filesize to be a little off when the video has lots of movement. This is because the quality is constrained and forces the video codec to use more data to maintain the desired quality.
+
+-bufsize 4096 tells ffmpeg to use a 4Mbit buffer. I've since increased this to 8192. This dropped my overall conversion time to 8 minutes (from 10).
+
+-g 300 tells ffmpeg to set the "group of pictures size" to 300. If I understand this correctly, it tells ffmpeg to create an I-frame every 300 frames. An I-frame requires the most data to be stored because it's a full frame (that is, the entire image), so you want to limit the number of I-frames. P-Frames are used in between I-frames. Because P-frames only contain what's changed since the previous frame, they require far less data to store them.
+
+-acodec aac tells ffmpeg to set the output audio codec to AAC (MP4 audio).
+
+-ab 96 tells ffmpeg to set the output audio bitrate to 96Kbit/sec.
+
+-ac 2 tells ffmpeg to use two-channel audio (stereo).
+
+-i input.avi tells ffmpeg that input.avi is the input video source.
+
+-s 320x240 tells ffmpeg that the video output should be resized to 320x240. If you're converting a widescreen video (like from an HDTV capture), then this should be 320x180.
+
+-aspect 16:9 tells ffmpeg to keep the aspect ratio of the output video at 16:9, which is widescreen/HDTV format. I don't use this anymore, since the Video iPod basically ignores it. Instead, I adjust the -s option to 320x180.
+
+output.mp4 tells ffmpeg that the output video filename is output.mp4.
+
+That's a lot of options, eh?
+
+
+------------------------------
+///////////////////////////////
+
+ffmpeg -i %1 -f mp4 -r 25 -s 320×240 -b 768 -ar 44000 -ab 112 %1.mp4
+
+------------------------------
+//////////////////////////////
+used faac and faad as you can see, unfortunately, I can't produce AAC
+audio files (mp4 and 3gp) at 8 kbit bitrate (which supposed to be the
+lowest setting for AAC- 1 channel/8000 Hz).
+
+The lowest ffmpeg was able to produce is 12.6 kbps AAC encoded file.
+
+./ffmpeg -i 1.wav -acodec aac -ac 1 -ar 8000 -ab 8 -vol 150 test1.3gp
+
+
+-----------------------------
+
+I am trying to compile FFMPEG with FFAC and XVID support. I followed the following steps
+
+1) Installed MinGW
+
+2) Installed MSYS
+
+3) Checked out latest FFMPEG version
+
+4) Downloaded latest XVID source code
+
+5) Compiled XVID
+
+6) Downloaded FAAC
+
+7) Compiled FAAC in VC 7
+
+8) Used following command to configure the FFMPEG with FAAC and XVID
+
+./configure –enable-shared –disable-static –enable-memalign-hack –enable-
+xvid –enable-gpl –extra-cflags=-I/C/mplayer/msys/xvidcore/src –extra-ldflags
+=-L/C/mplayer/msys/xvidcore/build/win32/bin –enable-faac –extra-cflags=-I/C/
+mplayer/msys/faac/include –extra-ldflags=-L/c/mplayer/msys/faac/libfaac/Debug
+
+9) Make
+
+I get the following errors
+
+Cannot export .idata$4: symbol not found
+Cannot export .idata$5: symbol not found
+Cannot export .idata$6: symbol not found
+Cannot export .text: symbol not found
+Cannot export xvidcore_NULL_THUNK_DATA: symbol not found
+Creating library file: libavcodec.dll.a
+faac.o(.text+0x3f): In function `Faac_encode_init’:
+C:/mplayer/msys/ffmpeg/libavcodec/faac.c:42: undefined reference to `faacEncOpen@16'
+faac.o(.text+0x4c):C:/mplayer/msys/ffmpeg/libavcodec/faac.c:47: undefined reference to `faacEncGetCurrentConfiguration@4'
+faac.o(.text+0xdb):C:/mplayer/msys/ffmpeg/libavcodec/faac.c:88: undefined reference to `faacEncSetConfiguration@8'
+faac.o(.text+0x134):C:/mplayer/msys/ffmpeg/libavcodec/faac.c:80: undefined reference to `faacEncGetDecoderSpecificInfo@12'
+faac.o(.text+0x181):C:/mplayer/msys/ffmpeg/libavcodec/faac.c:50: undefined reference to `faacEncClose@4'
+faac.o(.text+0x1f5): In function `Faac_encode_frame’:
+C:/mplayer/msys/ffmpeg/libavcodec/faac.c:102: undefined reference to `faacEncEncode@20'
+faac.o(.text+0x224): In function `Faac_encode_close’:
+C:/mplayer/msys/ffmpeg/libavcodec/faac.c:119: undefined reference to `faacEncClose@4'
+collect2: ld returned 1 exit status
+make[1]: *** [avcodec.dll] Error 1
+
+Would't VC 7 compiled AAC work with FFMPEG? Must I compile the FAAC using CYGWIN?

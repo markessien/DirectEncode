@@ -1,0 +1,9 @@
+
+LIBRARY         DirectEncode.dll
+EXPORTS
+                DllMain           PRIVATE
+                DllGetClassObject PRIVATE
+                DllCanUnloadNow   PRIVATE
+                DllUnregisterServer PRIVATE
+                DllRegisterServer PRIVATE
+

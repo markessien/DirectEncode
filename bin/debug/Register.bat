@@ -1,0 +1,1 @@
+Regsvr32.exe C:\Mark\Development\DirectEncode\Bin\Debug\DirectEncode.dll

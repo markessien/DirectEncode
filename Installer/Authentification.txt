@@ -1,0 +1,46 @@
+Authentification functions for Standard Mpeg
+--------------------------------------------
+
+
+1. For the DirectShow Filter - C++
+
+ long nKey = pMpegEncoder->PassThruCmd(L"mpeg1|mpeg2|rk", 0, 0, NULL);
+ nKey = (long)((nKey * (timeGetTime() / (1000 * 60)) ) +
+ ceil((tan((double)nKey) * 1000)));
+ pMpegEncoder->PassThruCmd(L"mpeg1|mpeg2|vk", nKey, 0, NULL);
+
+
+2. For the DirectShow Filter - C#
+
+byte cmd = 0;
+pIMPEGEncoder.PassThruCmd("mpeg1|mpeg2|rkb", 0, 0, out cmd);
+
+long nMinNow = System.Environment.TickCount / (1000 * 60);
+if (nMinNow > 256) nMinNow = nMinNow % 256;
+cmd = (byte)nMinNow;
+
+pIMPEGEncoder.PassThruCmd("mpeg1|mpeg2|vkb", cmd, 0, out cmd);
+
+
+3. For the Direct Access DLL - C++
+
+long check = mediaFilePassThruCmd((char*)(L"--- your license key ---"), (unsigned char*)128, 832);
+long nKey = mediaFilePassThruCmd((char*)(L"mpeg1|mpeg2|rk"), 0, 0);
+nKey = (long)((nKey * (timeGetTime() / (1000 * 60)) ) +
+ceil((tan((double)nKey) * 1000)));
+mediaFilePassThruCmd((char*)(L"mpeg1|mpeg2|vk"), (unsigned char*)nKey, 0);
+
+
+4. For the Direct Access DLL - C#
+
+public void RegisterLibrary()
+{
+         long cmd = StandardMpegEncoderDll.MediaFilePassThruCmd("rkb", null, 400);
+         long nMinNow = System.Environment.TickCount / (1000 * 60);
+         if (nMinNow > 255) nMinNow = nMinNow % 255;
+         StandardMpegEncoderDll.MediaFilePassThruCmd("vkb", null, nMinNow);
+
+
+	StandardMpegEncoderDll.MediaFilePassThruCmd("-- your license key --", null, 836);
+}
+

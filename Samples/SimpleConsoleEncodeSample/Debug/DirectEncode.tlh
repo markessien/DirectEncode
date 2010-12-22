@@ -1,0 +1,474 @@
+// Created by Microsoft (R) C/C++ Compiler Version 12.00.8168.0 (7c425aeb).
+//
+// c:\mark\development\directencode\samples\simpleconsoleencodesample\debug\DirectEncode.tlh
+//
+// C++ source equivalent of Win32 type library DirectEncode.tlb
+// compiler-generated file created 09/22/09 at 20:50:32 - DO NOT EDIT!
+
+#pragma once
+#pragma pack(push, 8)
+
+#include <comdef.h>
+
+//
+// Forward references and typedefs
+//
+
+struct /* coclass */ StandardMpegEncoder;
+struct __declspec(uuid("91d3d934-6dee-42c5-a687-6f81e1162559"))
+/* dual interface */ IStandardMpegEncoder;
+typedef enum _SystemsOutputFormat SystemsOutputFormat;
+typedef enum _Constraint Constraint;
+struct __declspec(uuid("182eb270-5fa5-46e8-83ba-40f7205c545b"))
+/* dual interface */ IStandardMpegEncoderProfile;
+typedef enum _AudioOutputFormat AudioOutputFormat;
+typedef enum _VideoOutputFormat VideoOutputFormat;
+typedef enum _AspectRatio AspectRatio;
+typedef enum _BitrateMode BitrateMode;
+typedef enum _EncodeMode EncodeMode;
+struct /* coclass */ StandardMpegEncoderStats;
+struct __declspec(uuid("c9510218-f457-4d51-8389-7386e6edd0ef"))
+/* dual interface */ IStandardMpegEncoderStats;
+struct /* coclass */ StandardMpegEncoderProfile;
+struct /* coclass */ StandardMpegMultiplexerProfile;
+struct __declspec(uuid("7e772181-b7ed-4d9d-a364-0e8771aaff70"))
+/* dual interface */ IStandardMpegMultiplexerProfile;
+struct /* coclass */ StandardMpegEncoderGeneralProps;
+struct /* coclass */ StandardMpegEncoderVideoProps;
+struct /* coclass */ StandardMpegEncoderAudioProps;
+struct /* coclass */ DirectEncodeVB;
+struct __declspec(uuid("587a41a2-fe3d-4be0-a616-793961caf7ac"))
+/* dual interface */ IDirectEncodeVB;
+
+//
+// Smart pointer typedef declarations
+//
+
+_COM_SMARTPTR_TYPEDEF(IStandardMpegEncoder, __uuidof(IStandardMpegEncoder));
+_COM_SMARTPTR_TYPEDEF(IStandardMpegEncoderProfile, __uuidof(IStandardMpegEncoderProfile));
+_COM_SMARTPTR_TYPEDEF(IStandardMpegEncoderStats, __uuidof(IStandardMpegEncoderStats));
+_COM_SMARTPTR_TYPEDEF(IStandardMpegMultiplexerProfile, __uuidof(IStandardMpegMultiplexerProfile));
+_COM_SMARTPTR_TYPEDEF(IDirectEncodeVB, __uuidof(IDirectEncodeVB));
+
+//
+// Type library items
+//
+
+struct __declspec(uuid("cfd87339-c61f-46ca-b6a1-f87d6b96243e"))
+StandardMpegEncoder;
+    // [ default ] interface IStandardMpegEncoder
+
+struct __declspec(uuid("91d3d934-6dee-42c5-a687-6f81e1162559"))
+IStandardMpegEncoder : IUnknown
+{
+    //
+    // Raw methods provided by interface
+    //
+
+    virtual HRESULT __stdcall GetProfile (
+        SystemsOutputFormat systemsFormat,
+        Constraint Constraint,
+        struct IStandardMpegEncoderProfile * * pProfile ) = 0;
+    virtual HRESULT __stdcall GetSelectedProfile (
+        struct IStandardMpegEncoderProfile * * pProfile ) = 0;
+    virtual HRESULT __stdcall SelectProfile (
+        struct IStandardMpegEncoderProfile * pProfile ) = 0;
+    virtual HRESULT __stdcall SelectFormat (
+        SystemsOutputFormat systemsFormat,
+        Constraint Constraint ) = 0;
+    virtual HRESULT __stdcall SetFilterLicenseKey (
+        BSTR strLicense ) = 0;
+    virtual HRESULT __stdcall SaveSettings (
+        BSTR strKey ) = 0;
+    virtual HRESULT __stdcall LoadSettings (
+        BSTR strKey ) = 0;
+    virtual HRESULT __stdcall PassThruCmd (
+        BSTR strCmd,
+        long nCmd,
+        double dCmd,
+        unsigned char * pCmd ) = 0;
+    virtual HRESULT __stdcall SetErrorBoxDisplay (
+        long bVal ) = 0;
+    virtual HRESULT __stdcall SetPass (
+        long n ) = 0;
+    virtual HRESULT __stdcall SetSourceFramerate (
+        double dSourceFramerate,
+        double * dRequiredInputFramerate ) = 0;
+    virtual HRESULT __stdcall ActivateAudioVideoOutputPins (
+        long bVal ) = 0;
+    virtual HRESULT __stdcall GetAudioVideoOutputPinsActivated (
+        long * bVal ) = 0;
+    virtual HRESULT __stdcall EnableFramerateCorrection (
+        long bCorrectVideo,
+        long bCorrectAudio ) = 0;
+};
+
+enum _SystemsOutputFormat
+{
+    SYSTEMSFORMAT_NONE = 0,
+    SYSTEMSFORMAT_MPEG1 = 1,
+    SYSTEMSFORMAT_MPEG2 = 2,
+    SYSTEMSFORMAT_VCD = 3,
+    SYSTEMSFORMAT_SVCD = 4,
+    SYSTEMSFORMAT_DVD = 5,
+    SYSTEMSFORMAT_VCD_STILL = 6,
+    SYSTEMSFORMAT_SVCD_STILL = 7,
+    SYSTEMSFORMAT_MP4 = 8,
+    SYSTEMSFORMAT_3GP = 9,
+    SYSTEMSFORMAT_MOV = 10,
+    SYSTEMSFORMAT_3G2 = 11,
+    SYSTEMSFORMAT_PSP = 12,
+    SYSTEMSFORMAT_AVI = 13,
+    SYSTEMSFORMAT_RM = 14,
+    SYSTEMSFORMAT_KVCD = 15,
+    SYSTEMSFORMAT_FLV = 16,
+    SYSTEMSFORMAT_DVB = 17
+};
+
+enum _Constraint
+{
+    CONSTRAINT_NONE = 0,
+    CONSTRAINT_NTSC = 1,
+    CONSTRAINT_FILM = 2,
+    CONSTRAINT_PAL = 3,
+    CONSTRAINT_IPOD = 4,
+    CONSTRAINT_IPOD_NANO = 5,
+    CONSTRAINT_IPHONE = 6,
+    CONSTRAINT_HD = 7,
+    CONSTRAINT_H264 = 8
+};
+
+struct __declspec(uuid("182eb270-5fa5-46e8-83ba-40f7205c545b"))
+IStandardMpegEncoderProfile : IUnknown
+{
+    //
+    // Raw methods provided by interface
+    //
+
+    virtual HRESULT __stdcall SaveProfile (
+        BSTR strKey ) = 0;
+    virtual HRESULT __stdcall LoadProfile (
+        BSTR strKey ) = 0;
+    virtual HRESULT __stdcall GetProfileName (
+        BSTR * strName ) = 0;
+    virtual HRESULT __stdcall SetProfileName (
+        BSTR strName ) = 0;
+    virtual HRESULT __stdcall SetAudioFormat (
+        AudioOutputFormat audioFormat ) = 0;
+    virtual HRESULT __stdcall GetAudioFormat (
+        AudioOutputFormat * audioFormat ) = 0;
+    virtual HRESULT __stdcall SetVideoFormat (
+        VideoOutputFormat videoFormat ) = 0;
+    virtual HRESULT __stdcall GetVideoFormat (
+        VideoOutputFormat * videoFormat ) = 0;
+    virtual HRESULT __stdcall SetSystemsFormat (
+        SystemsOutputFormat systemsFormat ) = 0;
+    virtual HRESULT __stdcall GetSystemsFormat (
+        SystemsOutputFormat * systemsFormat ) = 0;
+    virtual HRESULT __stdcall ConfigureForSystemsFormat (
+        SystemsOutputFormat systemsFormat,
+        Constraint Constraint ) = 0;
+    virtual HRESULT __stdcall SetConstraint (
+        Constraint systemsConstraint ) = 0;
+    virtual HRESULT __stdcall GetConstraint (
+        Constraint * systemsConstraint ) = 0;
+    virtual HRESULT __stdcall SetAspectRatio (
+        AspectRatio aspectMode ) = 0;
+    virtual HRESULT __stdcall GetAspectRatio (
+        AspectRatio * pAspectMode ) = 0;
+    virtual HRESULT __stdcall SetAutoSelectDimensions (
+        long bVal ) = 0;
+    virtual HRESULT __stdcall GetAutoSelectDimensions (
+        long * pbVal ) = 0;
+    virtual HRESULT __stdcall SetWidth (
+        long nWidth ) = 0;
+    virtual HRESULT __stdcall GetWidth (
+        long * nWidth ) = 0;
+    virtual HRESULT __stdcall GetHeight (
+        long * pnHeight ) = 0;
+    virtual HRESULT __stdcall SetHeight (
+        long nHeight ) = 0;
+    virtual HRESULT __stdcall SetVideoBitrate (
+        long nBitrate ) = 0;
+    virtual HRESULT __stdcall GetVideoBitrate (
+        long * nBitrate ) = 0;
+    virtual HRESULT __stdcall SetAutoSelectBitrate (
+        long bVal ) = 0;
+    virtual HRESULT __stdcall GetAutoSelectBitrate (
+        long * pbVal ) = 0;
+    virtual HRESULT __stdcall SetVideoBitrateMin (
+        long nBitrate ) = 0;
+    virtual HRESULT __stdcall GetVideoBitrateMin (
+        long * nBitrate ) = 0;
+    virtual HRESULT __stdcall SetVideoBitrateMax (
+        long nBitrate ) = 0;
+    virtual HRESULT __stdcall GetVideoBitrateMax (
+        long * nBitrate ) = 0;
+    virtual HRESULT __stdcall SetAudioBitrate (
+        long nBitrate ) = 0;
+    virtual HRESULT __stdcall GetAudioBitrate (
+        long * nBitrate ) = 0;
+    virtual HRESULT __stdcall SetAudioBitrateMin (
+        long nBitrate ) = 0;
+    virtual HRESULT __stdcall GetAudioBitrateMin (
+        long * nBitrate ) = 0;
+    virtual HRESULT __stdcall SetAudioBitrateMax (
+        long nBitrate ) = 0;
+    virtual HRESULT __stdcall GetAudioBitrateMax (
+        long * nBitrate ) = 0;
+    virtual HRESULT __stdcall SetVideoQuality (
+        long nQualityPercent ) = 0;
+    virtual HRESULT __stdcall GetVideoQuality (
+        long * nQualityPercent ) = 0;
+    virtual HRESULT __stdcall SetVideoVBRMode (
+        BitrateMode vbrMode ) = 0;
+    virtual HRESULT __stdcall GetVideoVBRMode (
+        BitrateMode * pvbrMode ) = 0;
+    virtual HRESULT __stdcall SetVideoVBVBufferSize (
+        long vbvlen ) = 0;
+    virtual HRESULT __stdcall GetVideoVBVBufferSize (
+        long * vbvlen ) = 0;
+    virtual HRESULT __stdcall SetAudioVBRMode (
+        BitrateMode vbrMode ) = 0;
+    virtual HRESULT __stdcall GetAudioVBRMode (
+        BitrateMode * pvbrMode ) = 0;
+    virtual HRESULT __stdcall Set2PassLogFile (
+        BSTR Path ) = 0;
+    virtual HRESULT __stdcall SetVideoQualityRange (
+        long nMin,
+        long nMax ) = 0;
+    virtual HRESULT __stdcall SetFramerate (
+        double fps ) = 0;
+    virtual HRESULT __stdcall GetFramerate (
+        double * fps ) = 0;
+    virtual HRESULT __stdcall SetAudioSampleRate (
+        long nSampleRate ) = 0;
+    virtual HRESULT __stdcall GetAudioSampleRate (
+        long * pnSampleRate ) = 0;
+    virtual HRESULT __stdcall SetAudioChannels (
+        long nChannelCount ) = 0;
+    virtual HRESULT __stdcall GetAudioChannels (
+        long * pnChannelCount ) = 0;
+    virtual HRESULT __stdcall SetAudioFlags (
+        long bErrorProtection,
+        long bOriginal,
+        long bCopyright,
+        long bPrivate ) = 0;
+    virtual HRESULT __stdcall SetComments (
+        BSTR strVal ) = 0;
+    virtual HRESULT __stdcall SetInformation (
+        BSTR strTitle,
+        BSTR strAuthor,
+        BSTR strCopyright ) = 0;
+    virtual HRESULT __stdcall SetEncodeMode (
+        EncodeMode nValue ) = 0;
+    virtual HRESULT __stdcall GetEncodeMode (
+        EncodeMode * pnValue ) = 0;
+    virtual HRESULT __stdcall SetBWVideo (
+        long bVal ) = 0;
+    virtual HRESULT __stdcall SetGOPSize (
+        long nGOPSize ) = 0;
+    virtual HRESULT __stdcall GetGOPSize (
+        long * nGOPSize ) = 0;
+    virtual HRESULT __stdcall SetDetectSceneChange (
+        long bVal ) = 0;
+    virtual HRESULT __stdcall GetDetectSceneChange (
+        long * nVal ) = 0;
+    virtual HRESULT __stdcall SetSceneChangeThreshold (
+        float f ) = 0;
+    virtual HRESULT __stdcall SetClosedGOP (
+        long bVal ) = 0;
+    virtual HRESULT __stdcall GetClosedGOP (
+        long * nVal ) = 0;
+    virtual HRESULT __stdcall SetOutputIntervalOfSequenceHeader (
+        long nVal ) = 0;
+    virtual HRESULT __stdcall GetOutputIntervalOfSequenceHeader (
+        long * nVal ) = 0;
+    virtual HRESULT __stdcall SetGOPStructure (
+        BSTR strStructure ) = 0;
+    virtual HRESULT __stdcall GetGOPStructure (
+        BSTR * pstrStructure ) = 0;
+    virtual HRESULT __stdcall SetStrictGOP (
+        long bVal ) = 0;
+    virtual HRESULT __stdcall SetProfileAndLevel (
+        BSTR strProfileAndLevel ) = 0;
+    virtual HRESULT __stdcall GetProfileAndLevel (
+        BSTR * pstrProfileAndLevel ) = 0;
+    virtual HRESULT __stdcall SetMotionSearchPrecision (
+        long nVal ) = 0;
+    virtual HRESULT __stdcall GetMotionSearchPrecision (
+        long * nVal ) = 0;
+    virtual HRESULT __stdcall SetQuantBias (
+        long nIntra,
+        long nInter ) = 0;
+    virtual HRESULT __stdcall SetIDCT (
+        long n ) = 0;
+    virtual HRESULT __stdcall SetQuantFactor (
+        float fQuantFactor ) = 0;
+    virtual HRESULT __stdcall GetQuantFactor (
+        float * pfQuantFactor ) = 0;
+    virtual HRESULT __stdcall SetInterlaceMode (
+        long bPreProcessDeinterlace,
+        long bInterlacedOutputDCT,
+        long bInterlacedOutputME ) = 0;
+    virtual HRESULT __stdcall GetInterlaceMode (
+        long * bPreProcessDeinterlace,
+        long * bInterlacedOutputDCT,
+        long * bInterlacedOutputME ) = 0;
+};
+
+enum _AudioOutputFormat
+{
+    AUDIOFORMAT_NONE = 0,
+    AUDIOFORMAT_MP3 = 1,
+    AUDIOFORMAT_MP2 = 2,
+    AUDIOFORMAT_AC3 = 3,
+    AUDIOFORMAT_PCM = 4,
+    AUDIOFORMAT_WAV = 5,
+    AUDIOFORMAT_AAC = 6,
+    AUDIOFORMAT_AMRNB = 7
+};
+
+enum _VideoOutputFormat
+{
+    VIDEOFORMAT_NONE = 0,
+    VIDEOFORMAT_MPEG1 = 1,
+    VIDEOFORMAT_MPEG2 = 2,
+    VIDEOFORMAT_MPEG4 = 3,
+    VIDEOFORMAT_H263 = 4,
+    VIDEOFORMAT_H264 = 5,
+    VIDEOFORMAT_FLV = 6,
+    VIDEOFORMAT_VP6 = 7
+};
+
+enum _AspectRatio
+{
+    ASPECTRATIO_1TO1 = 0,
+    ASPECTRATIO_4TO3 = 1,
+    ASPECTRATIO_16TO9 = 2,
+    ASPECTRATIO_2D11TO1 = 3
+};
+
+enum _BitrateMode
+{
+    BITRATEMODE_CBR = 0,
+    BITRATEMODE_VBR_2PASS = 1,
+    BITRATEMODE_MVBR = 2,
+    BITRATEMODE_CQ_VBR = 3,
+    BITRATEMODE_CQ = 4
+};
+
+enum _EncodeMode
+{
+    ENCODEMODE_NOINTERLACE = 0,
+    ENCODEMODE_INTERLACE = 1,
+    ENCODEMODE_32PULLDOWN = 2,
+    ENCODEMODE_32PULLDOWN_INVERSE = 3
+};
+
+struct __declspec(uuid("1c356305-4d1c-45e1-aa93-1ae16c7de429"))
+StandardMpegEncoderStats;
+    // [ default ] interface IStandardMpegEncoderStats
+
+struct __declspec(uuid("c9510218-f457-4d51-8389-7386e6edd0ef"))
+IStandardMpegEncoderStats : IUnknown
+{
+    //
+    // Raw methods provided by interface
+    //
+
+    virtual HRESULT __stdcall GetFramesEncoded (
+        long * lFramesEncoded ) = 0;
+    virtual HRESULT __stdcall GetVideoFramesDropped (
+        long * lFramesDropped ) = 0;
+    virtual HRESULT __stdcall GetAudioTimeCorrected (
+        double * dTimeCorrected ) = 0;
+    virtual HRESULT __stdcall GetWrittenBytes (
+        long * lBytesWritten ) = 0;
+    virtual HRESULT __stdcall GetStatusString (
+        BSTR * strValue ) = 0;
+};
+
+struct __declspec(uuid("d4d68f8a-b665-41d4-94d1-e8843001e346"))
+StandardMpegEncoderProfile;
+    // [ default ] interface IStandardMpegEncoderProfile
+
+struct __declspec(uuid("022a32a5-3689-4d5f-b8cc-c26655c2ba03"))
+StandardMpegMultiplexerProfile;
+    // [ default ] interface IStandardMpegMultiplexerProfile
+
+struct __declspec(uuid("7e772181-b7ed-4d9d-a364-0e8771aaff70"))
+IStandardMpegMultiplexerProfile : IUnknown
+{
+    //
+    // Raw methods provided by interface
+    //
+
+    virtual HRESULT __stdcall SetDeleteElementaryStreams (
+        long bDelete ) = 0;
+    virtual HRESULT __stdcall GetDeleteElementaryStreams (
+        long * bDelete ) = 0;
+    virtual HRESULT __stdcall SetMultiplexRate (
+        long nRate ) = 0;
+    virtual HRESULT __stdcall GetMultiplexRate (
+        long * pnMux ) = 0;
+    virtual HRESULT __stdcall SetMultiplexPacketSize (
+        long nSize ) = 0;
+    virtual HRESULT __stdcall GetMultiplexPacketSize (
+        long * pnSize ) = 0;
+    virtual HRESULT __stdcall SetMultiplexPreload (
+        float fPreload ) = 0;
+    virtual HRESULT __stdcall GetMultiplexPreload (
+        float * pfPreload ) = 0;
+    virtual HRESULT __stdcall SetMultiplexMaxDelay (
+        float fMaxDelay ) = 0;
+    virtual HRESULT __stdcall SetMultiplexStreams (
+        long bMux ) = 0;
+    virtual HRESULT __stdcall GetMultiplexStreams (
+        long * bMux ) = 0;
+    virtual HRESULT __stdcall SetMultiplexFormat (
+        SystemsOutputFormat format ) = 0;
+    virtual HRESULT __stdcall GetMultiplexFormat (
+        SystemsOutputFormat * format ) = 0;
+    virtual HRESULT __stdcall AddMultiplexFile (
+        BSTR strPath ) = 0;
+    virtual HRESULT __stdcall SetOnFlyMultiplex (
+        long bOnFlyMultiplex ) = 0;
+    virtual HRESULT __stdcall GetOnFlyMultiplex (
+        long * pbOnFlyMultiplex ) = 0;
+    virtual HRESULT __stdcall SetMultiplexFrameBalance (
+        long bVal ) = 0;
+    virtual HRESULT __stdcall SetMultiplexOnStop (
+        long bVal ) = 0;
+    virtual HRESULT __stdcall GetMultiplexProgress (
+        double * dProgress ) = 0;
+};
+
+struct __declspec(uuid("4a6d5c73-270c-4c05-871a-28230f2a8bcc"))
+StandardMpegEncoderGeneralProps;
+    // [ default ] interface IPropertyPage
+
+struct __declspec(uuid("dcd4e0b0-fe55-44c6-9b4c-1e78fa2d6d2c"))
+StandardMpegEncoderVideoProps;
+    // [ default ] interface IPropertyPage
+
+struct __declspec(uuid("bdb70b23-baa7-44a5-8cb5-a3f5f34865c8"))
+StandardMpegEncoderAudioProps;
+    // [ default ] interface IPropertyPage
+
+struct __declspec(uuid("02e4605e-d632-4249-aa9f-3b215be86981"))
+DirectEncodeVB;
+    // [ default ] interface IDirectEncodeVB
+
+struct __declspec(uuid("587a41a2-fe3d-4be0-a616-793961caf7ac"))
+IDirectEncodeVB : IDispatch
+{
+    //
+    // Raw methods provided by interface
+    //
+
+    virtual HRESULT __stdcall PassThru (
+        long nVal ) = 0;
+};
+
+#pragma pack(pop)

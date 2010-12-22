@@ -1,0 +1,44 @@
+decode_i386.lo: decode_i386.c ../config.h \
+  z:\bin\mingw\bin\../lib/gcc/mingw32/4.3.0/../../../../include/stdlib.h \
+  z:\bin\mingw\bin\../lib/gcc/mingw32/4.3.0/../../../../include/_mingw.h \
+  z:\bin\mingw\bin\../lib/gcc/mingw32/4.3.0/include/stddef.h \
+  z:\bin\mingw\bin\../lib/gcc/mingw32/4.3.0/../../../../include/string.h \
+  z:\bin\mingw\bin\../lib/gcc/mingw32/4.3.0/../../../../include/math.h \
+  decode_i386.h common.h mpg123.h \
+  z:\bin\mingw\bin\../lib/gcc/mingw32/4.3.0/../../../../include/stdio.h \
+  z:\bin\mingw\bin\../lib/gcc/mingw32/4.3.0/include/stdarg.h \
+  z:\bin\mingw\bin\../lib/gcc/mingw32/4.3.0/../../../../include/sys/types.h \
+  z:\bin\mingw\bin\../lib/gcc/mingw32/4.3.0/../../../../include/signal.h \
+  mpglib.h dct64_i386.h tabinit.h
+
+../config.h:
+
+z:\bin\mingw\bin\../lib/gcc/mingw32/4.3.0/../../../../include/stdlib.h:
+
+z:\bin\mingw\bin\../lib/gcc/mingw32/4.3.0/../../../../include/_mingw.h:
+
+z:\bin\mingw\bin\../lib/gcc/mingw32/4.3.0/include/stddef.h:
+
+z:\bin\mingw\bin\../lib/gcc/mingw32/4.3.0/../../../../include/string.h:
+
+z:\bin\mingw\bin\../lib/gcc/mingw32/4.3.0/../../../../include/math.h:
+
+decode_i386.h:
+
+common.h:
+
+mpg123.h:
+
+z:\bin\mingw\bin\../lib/gcc/mingw32/4.3.0/../../../../include/stdio.h:
+
+z:\bin\mingw\bin\../lib/gcc/mingw32/4.3.0/include/stdarg.h:
+
+z:\bin\mingw\bin\../lib/gcc/mingw32/4.3.0/../../../../include/sys/types.h:
+
+z:\bin\mingw\bin\../lib/gcc/mingw32/4.3.0/../../../../include/signal.h:
+
+mpglib.h:
+
+dct64_i386.h:
+
+tabinit.h:

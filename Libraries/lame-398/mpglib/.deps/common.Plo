@@ -1,0 +1,50 @@
+common.lo: common.c ../config.h \
+  z:\bin\mingw\bin\../lib/gcc/mingw32/4.3.0/../../../../include/ctype.h \
+  z:\bin\mingw\bin\../lib/gcc/mingw32/4.3.0/../../../../include/_mingw.h \
+  z:\bin\mingw\bin\../lib/gcc/mingw32/4.3.0/include/stddef.h \
+  z:\bin\mingw\bin\../lib/gcc/mingw32/4.3.0/../../../../include/stdlib.h \
+  z:\bin\mingw\bin\../lib/gcc/mingw32/4.3.0/../../../../include/signal.h \
+  z:\bin\mingw\bin\../lib/gcc/mingw32/4.3.0/../../../../include/fcntl.h \
+  z:\bin\mingw\bin\../lib/gcc/mingw32/4.3.0/../../../../include/io.h \
+  z:\bin\mingw\bin\../lib/gcc/mingw32/4.3.0/../../../../include/sys/types.h \
+  z:\bin\mingw\bin\../lib/gcc/mingw32/4.3.0/../../../../include/sys/stat.h \
+  common.h mpg123.h \
+  z:\bin\mingw\bin\../lib/gcc/mingw32/4.3.0/../../../../include/stdio.h \
+  z:\bin\mingw\bin\../lib/gcc/mingw32/4.3.0/include/stdarg.h \
+  z:\bin\mingw\bin\../lib/gcc/mingw32/4.3.0/../../../../include/string.h \
+  z:\bin\mingw\bin\../lib/gcc/mingw32/4.3.0/../../../../include/math.h \
+  mpglib.h
+
+../config.h:
+
+z:\bin\mingw\bin\../lib/gcc/mingw32/4.3.0/../../../../include/ctype.h:
+
+z:\bin\mingw\bin\../lib/gcc/mingw32/4.3.0/../../../../include/_mingw.h:
+
+z:\bin\mingw\bin\../lib/gcc/mingw32/4.3.0/include/stddef.h:
+
+z:\bin\mingw\bin\../lib/gcc/mingw32/4.3.0/../../../../include/stdlib.h:
+
+z:\bin\mingw\bin\../lib/gcc/mingw32/4.3.0/../../../../include/signal.h:
+
+z:\bin\mingw\bin\../lib/gcc/mingw32/4.3.0/../../../../include/fcntl.h:
+
+z:\bin\mingw\bin\../lib/gcc/mingw32/4.3.0/../../../../include/io.h:
+
+z:\bin\mingw\bin\../lib/gcc/mingw32/4.3.0/../../../../include/sys/types.h:
+
+z:\bin\mingw\bin\../lib/gcc/mingw32/4.3.0/../../../../include/sys/stat.h:
+
+common.h:
+
+mpg123.h:
+
+z:\bin\mingw\bin\../lib/gcc/mingw32/4.3.0/../../../../include/stdio.h:
+
+z:\bin\mingw\bin\../lib/gcc/mingw32/4.3.0/include/stdarg.h:
+
+z:\bin\mingw\bin\../lib/gcc/mingw32/4.3.0/../../../../include/string.h:
+
+z:\bin\mingw\bin\../lib/gcc/mingw32/4.3.0/../../../../include/math.h:
+
+mpglib.h:

@@ -1,0 +1,1 @@
+./configure --enable-memalign-hack --extra-cflags=-I/c/Mark/Development/x86Win32/erdmpeg/Packages/faac/include --extra-ldflags=-L/c/Mark/Development/x86Win32/erdmpeg/Packages/faac/libfaac/.libs --disable-static --enable-shared --enable-faac --disable-debug --disable-demuxers --disable-parsers --disable-decoders

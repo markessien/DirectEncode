@@ -1,0 +1,57 @@
+bitstream.lo bitstream.o: bitstream.c \
+  c:/Mark/Software/Development/MinGW/bin/../lib/gcc/mingw32/3.4.5/../../../../include/stdio.h \
+  c:/Mark/Software/Development/MinGW/bin/../lib/gcc/mingw32/3.4.5/../../../../include/_mingw.h \
+  c:/Mark/Software/Development/MinGW/bin/../lib/gcc/mingw32/3.4.5/include/stddef.h \
+  c:/Mark/Software/Development/MinGW/bin/../lib/gcc/mingw32/3.4.5/include/stdarg.h \
+  c:/Mark/Software/Development/MinGW/bin/../lib/gcc/mingw32/3.4.5/../../../../include/sys/types.h \
+  c:/Mark/Software/Development/MinGW/bin/../lib/gcc/mingw32/3.4.5/../../../../include/stdlib.h \
+  coder.h channels.h huffman.h bitstream.h frame.h ../config.h \
+  c:/Mark/Software/Development/MinGW/bin/../lib/gcc/mingw32/3.4.5/../../../../include/inttypes.h \
+  c:/Mark/Software/Development/MinGW/bin/../lib/gcc/mingw32/3.4.5/../../../../include/stdint.h \
+  psych.h fft.h aacquant.h ../include/faaccfg.h ltp.h util.h \
+  c:/Mark/Software/Development/MinGW/bin/../lib/gcc/mingw32/3.4.5/../../../../include/memory.h \
+  c:/Mark/Software/Development/MinGW/bin/../lib/gcc/mingw32/3.4.5/../../../../include/string.h
+
+c:/Mark/Software/Development/MinGW/bin/../lib/gcc/mingw32/3.4.5/../../../../include/stdio.h:
+
+c:/Mark/Software/Development/MinGW/bin/../lib/gcc/mingw32/3.4.5/../../../../include/_mingw.h:
+
+c:/Mark/Software/Development/MinGW/bin/../lib/gcc/mingw32/3.4.5/include/stddef.h:
+
+c:/Mark/Software/Development/MinGW/bin/../lib/gcc/mingw32/3.4.5/include/stdarg.h:
+
+c:/Mark/Software/Development/MinGW/bin/../lib/gcc/mingw32/3.4.5/../../../../include/sys/types.h:
+
+c:/Mark/Software/Development/MinGW/bin/../lib/gcc/mingw32/3.4.5/../../../../include/stdlib.h:
+
+coder.h:
+
+channels.h:
+
+huffman.h:
+
+bitstream.h:
+
+frame.h:
+
+../config.h:
+
+c:/Mark/Software/Development/MinGW/bin/../lib/gcc/mingw32/3.4.5/../../../../include/inttypes.h:
+
+c:/Mark/Software/Development/MinGW/bin/../lib/gcc/mingw32/3.4.5/../../../../include/stdint.h:
+
+psych.h:
+
+fft.h:
+
+aacquant.h:
+
+../include/faaccfg.h:
+
+ltp.h:
+
+util.h:
+
+c:/Mark/Software/Development/MinGW/bin/../lib/gcc/mingw32/3.4.5/../../../../include/memory.h:
+
+c:/Mark/Software/Development/MinGW/bin/../lib/gcc/mingw32/3.4.5/../../../../include/string.h:

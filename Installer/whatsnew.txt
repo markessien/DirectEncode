@@ -1,0 +1,201 @@
+## Version 6.1 / Build 1630 / 27.10.2008
+ * Various Samples updated
+
+## Version 6.02 / Build 1620 / 16.10.2008
+ * Additional fixes for multiple encodings in the same process
+
+## Version 6.01 / Build 1617 / 14.10.2008
+ * Added support for multithreading / running multiple encodes in one graph
+ * Fixed bug in multiple items in graph
+
+## Version 6.01 / Build 1611 / 07.10.2008
+ * Merged all the Dlls into a single dll
+ * Added C# DirectAccess sample
+ * DVD format to main@main
+
+//// Version 6
+## Version 6.00 / Build 1600 / 09.09.2008
+ * Support for MPEG-TS/DVB
+ * Support for Flash Video
+ * Support for MPEG-4 iPod, iPod Nano, iPhone
+ * Support for Real Media Encoding
+ * Support for Blue-Ray MPEG-2 profile
+ * Support for HiDef MPEG-2 content
+ * 19% speed increase
+ * Fix of bug with audio when capturing
+ * Several fixes of small bugs
+ * Improved rescale routines
+ * New samples and documentation
+
+## Version 5.40 / Build 1540 / 09.03.2007
+ * Profile and level correctly set to main@main
+ * Interlace problems fixed
+ * Full migration to VS8, new runtime dependencies included in package
+
+## Version 5.30 / Build 1530 / 18.02.2007
+ * Updated for, and tested against Windows Vista
+ * Fixes to interlaced mode
+ * Fixed a bug where MPEG-4 could not be encoded after MPEG-1 was encoded
+ * No more framerate restrictions for MPEG-4
+ * PCM can be written as the audio track of MPEG-2
+
+## Version 5.29 / Build 1529 / 30.11.2006
+ * Updated DirectAccess sample
+ * Updated MPEG Creator VCGui sample
+ * Fix for MPEG Creator to allow registration
+ * Addition of Audio-only profile to directencode (saving to mp2, ac3 or wav)
+
+## Version 5.27 / Build 1527 / 13.11.2006
+ * Fix for thread race when saving demultiplexed output
+ * Minor fix for MPEG-4 IPod Encoding
+
+## Version 5.26 / Build 1526 / 9.11.2006
+ * Minor fixes to the MPEG Creator ActiveX control
+
+## Version 5.25 / Build 1525 / 11.10.2006
+ * Fixes for problems under Visual Studio 2005
+
+## Version 5.23 / Build 1523 / 03.10.2006
+ * Fixes to iPod compatibility
+ * Improvements in the 3GP and 3G2 formats
+ * Improved AV-Sync for Real Media Files
+ * Improved file writing when the stop button is pressed
+ * C# samples updated
+
+## Version 5.2 / Build 1520 / 21.09.2006
+ * Quicktime compatibility fixed for the MPEG-4 formats
+ * Improved quality
+ * Improved encoding speed
+
+## Version 5.1 / Build 1516 / 11.09.2006
+ * Fixes to the encoding functions for PSP, 3GP, 3G2
+
+## Version 5 / Build 1515 / 28.8.2006
+ * Fixed Property Page Bugs
+ * Added a function to save CPU usage while encoding
+ * Improved the ConsoleEncode sample to show how to capture output to file
+
+## Version 5.01 / 21.8.2006
+ * Allowing for the elementary streams to be accessed directly
+ * Updated filter property pages
+ * Improvements to the filter
+
+Version 5
+---------
+ * Improvements to the framerate correction when video capturing
+ * Improvements to the Still Image Generation
+ * Improvements to the MPEG-4 Encoder
+ * Further fixes to the MPEG Still Generation
+ * Updated the DirectAccess sample to show how to encode audio
+ * Updated the ConsoleEncode sample to remove the DES encoding
+ * Still image crash fix
+ * Pause working
+ * Sample grabber issues fixed
+ * Fixed certain bugs
+ * Included direct access dll
+ * MPEG Systems Output Pin
+ * Video & Audio Sync issues fixed
+ * MPEG-4 support added
+ * Improved support for video capture
+
+Version 4.52 Beta
+ * Bug Fixes
+
+Version 4.5
+ * There is no need for DES now, the framerate is corrected automatically
+ * Still image generation fixes
+ * Final fixes to allow the addition of MPEG-4 format
+ * MPEG Creator ActiveX updated to allow full access to DirectEncode features
+ * Addition of closed GOP
+ * Bug fixes to the MPEG Creator ActiveX control
+ * File structure reorganised
+ * Improved statistics code
+ * Preview while converting
+ * Bitrate changes now affect the output file for the preset formats
+
+Version 4.11
+ * Fix for Graphedit use bug
+
+Version 4.1
+ * License key fixes
+
+Version 4.04
+ * Allows you to convert into non-system and separate audio and video files
+ * Improved and updated documentation
+
+Version 4.03
+ * License key fixes
+ * Switch to an IDL interface -> Support for use in C#, VB and other high level languages
+
+Version 4.01
+ * Generating still images now works
+ * Ability to export to WAV
+
+Version 4.0
+ * Direct Multiplexing
+ * Improved Performance
+ * Interface changes
+ * WMv Format 9 support for WMv Creator
+ * Enhanced compatibility
+ * More customisation of encode parameters
+ * Additional VBR modes
+ * Aspect ratio issues fixed
+ * Internal support for AC3
+ * Other fixes and changes
+
+Version 3.51
+ * Fixed bug in encoding MPEG still images when only hi-res VCD images are specified
+ * Fixed bug where the encoder would freeze if abort were clicked
+ * Updated price
+ * Fixed errors in EULA
+
+Version 3.3
+ * Support for AC3 audio tracks in MPEG-2 formats
+
+Version 3.2
+ * AC3 support
+ * Temporary files are deleted if they are 0 bytes
+ * Multiplex can be used in non-blocking mode
+ * Partial support for unicode build
+ * Corrected aspect ratio functions
+ * Support for QueryVendorInfo
+ * Allowing the graph to be paused before the conversion is started
+ * Fixed bug that caused crash in AVICreator when certain versions of LameACM are installed
+
+Version 3.10
+ * New function stubs for multiplexing, will be implemented in next version
+ * Output to WAV format works, including resampling of to specified sample rates
+ * Bug from 3.07 fixed, where video could not be upsized using the internal resize function
+ * Encoding library slightly improved
+
+Version 3.07 (Bug Fixes)
+ * DVD/SVCD/Standard MPEG changed to use VBR as default (better quality)
+ * Stream aspect ratio can be controlled once more
+ * Internal input stream resize reenabled (use is not recommended, though, it is a bit slow)
+ * Update of all source code to use the latest versions
+
+Version 3.00
+ * Upgrade to the 3.0 version of DirectEncode MPEG Encoding Filter. MPEG Encoding speed for DVD quality files from 3fps to 15fps
+ * Updated help files and documentation
+ * Improved AVI Encoding speed
+ * Support for generating still images
+ * Input for the MPEG Filter has been switched to RGB24
+
+Version 2.51
+ * Sample rate can be specified
+ * 48000khz is used as sample rate for DVD format
+ * Support for AC3 encoding
+ * Proper support for encoding to MP3 using LAME
+ * Input bitrates are validated
+ * Improved framerate balacing for video capture
+
+
+Version 2.01
+ * An internal rescale mechanism has been added, implying that 
+   DES is no longer required for output to DVD, SVCD and VCD formats
+ * Bug fixed which didn't allow the quality to actually be used
+ * Audio bitrate working for all file formats
+ * Bug fixed where one dimension matched the source dimension, and one did not
+ * Profiles for the various output formats added
+ * Property page added, allowing easier use from Graphedit
+ * Functions LoadSetting and SaveSettings added to allow users save their settings

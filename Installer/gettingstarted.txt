@@ -1,0 +1,81 @@
+
+  GettingStarted.txt                                   Oct, 2008
+
+
+    Standard MPEG Encoder, Version 6.0
+    Copyright 2002-2008 Industrial Streams.
+
+
+-----------------------------------------------------------------
+  ABOUT THE STANDARD MPEG ENCODER
+-----------------------------------------------------------------
+
+The Standard MPEG Encoder series of products are a number of developer
+controls for the encoding of video data to the MPEG-1, -2 and -4 formats. 
+
+There is the MPEG Encoder DirectShow filter, a solution that allows
+you encode MPEG for any DirectShow, DirectShow Capture, or DirectShow
+Editing Services Graph.
+
+The Pack also comes with - 
+
+* MPEG Creator ActiveX component, which allows you convert media files
+  to MPEG. This component acts as a wrapper for the MPEG Encoder Filter.
+* Direct Access DLL: The Erdmpg dll allows direct access to the MPEG
+  Encoder without the DirectShow wrapper.
+
+-----------------------------------------------------------------
+  GETTING STARTED
+-----------------------------------------------------------------
+
+Note: The Standard MPEG Encoder provides a collection of tools for
+developers,and not for end-users.
+
+Getting started with the Standard Mpeg Encoder is easy:
+
+1. To test the MPEG Encoding Filter directly, open graph edit. Click 
+on 'Insert Filters', and select the "Standard MPEG Encoder Filter". 
+Select an output file. Render a media file, which should then connect
+to the filter. Pressing run will convert the file to the mpeg format
+using the default settings. You can bring up the property pages in 
+order to change the output format or the settings.
+
+2. Using the EncodeSample code as a guideline, create a C++ project
+that can be used and integrated into your own application.
+
+3. Use the MPEG Creator client as a sample to test the encoding functionality
+
+-----------------------------------------------------------------
+  SYSTEM REQUIREMENTS
+-----------------------------------------------------------------
+
+  * Windows 95, 98, ME, 2000, XP or better with DirectX. To use DES, 
+    DirectX 7.0 or higher is required.
+  * 10.0 MB of disk space
+
+-----------------------------------------------------------------
+  SUPPORTED DEVELOPMENT TOOLS
+-----------------------------------------------------------------
+  * MS Visual C++
+  * MS Visual Basic
+  * Borland C++
+  * Borland C++Builder
+  * Borland Delphi
+  * MS Visual C++.NET
+  * MS Visual C#.NET
+  * MS Visual VB.NET
+
+All automation compatible tools
+
+
+-----------------------------------------------------------------
+  HOME PAGE / CONTACT EMAIL
+-----------------------------------------------------------------
+
+  Home page:
+    http://www.standardmpeg.com
+
+  E-mail:
+    support@standardmpeg.com
+
+-----------------------------------------------------------------

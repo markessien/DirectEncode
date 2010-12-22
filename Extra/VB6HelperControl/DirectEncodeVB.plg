@@ -1,0 +1,36 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: DirectEncodeVB - Win32 Release MinDependency--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\Users\Mark\AppData\Local\Temp\RSP1C23.tmp" with contents
+[
+strmiids.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:windows /dll /incremental:no /pdb:"ReleaseMinDependency/DirectEncodeVB.pdb" /machine:I386 /def:".\DirectEncodeVB.def" /out:"ReleaseMinDependency/DirectEncodeVB.dll" /implib:"ReleaseMinDependency/DirectEncodeVB.lib" 
+.\ReleaseMinDependency\DirectEncodeVB.obj
+.\ReleaseMinDependency\StandardMPEGEncoderVB.obj
+.\ReleaseMinDependency\StdAfx.obj
+.\ReleaseMinDependency\DirectEncodeVB.res
+]
+Creating command line "link.exe @C:\Users\Mark\AppData\Local\Temp\RSP1C23.tmp"
+Creating temporary file "C:\Users\Mark\AppData\Local\Temp\RSP1C24.bat" with contents
+[
+@echo off
+regsvr32 /s /c ".\ReleaseMinDependency\DirectEncodeVB.dll"
+echo regsvr32 exec. time > ".\ReleaseMinDependency\regsvr32.trg"
+]
+Creating command line "C:\Users\Mark\AppData\Local\Temp\RSP1C24.bat"
+Linking...
+   Creating library ReleaseMinDependency/DirectEncodeVB.lib and object ReleaseMinDependency/DirectEncodeVB.exp
+<h3>Output Window</h3>
+Performing registration
+
+
+
+<h3>Results</h3>
+DirectEncodeVB.dll - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

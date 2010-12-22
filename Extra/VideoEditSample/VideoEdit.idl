@@ -1,0 +1,179 @@
+// VideoEdit.idl : IDL source for VideoEdit.dll
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (VideoEdit.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+#include "olectl.h"
+	
+
+[
+	uuid(939B0CFC-B68F-48FE-85E9-0200E9367B0B),
+	version(1.0),
+	helpstring("VideoEdit ActiveX Component")
+]
+library VIDEOEDITLib
+{
+	importlib("stdole32.tlb");
+	importlib("stdole2.tlb");
+
+	typedef enum EnumMediaFormat
+	{
+		formatVideo,
+		formatAudio
+	} MediaFormat;
+
+	[
+		object,
+		uuid(7D8E84A6-81B2-4912-891C-91470360A414),
+		dual,
+		helpstring("IVideoRect-Schnittstelle"),
+		pointer_default(unique)
+	]
+	interface IVideoRect : IDispatch
+	{
+		[propget, id(1), helpstring("Eigenschaft Right")] HRESULT Right([out, retval] long *pVal);
+		[propput, id(1), helpstring("Eigenschaft Right")] HRESULT Right([in] long newVal);
+		[propget, id(2), helpstring("Eigenschaft Top")] HRESULT Top([out, retval] long *pVal);
+		[propput, id(2), helpstring("Eigenschaft Top")] HRESULT Top([in] long newVal);
+		[propget, id(3), helpstring("Eigenschaft Left")] HRESULT Left([out, retval] long *pVal);
+		[propput, id(3), helpstring("Eigenschaft Left")] HRESULT Left([in] long newVal);
+		[propget, id(4), helpstring("Eigenschaft Bottom")] HRESULT Bottom([out, retval] long *pVal);
+		[propput, id(4), helpstring("Eigenschaft Bottom")] HRESULT Bottom([in] long newVal);
+		[propget, id(5), helpstring("Eigenschaft Width")] HRESULT Width([out, retval] long *pVal);
+		[propput, id(5), helpstring("Eigenschaft Width")] HRESULT Width([in] long newVal);
+		[propget, id(6), helpstring("Eigenschaft Height")] HRESULT Height([out, retval] long *pVal);
+		[propput, id(6), helpstring("Eigenschaft Height")] HRESULT Height([in] long newVal);
+	};
+
+	[
+		uuid(AE6F165D-9469-41D5-9FDA-CCF8642E4747),
+		helpstring("_IVideoEditObjEreignisschnittstelle")
+	]
+	dispinterface _IVideoEditObjEvents
+	{
+		properties:
+		methods:
+		[id(1), helpstring("Methode Complete")] HRESULT Complete();
+		[id(2), helpstring("Methode Error")] HRESULT Error([in] long ErrorNumber, [in] BSTR ErrorDescription);
+		[id(3), helpstring("Methode StageChanged")] HRESULT StageChanged([in] BSTR NewStageDescription);
+		[id(4), helpstring("Methode AboutToRun")] HRESULT AboutToRun();
+		[id(5), helpstring("Methode TransitionListed")] HRESULT TransitionListed([in] BSTR TransitionName, [in] BSTR TransitionGuid);
+	};
+	[
+		object,
+		uuid(4E224C6B-E3B5-4C86-BFF5-1518CE9773E4),
+		dual,
+		helpstring("IMediaFile-Schnittstelle"),
+		pointer_default(unique)
+	]
+	interface IMediaFile : IDispatch
+	{
+		[propget, id(1), helpstring("Eigenschaft PosterFrame")] HRESULT PosterFrame([out, retval] IPictureDisp* *pVal);
+		[propget, id(2), helpstring("Eigenschaft Duration")] HRESULT Duration([out, retval] double *pVal);
+		[propput, id(2), helpstring("Eigenschaft Duration")] HRESULT Duration([in] double newVal);
+		[propget, id(3), helpstring("Eigenschaft Transition")] HRESULT Transition([out, retval] BSTR *pVal);
+		[propput, id(3), helpstring("Eigenschaft Transition")] HRESULT Transition([in] BSTR newVal);
+		[propget, id(4), helpstring("Eigenschaft StartOffset")] HRESULT StartOffset([out, retval] double *pVal);
+		[propput, id(4), helpstring("Eigenschaft StartOffset")] HRESULT StartOffset([in] double newVal);
+		[propget, id(5), helpstring("Eigenschaft FilePath")] HRESULT FilePath([out, retval] BSTR *pVal);
+		[propput, id(5), helpstring("Eigenschaft FilePath")] HRESULT FilePath([in] BSTR newVal);
+		[propget, id(6), helpstring("Eigenschaft FileTitle")] HRESULT FileTitle([out, retval] BSTR *pVal);
+		[propput, id(6), helpstring("Eigenschaft FileTitle")] HRESULT FileTitle([in] BSTR newVal);
+		[propput, id(7), helpstring("Eigenschaft PosterFramePath")] HRESULT PosterFramePath([in] BSTR newVal);
+		[propget, id(8), helpstring("Eigenschaft IsImage")] HRESULT IsImage([out, retval] VARIANT_BOOL *pVal);
+		[propput, id(8), helpstring("Eigenschaft IsImage")] HRESULT IsImage([in] VARIANT_BOOL newVal);
+		[propget, id(9), helpstring("Eigenschaft TransitionLength")] HRESULT TransitionLength([out, retval] double *pVal);
+		[propput, id(9), helpstring("Eigenschaft TransitionLength")] HRESULT TransitionLength([in] double newVal);
+		[id(10), helpstring("Methode OverlayText")] HRESULT OverlayText([in] BSTR Text, [in] long xPos, [in] long yPos, [in] long Width, [in] long Height, [in] BSTR FontFace, [in] long FontHeight);
+		[propget, id(12), helpstring("Eigenschaft DoTextOverlay")] HRESULT DoTextOverlay([out, retval] VARIANT_BOOL *pVal);
+		[propput, id(12), helpstring("Eigenschaft DoTextOverlay")] HRESULT DoTextOverlay([in] VARIANT_BOOL newVal);
+		[id(17), helpstring("Methode GetZoomOutRect")] HRESULT GetZoomOutRect([in] IVideoRect** rcSource, [in] IVideoRect** rcZoomIn, [in] IVideoRect**  ppResult);
+		[id(19), helpstring("method ApplyMotionEffect")] HRESULT ApplyMotionEffect([in] long hwnd, [in] IVideoRect **rcReferenceRect, [in] IVideoRect ** rcStart, [in] IVideoRect ** rcEnd,  [in] long fps,  [in] long duration);
+	};
+
+	[
+		object,
+		uuid(423C8CAA-D940-4958-9603-EB07B9F8BD36),
+		dual,
+		helpstring("IVideoClip-Schnittstelle"),
+		pointer_default(unique)
+	]
+	interface IVideoClip : IDispatch
+	{
+		[id(1), helpstring("Methode AddAudio")] HRESULT AddAudio([in] long Index, [in] BSTR Path, [out, retval] IMediaFile** ppResult);
+		[id(2), helpstring("Methode AddVideo")] HRESULT AddVideo([in] long Index, [in] BSTR Path, [out, retval] IMediaFile** ppResult);
+		[id(3), helpstring("Methode RemoveVideo")] HRESULT RemoveVideo([in] long Index);
+		[id(4), helpstring("Methode RemoveAudio")] HRESULT RemoveAudio([in] long Index);
+
+		[id(5), helpstring("Methode SaveClip")] HRESULT SaveClip([in] BSTR Path);
+		[id(6), helpstring("Methode LoadClip")] HRESULT LoadClip([in] BSTR Path);
+		
+		[id(7), helpstring("Methode ForcePhotoDurations")] HRESULT ForcePhotoDurations([in] double NewDuration);
+		[id(8), helpstring("Methode SpacePhotosToAudio")] HRESULT SpacePhotosToAudio([in] int iStartAudioItem, [in] int iEndAudioItem);
+				
+		[propget, id(9),  helpstring("Eigenschaft AudioCount")] HRESULT AudioCount([out, retval] long *pVal);
+		[propget, id(10), helpstring("Eigenschaft VideoCount")] HRESULT VideoCount([out, retval] long *pVal);
+		[propget, id(11), helpstring("Eigenschaft AudioLength")] HRESULT AudioLength([out, retval] double *pVal);
+		[propget, id(12), helpstring("Eigenschaft VideoLength")] HRESULT VideoLength([out, retval] double *pVal);
+		[propget, id(13), helpstring("Eigenschaft MediaFile")] HRESULT MediaFile([in] MediaFormat format, [in] long ItemIndex, [out, retval] IMediaFile* *pVal);	
+	};
+
+	[
+		object,
+		uuid(CC95A0DF-4F4A-44BE-9BFA-02A8BAB63A27),
+		dual,
+		helpstring("IVideoEditObj-Schnittstelle"),
+		pointer_default(unique)
+	]
+	interface IVideoEditObj : IDispatch
+	{
+		[id(1), helpstring("Methode StartPreview")] HRESULT StartPreview([in] long ParentHwnd, [in] long x,[in] long y,[in] long width,[in] long height, [out, retval] VARIANT_BOOL * pResult);
+		[id(2), helpstring("Methode Stop")] HRESULT Stop();
+		[id(3), helpstring("Methode CompileToFile")] HRESULT CompileToFile([in] BSTR OutputPath, [in] long Format, [out, retval] VARIANT_BOOL * pResult);
+		[id(4), helpstring("Methode EnumerateTransitions")] HRESULT EnumerateTransitions();
+
+		[propget, id(5), helpstring("Eigenschaft Progress")] HRESULT Progress([out, retval] double *pVal);
+		[propget, id(6), helpstring("Eigenschaft Duration")] HRESULT Duration([out, retval] double *pVal);
+		[propget, id(7), helpstring("Eigenschaft CurrentClip")] HRESULT CurrentClip([out, retval] IVideoClip* *pVal);
+		[propput, id(7), helpstring("Eigenschaft CurrentClip")] HRESULT CurrentClip([in] IVideoClip** newVal);
+		[id(8), helpstring("Methode InsertTemplate")] HRESULT InsertTemplate([in] IVideoClip** pVideoClip);
+		
+	};
+
+	[
+		uuid(665A4D7D-91A5-4EA4-999A-4FAA4E5A8C50),
+		helpstring("VideoEdit Class")
+	]
+	coclass VideoEdit
+	{
+		[default] interface IVideoEditObj;
+		[default, source] dispinterface _IVideoEditObjEvents;
+	};
+	[
+		uuid(CF561283-7544-4B90-9C68-49D690746B3E),
+		helpstring("MediaFile Class")
+	]
+	coclass MediaFile
+	{
+		[default] interface IMediaFile;
+	};
+	[
+		uuid(0527F33C-C731-4AC4-B7AD-6072958B1179),
+		helpstring("VideoClip Class")
+	]
+	coclass VideoClip
+	{
+		[default] interface IVideoClip;
+	};
+	[
+		uuid(95D60350-D4BF-48A4-81C6-3D25954847A3),
+		helpstring("VideoRect Class")
+	]
+	coclass VideoRect
+	{
+		[default] interface IVideoRect;
+	};
+};

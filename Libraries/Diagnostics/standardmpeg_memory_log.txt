@@ -1,0 +1,25 @@
+System Directory: C:\WINDOWS\system32
+Windows Directory: C:\WINDOWS
+
+Test 1: Can the DirectEncode.dll file be instanciated?
+   SUCCEEDED: The Mpeg Object was created successfully   HRESULT: 0x0
+   Ptr: 0xC72490
+Test 2: Attempting to load util
+   SUCCESS: Loaded util dll --    Ptr: 0x6C6C0000
+    Path: C:\WINDOWS\system32\avutilerd-49.dll
+Test 3: Attempting to load aac
+   SUCCESS: Loaded aac dll --    Ptr: 0x1170000
+    Path: C:\WINDOWS\system32\libfaac.dll
+Test 4: Attempting to load format
+   SUCCESS: Loaded format dll --    Ptr: 0x64480000
+    Path: C:\WINDOWS\system32\avformaterd-52.dll
+Test 5: Attempting to load codec
+   SUCCESS: Loaded codec dll --    Ptr: 0x65E80000
+    Path: C:\WINDOWS\system32\avcodecerd-51.dll
+Test 6: Attempting to load erdmpg
+   SUCCESS: Loaded erdmpg dll --    Ptr: 0x1170000
+    Path: C:\WINDOWS\system32\erdmpg-6.dll
+Retrieving details for the fileC:\WINDOWS\system32\erdmpg-6.dll --- Version 6.0
+Examining for memory leaks...
+Standard MPEG Encoder Snapshot
+    Done: Look in your debug window or in c:\standardmpeg_memory_log.txt

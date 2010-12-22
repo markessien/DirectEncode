@@ -1,0 +1,9 @@
+; WMVCreator.def : Declares the module parameters.
+
+LIBRARY      "WMVCreator.DLL"
+
+EXPORTS
+	DllCanUnloadNow		PRIVATE
+	DllGetClassObject	PRIVATE
+	DllRegisterServer	PRIVATE
+	DllUnregisterServer	PRIVATE

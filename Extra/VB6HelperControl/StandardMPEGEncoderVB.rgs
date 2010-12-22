@@ -1,0 +1,26 @@
+HKCR
+{
+	DirectEncodeVB.StandardMPEGEncoderVB.1 = s 'StandardMPEGEncoderVB Class'
+	{
+		CLSID = s '{95D4CFC4-F499-4CB1-8D56-5AE5234DBF90}'
+	}
+	DirectEncodeVB.StandardMPEGEncoderVB = s 'StandardMPEGEncoderVB Class'
+	{
+		CLSID = s '{95D4CFC4-F499-4CB1-8D56-5AE5234DBF90}'
+		CurVer = s 'DirectEncodeVB.StandardMPEGEncoderVB.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {95D4CFC4-F499-4CB1-8D56-5AE5234DBF90} = s 'StandardMPEGEncoderVB Class'
+		{
+			ProgID = s 'DirectEncodeVB.StandardMPEGEncoderVB.1'
+			VersionIndependentProgID = s 'DirectEncodeVB.StandardMPEGEncoderVB'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			'TypeLib' = s '{ABFB7D65-F937-428D-8EA1-3774A940007A}'
+		}
+	}
+}

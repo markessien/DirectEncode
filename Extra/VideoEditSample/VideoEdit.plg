@@ -1,0 +1,54 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: VideoEdit - Win32 Release MinDependency--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\DOKUME~1\MARKES~1\LOKALE~1\Temp\RSP68.tmp" with contents
+[
+/nologo /MT /W3 /GX /ZI /Od /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_MBCS" /D "_USRDLL" /D "_ATL_STATIC_REGISTRY" /Fp"ReleaseMinDependency/VideoEdit.pch" /Yu"stdafx.h" /Fo"ReleaseMinDependency/" /Fd"ReleaseMinDependency/" /FD /c 
+"X:\Development\x86Win32\VideoAssistantPrj\VideoEdit\DESEdit.cpp"
+]
+Creating command line "cl.exe @C:\DOKUME~1\MARKES~1\LOKALE~1\Temp\RSP68.tmp" 
+Creating temporary file "C:\DOKUME~1\MARKES~1\LOKALE~1\Temp\RSP69.tmp" with contents
+[
+strmiids.lib winmm.lib Strmbase.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:windows /dll /incremental:no /pdb:"ReleaseMinDependency/VideoEdit.pdb" /debug /machine:I386 /def:".\VideoEdit.def" /out:"ReleaseMinDependency/VideoEdit.dll" /implib:"ReleaseMinDependency/VideoEdit.lib" /pdbtype:sept 
+.\ReleaseMinDependency\DESEdit.obj
+.\ReleaseMinDependency\MediaFile.obj
+.\ReleaseMinDependency\MediaFileList.obj
+.\ReleaseMinDependency\StdAfx.obj
+.\ReleaseMinDependency\VideoClip.obj
+.\ReleaseMinDependency\VideoEdit.obj
+.\ReleaseMinDependency\VideoEditObj.obj
+.\ReleaseMinDependency\VideoRect.obj
+.\ReleaseMinDependency\VideoEdit.res
+]
+Creating command line "link.exe @C:\DOKUME~1\MARKES~1\LOKALE~1\Temp\RSP69.tmp"
+Creating temporary file "C:\DOKUME~1\MARKES~1\LOKALE~1\Temp\RSP6A.bat" with contents
+[
+@echo off
+regsvr32 /s /c ".\ReleaseMinDependency\VideoEdit.dll"
+echo regsvr32 exec. time > ".\ReleaseMinDependency\regsvr32.trg"
+]
+Creating command line "C:\DOKUME~1\MARKES~1\LOKALE~1\Temp\RSP6A.bat"
+Compiling...
+DESEdit.cpp
+X:\Development\x86Win32\VideoAssistantPrj\VideoEdit\DESEdit.cpp(1043) : warning C4244: 'argument' : conversion from 'double' to '__int64', possible loss of data
+X:\Development\x86Win32\VideoAssistantPrj\VideoEdit\DESEdit.cpp(1047) : warning C4244: 'argument' : conversion from 'double' to '__int64', possible loss of data
+X:\Development\x86Win32\VideoAssistantPrj\VideoEdit\DESEdit.cpp(1083) : warning C4244: 'argument' : conversion from 'double' to '__int64', possible loss of data
+X:\Development\x86Win32\VideoAssistantPrj\VideoEdit\DESEdit.cpp(1091) : warning C4244: 'argument' : conversion from 'double' to '__int64', possible loss of data
+Linking...
+LINK : warning LNK4075: ignoring /EDITANDCONTINUE due to /INCREMENTAL:NO specification
+   Creating library ReleaseMinDependency/VideoEdit.lib and object ReleaseMinDependency/VideoEdit.exp
+<h3>Output Window</h3>
+Performing registration
+
+
+
+<h3>Results</h3>
+VideoEdit.dll - 0 error(s), 5 warning(s)
+</pre>
+</body>
+</html>

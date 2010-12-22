@@ -1,0 +1,68 @@
+* Install MingW (MinGW-3.1.0-1.exe). Use the default options
+* Install MSys (MSYS-1.0.10.exe) (default options)
+  - When you are done, a black post install console window will appea
+  - Start post install -> y/y
+  - type the path of mingw in the form c:/programme/mingw
+  - It asks one more question about mount bindings, say yes
+
+* Add gcc to the windows path. Do so over systemsteurung. It is c:\programme\mingw\bin
+* Start mingw/msys and navigate to the ffmpeg directory. Use /c/ to go to c drive. Go to /current directory
+* there should be a file called params.txt. It includes the commands. Type ./configure | params.txt
+* If it is not there, type the following command:
+
+CAREFUL
+./configure --enable-memalign-hack --enable-faac -extra-cflags=-I/C/Development/x86W
+in32/ffmpeg/Packages/faac/include -extra-ldflags=-L/c/Development/x86Win32/ffmpeg/Pack
+ages/faac/Debug
+
+or
+
+./configure --enable-memalign-hack --extra-cflags=-I/C/Mark/Development/erdmpeg/Packages/faac/include --extra-ldflags=-L/C/Mark/Development/erdmpeg/Packages/faac/libfaac/.libs --disable-static --enable-shared --enable-faac --disable-debug --disable-demuxers --disable-parsers --disable-decoders --enable-amr_nb
+
+
+* Type make clean to clear out the old stuff
+* Then type make
+* if there is an faac error, change the path of the library and include headers for faac to point to the location of faac
+
+To compile faac
+---------------
+I tried to compile it using msys from above, but it does not work
+I tried also VS 6, but the project file does not open
+
+- start cygwin program
+- go to the individual package view
+- select autoconf, automake and libtool and MAKE
+- install app
+- open newly installed cygwin
+- type ./bootstrap. I had a warning about my_define
+- when it is done, type ./configure
+- then type 'make'
+- it will finish with some errors, but the main files are all in .libs
+
+FINALLY, I found the solution :D
+
+Go to the .libs file, and copy the libfaac.a file into the C:\Programme\cygwin\lib directory
+// ---------------------
+
+* go to the ffmpeg directory and type make to compile ffmpeg
+
+ no longer needed-
+* Type ./configure --enable-shared --enable-memalign-hack --disable-debug
+* If an error comes, delete the config.h file
+* type make
+
+1. Write the commands in a text file
+2. Pipe it using ./configure | mpeg.txt
+3. Add gcc to the path. It comes with cygwin
+
+/////////////////
+
+Configuring with mpeg-4 support
+
+./configure --enable-memalign-hack --enable-faac -extra-cflags=-I/C/Development/x86W
+in32/ffmpeg/Packages/faac/include
+
+
+./configure --enable-memalign-hack --enable-faac -extra-cflags=-I/C/Development/x86W
+in32/ffmpeg/Packages/faac/include -extra-ldflags=-L/c/Development/x86Win32/ffmpeg/Pack
+ages/faac/Debug

@@ -1,0 +1,26 @@
+HKCR
+{
+	VideoEdit.VideoRect.1 = s 'VideoRect Class'
+	{
+		CLSID = s '{95D60350-D4BF-48A4-81C6-3D25954847A3}'
+	}
+	VideoEdit.VideoRect = s 'VideoRect Class'
+	{
+		CLSID = s '{95D60350-D4BF-48A4-81C6-3D25954847A3}'
+		CurVer = s 'VideoEdit.VideoRect.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {95D60350-D4BF-48A4-81C6-3D25954847A3} = s 'VideoRect Class'
+		{
+			ProgID = s 'VideoEdit.VideoRect.1'
+			VersionIndependentProgID = s 'VideoEdit.VideoRect'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			'TypeLib' = s '{939B0CFC-B68F-48FE-85E9-0200E9367B0B}'
+		}
+	}
+}

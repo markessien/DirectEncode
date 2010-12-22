@@ -1,0 +1,41 @@
+lametime.o: lametime.c ../config.h \
+  z:\bin\mingw\bin\../lib/gcc/mingw32/4.3.0/../../../../include/assert.h \
+  z:\bin\mingw\bin\../lib/gcc/mingw32/4.3.0/../../../../include/_mingw.h \
+  z:\bin\mingw\bin\../lib/gcc/mingw32/4.3.0/../../../../include/stdio.h \
+  z:\bin\mingw\bin\../lib/gcc/mingw32/4.3.0/include/stddef.h \
+  z:\bin\mingw\bin\../lib/gcc/mingw32/4.3.0/include/stdarg.h \
+  z:\bin\mingw\bin\../lib/gcc/mingw32/4.3.0/../../../../include/sys/types.h \
+  z:\bin\mingw\bin\../lib/gcc/mingw32/4.3.0/../../../../include/time.h \
+  lametime.h ../include/lame.h \
+  z:\bin\mingw\bin\../lib/gcc/mingw32/4.3.0/../../../../include/sys/timeb.h \
+  z:\bin\mingw\bin\../lib/gcc/mingw32/4.3.0/../../../../include/io.h \
+  z:\bin\mingw\bin\../lib/gcc/mingw32/4.3.0/../../../../include/fcntl.h \
+  z:\bin\mingw\bin\../lib/gcc/mingw32/4.3.0/../../../../include/sys/stat.h
+
+../config.h:
+
+z:\bin\mingw\bin\../lib/gcc/mingw32/4.3.0/../../../../include/assert.h:
+
+z:\bin\mingw\bin\../lib/gcc/mingw32/4.3.0/../../../../include/_mingw.h:
+
+z:\bin\mingw\bin\../lib/gcc/mingw32/4.3.0/../../../../include/stdio.h:
+
+z:\bin\mingw\bin\../lib/gcc/mingw32/4.3.0/include/stddef.h:
+
+z:\bin\mingw\bin\../lib/gcc/mingw32/4.3.0/include/stdarg.h:
+
+z:\bin\mingw\bin\../lib/gcc/mingw32/4.3.0/../../../../include/sys/types.h:
+
+z:\bin\mingw\bin\../lib/gcc/mingw32/4.3.0/../../../../include/time.h:
+
+lametime.h:
+
+../include/lame.h:
+
+z:\bin\mingw\bin\../lib/gcc/mingw32/4.3.0/../../../../include/sys/timeb.h:
+
+z:\bin\mingw\bin\../lib/gcc/mingw32/4.3.0/../../../../include/io.h:
+
+z:\bin\mingw\bin\../lib/gcc/mingw32/4.3.0/../../../../include/fcntl.h:
+
+z:\bin\mingw\bin\../lib/gcc/mingw32/4.3.0/../../../../include/sys/stat.h:

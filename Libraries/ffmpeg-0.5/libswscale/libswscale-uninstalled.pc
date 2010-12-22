@@ -1,0 +1,12 @@
+prefix=
+exec_prefix=
+libdir=${pcfiledir}
+includedir=/c/Mark/Development/DirectEncode/Libraries/ffmpeg-0.5
+
+Name: libswscale
+Description: FFmpeg image rescaling library
+Version: 0.7.1
+Requires: libavcodec = 52.20.0
+Conflicts:
+Libs: ${libdir}/libswscalecu.a 
+Cflags: -I${includedir}

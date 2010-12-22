@@ -1,0 +1,26 @@
+HKCR
+{
+	StandardMPEGCreator.Settings.1 = s 'Settings Class'
+	{
+		CLSID = s '{21E055F2-DB1B-43F6-948E-1B655FE3E08F}'
+	}
+	StandardMPEGCreator.Settings = s 'Settings Class'
+	{
+		CLSID = s '{21E055F2-DB1B-43F6-948E-1B655FE3E08F}'
+		CurVer = s 'StandardMPEGCreator.Settings.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {21E055F2-DB1B-43F6-948E-1B655FE3E08F} = s 'Settings Class'
+		{
+			ProgID = s 'StandardMPEGCreator.Settings.1'
+			VersionIndependentProgID = s 'StandardMPEGCreator.Settings'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			'TypeLib' = s '{37FAD0EE-EFE5-4A2F-ABDA-F595ECD72E02}'
+		}
+	}
+}

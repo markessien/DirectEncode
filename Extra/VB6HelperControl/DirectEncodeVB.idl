@@ -1,0 +1,48 @@
+// DirectEncodeVB.idl : IDL source for DirectEncodeVB.dll
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (DirectEncodeVB.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+
+
+[
+	uuid(ABFB7D65-F937-428D-8EA1-3774A940007A),
+	version(1.0),
+	helpstring("DirectEncodeVB 1.0 Type Library")
+]
+library DIRECTENCODEVBLib
+{
+	importlib("stdole32.tlb");
+	importlib("stdole2.tlb");
+	importlib("Z:\\Development\\DirectEncode\\Debug\\DirectEncode.tlb");
+	
+	[
+		object,
+		uuid(5E4A1AE4-5A1D-4A70-ADB7-53BDD195D962),
+		dual,
+		helpstring("IStandardMPEGEncoderVB Interface"),
+		pointer_default(unique)
+	]
+	interface IStandardMPEGEncoderVB : IDispatch
+	{
+		[id(1), helpstring("method Test")] HRESULT Test();
+		[id(2), helpstring("method CheckObjects")] HRESULT CheckObjects([out, retval] VARIANT_BOOL* pb);
+		[id(3), helpstring("method SetObject")] HRESULT SetObject([in] IUnknown* pUnk);
+		[id(4), helpstring("method CreateFilter")] HRESULT CreateFilter();
+		[id(5), helpstring("method GetSMPEG")] HRESULT GetSMPEG([out] IStandardMpegEncoder** pEncoder);
+		[id(6), helpstring("method SetOutputFileOnFileWriter")] HRESULT SetOutputFileOnFileWriter([in] IUnknown* pFileWriter, [in] BSTR FilePath, [out, retval] long* pResult);
+		[id(7), helpstring("method PromptForGraph")] HRESULT PromptForGraph([in] IUnknown* pGraph);
+	};
+
+	[
+		uuid(95D4CFC4-F499-4CB1-8D56-5AE5234DBF90),
+		helpstring("StandardMPEGEncoderVB Class")
+	]
+	coclass StandardMPEGEncoderVB
+	{
+		[default] interface IStandardMPEGEncoderVB;
+	};
+};

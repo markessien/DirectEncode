@@ -1,0 +1,10 @@
+C:\Mark\Development\DirectEncode\Samples\SimpleEncodeGui_CSharp\obj\Debug\ResolveAssemblyReference.cache
+C:\Mark\Development\DirectEncode\Samples\SimpleEncodeGui_CSharp\obj\Debug\QuickEncodeCSharp.formMain.resources
+C:\Mark\Development\DirectEncode\Samples\SimpleEncodeGui_CSharp\obj\Debug\QuickEncodeCSharp.Properties.Resources.resources
+C:\Mark\Development\DirectEncode\Samples\SimpleEncodeGui_CSharp\obj\Debug\QuickEncodeCSharp.csproj.GenerateResource.Cache
+C:\Mark\Development\DirectEncode\Samples\SimpleEncodeGui_CSharp\bin\Debug\QuickEncodeCSharp.exe
+C:\Mark\Development\DirectEncode\Samples\SimpleEncodeGui_CSharp\bin\Debug\QuickEncodeCSharp.pdb
+C:\Mark\Development\DirectEncode\Samples\SimpleEncodeGui_CSharp\bin\Debug\DirectEncodeNET.dll
+C:\Mark\Development\DirectEncode\Samples\SimpleEncodeGui_CSharp\bin\Debug\DirectShowLib-2005.dll
+C:\Mark\Development\DirectEncode\Samples\SimpleEncodeGui_CSharp\obj\Debug\QuickEncodeCSharp.exe
+C:\Mark\Development\DirectEncode\Samples\SimpleEncodeGui_CSharp\obj\Debug\QuickEncodeCSharp.pdb

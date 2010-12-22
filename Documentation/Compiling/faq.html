@@ -1,0 +1,334 @@
+<html><head><!-- Created by texi2html 1.56k from faq.texi on 8 February 2005 --><title>FFmpeg FAQ</title></head>
+<body>
+<h1>FFmpeg FAQ</h1>
+<p>
+</p><p></p><hr><p>
+</p><h1>Table of Contents</h1>
+<ul>
+<li><a name="TOC1" href="http://ffmpeg.sourceforge.net/faq.html#SEC1">1. General Problems</a>
+<ul>
+<li><a name="TOC2" href="http://ffmpeg.sourceforge.net/faq.html#SEC2">1.1 ffserver does not work.</a>
+</li><li><a name="TOC3" href="http://ffmpeg.sourceforge.net/faq.html#SEC3">1.2 I cannot read this file although this format seems to be supported by ffmpeg.</a>
+</li><li><a name="TOC4" href="http://ffmpeg.sourceforge.net/faq.html#SEC4">1.3 I get audio/video synchronization problems when grabbing.</a>
+</li><li><a name="TOC5" href="http://ffmpeg.sourceforge.net/faq.html#SEC5">1.4 How do I encode jpegs to another format ?</a>
+</li><li><a name="TOC6" href="http://ffmpeg.sourceforge.net/faq.html#SEC6">1.5 FFmpeg does not support codec XXX. Can you include a Windows DLL loader to support it ?</a>
+</li><li><a name="TOC7" href="http://ffmpeg.sourceforge.net/faq.html#SEC7">1.6 Why do I see a slight quality degradation with multithreaded MPEG* encoding ?</a>
+</li><li><a name="TOC8" href="http://ffmpeg.sourceforge.net/faq.html#SEC8">1.7 How can I read from the standard input or write to the standard output ?</a>
+</li><li><a name="TOC9" href="http://ffmpeg.sourceforge.net/faq.html#SEC9">1.8 Why does ffmpeg not decode audio in VOB files ?</a>
+</li><li><a name="TOC10" href="http://ffmpeg.sourceforge.net/faq.html#SEC10">1.9 Which codecs are supported by windows ?</a>
+</li><li><a name="TOC11" href="http://ffmpeg.sourceforge.net/faq.html#SEC11">1.10 Why does the chrominance data seem to be sampled at a different time than the luminance data on bt8x8 captures on Linux?</a>
+</li><li><a name="TOC12" href="http://ffmpeg.sourceforge.net/faq.html#SEC12">1.11 How do I avoid the ugly aliassing artifacts in bt8x8 captures on linux?</a>
+</li><li><a name="TOC13" href="http://ffmpeg.sourceforge.net/faq.html#SEC13">1.12 I have a problem with an old version of ffmpeg; where should i report it?</a>
+</li><li><a name="TOC14" href="http://ffmpeg.sourceforge.net/faq.html#SEC14">1.13 -f jpeg doesnt work.</a>
+</li><li><a name="TOC15" href="http://ffmpeg.sourceforge.net/faq.html#SEC15">1.14 Why can I not change the framerate?</a>
+</li><li><a name="TOC16" href="http://ffmpeg.sourceforge.net/faq.html#SEC16">1.15 ffmpeg does not work; What is wrong?</a>
+</li><li><a name="TOC17" href="http://ffmpeg.sourceforge.net/faq.html#SEC17">1.16 How do I encode XviD or DIVX video with ffmpeg?</a>
+</li></ul>
+</li><li><a name="TOC18" href="http://ffmpeg.sourceforge.net/faq.html#SEC18">2. Development</a>
+<ul>
+<li><a name="TOC19" href="http://ffmpeg.sourceforge.net/faq.html#SEC19">2.1 Are there examples illustrating how to use the FFmpeg libraries, particularly libavcodec and libavformat ?</a>
+</li><li><a name="TOC20" href="http://ffmpeg.sourceforge.net/faq.html#SEC20">2.2 Can you support my C compiler XXX ?</a>
+</li><li><a name="TOC21" href="http://ffmpeg.sourceforge.net/faq.html#SEC21">2.3 Can I use FFmpeg or libavcodec under Windows ?</a>
+</li><li><a name="TOC22" href="http://ffmpeg.sourceforge.net/faq.html#SEC22">2.4 Can you add automake, libtool or autoconf support ?</a>
+</li><li><a name="TOC23" href="http://ffmpeg.sourceforge.net/faq.html#SEC23">2.5 Why not rewrite ffmpeg in object-oriented C++ ?</a>
+</li><li><a name="TOC24" href="http://ffmpeg.sourceforge.net/faq.html#SEC24">2.6 Why are the ffmpeg programs devoid of debugging symbols ?</a>
+</li></ul>
+</li></ul>
+<p></p><hr><p>
+
+</p><p>
+FFmpeg FAQ
+
+
+
+
+</p><h1><a name="SEC1" href="http://ffmpeg.sourceforge.net/faq.html#TOC1">1. General Problems</a></h1>
+
+
+
+<h2><a name="SEC2" href="http://ffmpeg.sourceforge.net/faq.html#TOC2">1.1 ffserver does not work.</a></h2>
+
+<p>
+ffmpeg development is now concentrated on the codec and format
+handling. New developments broke ffserver, so don't expect it to work
+correctly. If you have time and experience, please help us fix it.
+
+
+
+
+</p><h2><a name="SEC3" href="http://ffmpeg.sourceforge.net/faq.html#TOC3">1.2 I cannot read this file although this format seems to be supported by ffmpeg.</a></h2>
+
+<p>
+Even if ffmpeg can read the file format, it may not support all its
+codecs. Please consult the supported codec list in the ffmpeg
+documentation.
+
+
+
+
+</p><h2><a name="SEC4" href="http://ffmpeg.sourceforge.net/faq.html#TOC4">1.3 I get audio/video synchronization problems when grabbing.</a></h2>
+
+<p>
+Currently, the grabbing stuff does not handle synchronisation
+correctly. You are free to correct it. A fix is planned.
+
+
+
+
+</p><h2><a name="SEC5" href="http://ffmpeg.sourceforge.net/faq.html#TOC5">1.4 How do I encode jpegs to another format ?</a></h2>
+
+<p>
+If the jpegs are named img1.jpg, img2.jpg, img3.jpg,..., use:
+
+
+
+</p><pre>  ffmpeg -i img%d.jpg /tmp/a.mpg
+</pre>
+
+<p>
+<samp>`%d'</samp> is replaced by the image number.
+
+
+</p><p>
+<tt>`img%03d.jpg'</tt> generates <tt>`img001.jpg'</tt>, <tt>`img002.jpg'</tt>, etc...
+
+
+</p><p>
+The same system is used for the other image formats.
+
+
+
+
+</p><h2><a name="SEC6" href="http://ffmpeg.sourceforge.net/faq.html#TOC6">1.5 FFmpeg does not support codec XXX. Can you include a Windows DLL loader to support it ?</a></h2>
+
+<p>
+No. FFmpeg only supports open source codecs. Windows DLLs are not
+portable, bloated and often slow.
+
+
+
+
+</p><h2><a name="SEC7" href="http://ffmpeg.sourceforge.net/faq.html#TOC7">1.6 Why do I see a slight quality degradation with multithreaded MPEG* encoding ?</a></h2>
+
+<p>
+For multithreaded MPEG* encoding, the encoded slices must be independent,
+otherwise thread n would practically have to wait for n-1 to finish, so it's
+quite logical that there is a small reduction of quality. This is not a bug.
+
+
+
+
+</p><h2><a name="SEC8" href="http://ffmpeg.sourceforge.net/faq.html#TOC8">1.7 How can I read from the standard input or write to the standard output ?</a></h2>
+
+<p>
+Use <tt>`-'</tt> as filename.
+
+
+
+
+</p><h2><a name="SEC9" href="http://ffmpeg.sourceforge.net/faq.html#TOC9">1.8 Why does ffmpeg not decode audio in VOB files ?</a></h2>
+
+<p>
+The audio is AC3 (a.k.a. A/52). AC3 decoding is an optional component in ffmpeg
+as the component that handles AC3 decoding (liba52) is currently released under 
+the GPL. If you have liba52 installed on your system, enable AC3 decoding
+with <code>./configure --enable-a52</code>. Take care: by
+enabling AC3, you automatically change the license of libavcodec from
+LGPL to GPL.
+
+
+
+
+</p><h2><a name="SEC10" href="http://ffmpeg.sourceforge.net/faq.html#TOC10">1.9 Which codecs are supported by windows ?</a></h2>
+
+<p>
+Windows does not support standard formats like mpeg very well, unless you 
+install some additional codecs
+
+
+</p><p>
+The following list of video codecs should work on most windows systems
+</p><dl compact="compact">
+
+<dt><samp>`msmpeg4v2'</samp>
+</dt><dd>
+.avi/.asf
+</dd><dt><samp>`msmpeg4'</samp>
+</dt><dd>
+.asf only
+</dd><dt><samp>`wmv1'</samp>
+</dt><dd>
+.asf only
+</dd><dt><samp>`wmv2'</samp>
+</dt><dd>
+.asf only
+</dd><dt><samp>`mpeg4'</samp>
+</dt><dd>
+only if you have some mpeg4 codec installed like ffdshow or xvid
+</dd><dt><samp>`mpeg1'</samp>
+</dt><dd>
+.mpg only
+</dd></dl>
+<p>
+Note, asf files often have .wmv or .wma extensions in windows. It should also 
+be mentioned that Microsoft claims a patent on the ASF format, and may sue 
+or threaten users who create ASF files with non-Microsoft software. It is
+strongly advised to avoid ASF where possible.
+
+
+</p><p>
+The following list of audio codecs should work on most windows systems
+</p><dl compact="compact">
+
+<dt><samp>`adpcm_ima_wav'</samp>
+</dt><dd>
+</dd><dt><samp>`adpcm_ms'</samp>
+</dt><dd>
+</dd><dt><samp>`pcm'</samp>
+</dt><dd>
+</dd><dt><samp>`mp3'</samp>
+</dt><dd>
+if some mp3 codec like lame is installed
+</dd></dl>
+
+
+
+<h2><a name="SEC11" href="http://ffmpeg.sourceforge.net/faq.html#TOC11">1.10 Why does the chrominance data seem to be sampled at a different time than the luminance data on bt8x8 captures on Linux?</a></h2>
+
+<p>
+This is a well-known bug in the bt8x8 driver. For 2.4.26 there is a patch at 
+(<a href="http://www.mplayerhq.hu/%7Emichael/bttv-420-2.4.26.patch">http://www.mplayerhq.hu/~michael/bttv-420-2.4.26.patch</a>). This may also
+apply cleanly to other 2.4-series kernels.
+
+
+
+
+</p><h2><a name="SEC12" href="http://ffmpeg.sourceforge.net/faq.html#TOC12">1.11 How do I avoid the ugly aliassing artifacts in bt8x8 captures on linux?</a></h2>
+
+<p>
+Pass 'combfilter=1 lumafilter=1' to the bttv driver. Note though that 'combfilter=1'
+will cause somewhat too strong filtering. A fix is to apply (<a href="http://www.mplayerhq.hu/%7Emichael/bttv-comb-2.4.26.patch">http://www.mplayerhq.hu/~michael/bttv-comb-2.4.26.patch</a>)
+or (<a href="http://www.mplayerhq.hu/%7Emichael/bttv-comb-2.6.6.patch">http://www.mplayerhq.hu/~michael/bttv-comb-2.6.6.patch</a>)
+and pass 'combfilter=2'.
+
+
+
+
+</p><h2><a name="SEC13" href="http://ffmpeg.sourceforge.net/faq.html#TOC13">1.12 I have a problem with an old version of ffmpeg; where should i report it?</a></h2>
+<p>
+Nowhere. Upgrade to the latest release or if there is no recent release upgrade
+to cvs. You could also try to report it. Maybe you will get lucky and
+become the first person in history to get a different answer from "upgrade
+to cvs".
+
+
+
+
+</p><h2><a name="SEC14" href="http://ffmpeg.sourceforge.net/faq.html#TOC14">1.13 -f jpeg doesnt work.</a></h2>
+
+<p>
+try '-f image -img jpeg test%d.jpg'
+
+
+
+
+</p><h2><a name="SEC15" href="http://ffmpeg.sourceforge.net/faq.html#TOC15">1.14 Why can I not change the framerate?</a></h2>
+
+<p>
+Some codecs, like MPEG 1/2 only allow a small number of fixed framerates.
+Choose a different codec with the -vcodec command line option.
+
+
+
+
+</p><h2><a name="SEC16" href="http://ffmpeg.sourceforge.net/faq.html#TOC16">1.15 ffmpeg does not work; What is wrong?</a></h2>
+
+<p>
+Try a 'make distclean' in the ffmpeg source directory. If this does not help see
+(<a href="http://ffmpeg.sourceforge.net/ffmpeg-bugreport.html">ffmpeg-bugreport.html</a>).
+
+
+
+
+</p><h2><a name="SEC17" href="http://ffmpeg.sourceforge.net/faq.html#TOC17">1.16 How do I encode XviD or DIVX video with ffmpeg?</a></h2>
+
+<p>
+Both XviD and DIVX (version 4+) are implementations of the ISO MPEG-4
+standard (note that there are many other coding formats that use this
+same standard). Thus, use '-vcodec mpeg4' to encode these formats. The
+default fourcc stored in a MPEG-4-coded file will be 'DIVX'. If you want
+a different fourcc, use the '-vtag' option. E.g., '-vtag xvid' will 
+force the fourcc 'xvid' to be stored as the video fourcc rather than the 
+default.
+
+
+
+
+</p><h1><a name="SEC18" href="http://ffmpeg.sourceforge.net/faq.html#TOC18">2. Development</a></h1>
+
+
+
+<h2><a name="SEC19" href="http://ffmpeg.sourceforge.net/faq.html#TOC19">2.1 Are there examples illustrating how to use the FFmpeg libraries, particularly libavcodec and libavformat ?</a></h2>
+
+<p>
+Yes. Read the Developers Guide of the FFmpeg documentation. Alternatively,
+examine the source code for one of the many open source projects that 
+already incorporate ffmpeg at (<a href="http://ffmpeg.sourceforge.net/projects.php">projects.php</a>).
+
+
+
+
+</p><h2><a name="SEC20" href="http://ffmpeg.sourceforge.net/faq.html#TOC20">2.2 Can you support my C compiler XXX ?</a></h2>
+
+<p>
+No. Only GCC is supported. GCC is ported to most systems available and there
+is no need to pollute the source code with <code>#ifdef</code>s
+related to the compiler.
+
+
+
+
+</p><h2><a name="SEC21" href="http://ffmpeg.sourceforge.net/faq.html#TOC21">2.3 Can I use FFmpeg or libavcodec under Windows ?</a></h2>
+
+<p>
+Yes, but the MinGW tools <em>must</em> be used to compile FFmpeg. You
+can link the resulting DLLs with any other Windows program. Read the
+<em>Native Windows Compilation</em> section in the FFmpeg documentation
+to find more information.
+
+
+
+
+</p><h2><a name="SEC22" href="http://ffmpeg.sourceforge.net/faq.html#TOC22">2.4 Can you add automake, libtool or autoconf support ?</a></h2>
+
+<p>
+No. These tools are too bloated and they complicate the build. Moreover,
+since only <samp>`gcc'</samp> is supported they would add little advantages in
+terms of portability.
+
+
+
+
+</p><h2><a name="SEC23" href="http://ffmpeg.sourceforge.net/faq.html#TOC23">2.5 Why not rewrite ffmpeg in object-oriented C++ ?</a></h2>
+
+<p>
+ffmpeg is already organized in a highly modular manner does not need to
+be rewritten in a formal object language. Further, many of the developers 
+favor straight C; it works for them. For more arguments on this matter,
+read "Programming Religion" at (<a href="http://lkml.org/faq/lkmlfaq-15.html">http://lkml.org/faq/lkmlfaq-15.html</a>).
+
+
+
+
+</p><h2><a name="SEC24" href="http://ffmpeg.sourceforge.net/faq.html#TOC24">2.6 Why are the ffmpeg programs devoid of debugging symbols ?</a></h2>
+
+<p>
+The build process creates ffmpeg_g, ffplay_g, etc. which contain full debug
+information. Those binaries are strip'd to create ffmpeg, ffplay, etc. If
+you need the debug information, used the *_g versions.
+
+
+</p><p></p><hr><p>
+This document was generated on 8 February 2005 using
+<a href="http://wwwinfo.cern.ch/dis/texi2html/">texi2html</a>&nbsp;1.56k.
+</p></body></html>

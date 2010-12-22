@@ -1,0 +1,26 @@
+HKCR
+{
+	VideoEdit.MediaFile.1 = s 'MediaFile Class'
+	{
+		CLSID = s '{CF561283-7544-4B90-9C68-49D690746B3E}'
+	}
+	VideoEdit.MediaFile = s 'MediaFile Class'
+	{
+		CLSID = s '{CF561283-7544-4B90-9C68-49D690746B3E}'
+		CurVer = s 'VideoEdit.MediaFile.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {CF561283-7544-4B90-9C68-49D690746B3E} = s 'MediaFile Class'
+		{
+			ProgID = s 'VideoEdit.MediaFile.1'
+			VersionIndependentProgID = s 'VideoEdit.MediaFile'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			'TypeLib' = s '{939B0CFC-B68F-48FE-85E9-0200E9367B0B}'
+		}
+	}
+}

@@ -1,0 +1,22 @@
+channels.lo channels.o: channels.c channels.h coder.h util.h \
+  c:/Mark/Software/Development/MinGW/bin/../lib/gcc/mingw32/3.4.5/../../../../include/stdlib.h \
+  c:/Mark/Software/Development/MinGW/bin/../lib/gcc/mingw32/3.4.5/../../../../include/_mingw.h \
+  c:/Mark/Software/Development/MinGW/bin/../lib/gcc/mingw32/3.4.5/include/stddef.h \
+  c:/Mark/Software/Development/MinGW/bin/../lib/gcc/mingw32/3.4.5/../../../../include/memory.h \
+  c:/Mark/Software/Development/MinGW/bin/../lib/gcc/mingw32/3.4.5/../../../../include/string.h
+
+channels.h:
+
+coder.h:
+
+util.h:
+
+c:/Mark/Software/Development/MinGW/bin/../lib/gcc/mingw32/3.4.5/../../../../include/stdlib.h:
+
+c:/Mark/Software/Development/MinGW/bin/../lib/gcc/mingw32/3.4.5/../../../../include/_mingw.h:
+
+c:/Mark/Software/Development/MinGW/bin/../lib/gcc/mingw32/3.4.5/include/stddef.h:
+
+c:/Mark/Software/Development/MinGW/bin/../lib/gcc/mingw32/3.4.5/../../../../include/memory.h:
+
+c:/Mark/Software/Development/MinGW/bin/../lib/gcc/mingw32/3.4.5/../../../../include/string.h:

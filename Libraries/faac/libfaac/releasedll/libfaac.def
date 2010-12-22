@@ -1,0 +1,9 @@
+LIBRARY libfaac.dll
+EXPORTS
+_faacEncClose@4	@5
+_faacEncEncode@20	@4
+_faacEncGetCurrentConfiguration@4	@2
+_faacEncGetDecoderSpecificInfo@12	@6
+_faacEncGetVersion@8	@7
+_faacEncOpen@16	@1
+_faacEncSetConfiguration@8	@3

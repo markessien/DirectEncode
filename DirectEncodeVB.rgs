@@ -1,0 +1,26 @@
+HKCR
+{
+	DirectEncode3000.DirectEncodeVB.1 = s 'DirectEncodeVB Class'
+	{
+		CLSID = s '{02E4605E-D632-4249-AA9F-3B215BE86981}'
+	}
+	DirectEncode3000.DirectEncodeVB = s 'DirectEncodeVB Class'
+	{
+		CLSID = s '{02E4605E-D632-4249-AA9F-3B215BE86981}'
+		CurVer = s 'DirectEncode3000.DirectEncodeVB.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {02E4605E-D632-4249-AA9F-3B215BE86981} = s 'DirectEncodeVB Class'
+		{
+			ProgID = s 'DirectEncode3000.DirectEncodeVB.1'
+			VersionIndependentProgID = s 'DirectEncode3000.DirectEncodeVB'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			'TypeLib' = s '{DFB13CC4-47F6-4967-942B-63746755E015}'
+		}
+	}
+}

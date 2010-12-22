@@ -1,0 +1,22 @@
+util.lo util.o: util.c \
+  c:/Mark/Software/Development/MinGW/bin/../lib/gcc/mingw32/3.4.5/../../../../include/math.h \
+  c:/Mark/Software/Development/MinGW/bin/../lib/gcc/mingw32/3.4.5/../../../../include/_mingw.h \
+  util.h \
+  c:/Mark/Software/Development/MinGW/bin/../lib/gcc/mingw32/3.4.5/../../../../include/stdlib.h \
+  c:/Mark/Software/Development/MinGW/bin/../lib/gcc/mingw32/3.4.5/include/stddef.h \
+  c:/Mark/Software/Development/MinGW/bin/../lib/gcc/mingw32/3.4.5/../../../../include/memory.h \
+  c:/Mark/Software/Development/MinGW/bin/../lib/gcc/mingw32/3.4.5/../../../../include/string.h
+
+c:/Mark/Software/Development/MinGW/bin/../lib/gcc/mingw32/3.4.5/../../../../include/math.h:
+
+c:/Mark/Software/Development/MinGW/bin/../lib/gcc/mingw32/3.4.5/../../../../include/_mingw.h:
+
+util.h:
+
+c:/Mark/Software/Development/MinGW/bin/../lib/gcc/mingw32/3.4.5/../../../../include/stdlib.h:
+
+c:/Mark/Software/Development/MinGW/bin/../lib/gcc/mingw32/3.4.5/include/stddef.h:
+
+c:/Mark/Software/Development/MinGW/bin/../lib/gcc/mingw32/3.4.5/../../../../include/memory.h:
+
+c:/Mark/Software/Development/MinGW/bin/../lib/gcc/mingw32/3.4.5/../../../../include/string.h:

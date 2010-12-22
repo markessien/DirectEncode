@@ -1,0 +1,12 @@
+prefix=
+exec_prefix=
+libdir=${pcfiledir}
+includedir=/c/Mark/Development/DirectEncode/Libraries/ffmpeg-0.5
+
+Name: libavformat
+Description: FFmpeg container format library
+Version: 52.31.0
+Requires: libavcodec = 52.20.0
+Conflicts:
+Libs: ${libdir}/libavformatcu.a   -lm -lfaac -lmp3lame -lm -lws2_32 -lvfw32
+Cflags: -I${includedir}

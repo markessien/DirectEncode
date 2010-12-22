@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "VideoEdit", "VideoEdit.vcproj", "{23ED2A94-62C5-492F-A842-B6417496D7C0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release MinDependency|Win32 = Release MinDependency|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{23ED2A94-62C5-492F-A842-B6417496D7C0}.Debug|Win32.ActiveCfg = Debug|Win32
+		{23ED2A94-62C5-492F-A842-B6417496D7C0}.Debug|Win32.Build.0 = Debug|Win32
+		{23ED2A94-62C5-492F-A842-B6417496D7C0}.Release MinDependency|Win32.ActiveCfg = Release MinDependency|Win32
+		{23ED2A94-62C5-492F-A842-B6417496D7C0}.Release MinDependency|Win32.Build.0 = Release MinDependency|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

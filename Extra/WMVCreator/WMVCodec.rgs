@@ -1,0 +1,27 @@
+HKCR
+{
+	WMVCreator.WMVCodec.4 = s 'Essien WMVCodec'
+	{
+		CLSID = s '{804B1182-1C09-414C-851F-7F4AAA813091}'
+	}
+	WMVCreator.WMVCodec = s 'Essien WMVCodec'
+	{
+		CLSID = s '{804B1182-1C09-414C-851F-7F4AAA813091}'
+		CurVer = s 'WMVCreator.WMVCodec.4'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {804B1182-1C09-414C-851F-7F4AAA813091} = s 'Essien WMVCodec'
+		{
+			ProgID = s 'WMVCreator.WMVCodec.4'
+			VersionIndependentProgID = s 'WMVCreator.WMVCodec'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			val AppID = s '%APPID%'
+			'TypeLib' = s '{F7AFF85C-AC68-44F5-AE03-1896B27E423E}'
+		}
+	}
+}

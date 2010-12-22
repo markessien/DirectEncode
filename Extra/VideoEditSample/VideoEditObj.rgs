@@ -1,0 +1,34 @@
+HKCR
+{
+	VideoEdit.VideoEditObj.1 = s 'VideoEditObj Class'
+	{
+		CLSID = s '{665A4D7D-91A5-4EA4-999A-4FAA4E5A8C50}'
+	}
+	VideoEdit.VideoEditObj = s 'VideoEditObj Class'
+	{
+		CLSID = s '{665A4D7D-91A5-4EA4-999A-4FAA4E5A8C50}'
+		CurVer = s 'VideoEdit.VideoEditObj.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {665A4D7D-91A5-4EA4-999A-4FAA4E5A8C50} = s 'VideoEditObj Class'
+		{
+			ProgID = s 'VideoEdit.VideoEditObj.1'
+			VersionIndependentProgID = s 'VideoEdit.VideoEditObj'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			ForceRemove 'Control'
+			ForceRemove 'Insertable'
+			ForceRemove 'ToolboxBitmap32' = s '%MODULE%, 101'
+			'MiscStatus' = s '0'
+			{
+			    '1' = s '132497'
+			}
+			'TypeLib' = s '{939B0CFC-B68F-48FE-85E9-0200E9367B0B}'
+			'Version' = s '1.0'
+		}
+	}
+}

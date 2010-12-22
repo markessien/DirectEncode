@@ -1,0 +1,26 @@
+HKCR
+{
+	StandardMPEGCreator.Statistics.1 = s 'Statistics Class'
+	{
+		CLSID = s '{39A2FEEE-E83A-41BD-BA48-575B7D09AF10}'
+	}
+	StandardMPEGCreator.Statistics = s 'Statistics Class'
+	{
+		CLSID = s '{39A2FEEE-E83A-41BD-BA48-575B7D09AF10}'
+		CurVer = s 'StandardMPEGCreator.Statistics.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {39A2FEEE-E83A-41BD-BA48-575B7D09AF10} = s 'Statistics Class'
+		{
+			ProgID = s 'StandardMPEGCreator.Statistics.1'
+			VersionIndependentProgID = s 'StandardMPEGCreator.Statistics'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			'TypeLib' = s '{37FAD0EE-EFE5-4A2F-ABDA-F595ECD72E02}'
+		}
+	}
+}

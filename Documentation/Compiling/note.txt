@@ -1,0 +1,1 @@
+To enable 3gp and 3g2 amr audio, you have to install a separate package. See files in 

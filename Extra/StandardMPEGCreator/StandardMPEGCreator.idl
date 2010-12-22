@@ -1,0 +1,182 @@
+// StandardMPEGCreator.idl : IDL source for StandardMPEGCreator.dll
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (StandardMPEGCreator.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+#include "olectl.h"
+	
+
+typedef [public] enum _VideoOutputFormat {
+	VIDEOFORMAT_NONE,
+	VIDEOFORMAT_MPEG1,
+	VIDEOFORMAT_MPEG2,
+	VIDEOFORMAT_MPEG4,
+	VIDEOFORMAT_H263,
+	VIDEOFORMAT_H264,
+	VIDEOFORMAT_FLV
+} VideoOutputFormat;
+
+typedef [public] enum _AudioOutputFormat {
+	AUDIOFORMAT_NONE,
+	AUDIOFORMAT_MP3,
+	AUDIOFORMAT_MP2,
+	AUDIOFORMAT_AC3,
+	AUDIOFORMAT_PCM,
+	AUDIOFORMAT_WAV,
+	AUDIOFORMAT_AAC,
+	AUDIOFORMAT_AMRNB
+} AudioOutputFormat;
+
+typedef [public] enum _SystemsOutputFormat {
+	SYSTEMSFORMAT_NONE,
+	SYSTEMSFORMAT_MPEG1,
+	SYSTEMSFORMAT_MPEG2,
+	SYSTEMSFORMAT_VCD,
+	SYSTEMSFORMAT_SVCD,
+	SYSTEMSFORMAT_DVD,
+	SYSTEMSFORMAT_VCD_STILL,
+	SYSTEMSFORMAT_SVCD_STILL,
+	SYSTEMSFORMAT_MP4,
+	SYSTEMSFORMAT_3GP,
+	SYSTEMSFORMAT_MOV,
+	SYSTEMSFORMAT_3G2,
+	SYSTEMSFORMAT_PSP,
+	SYSTEMSFORMAT_AVI,
+	SYSTEMSFORMAT_RM,
+	SYSTEMSFORMAT_KVCD,
+	SYSTEMSFORMAT_FLV,
+	SYSTEMSFORMAT_DVB
+} SystemsOutputFormat;
+
+typedef [public] enum _Constraint {
+	CONSTRAINT_NONE,
+	CONSTRAINT_NTSC,
+	CONSTRAINT_FILM,
+	CONSTRAINT_PAL,
+	CONSTRAINT_IPOD,
+	CONSTRAINT_IPOD_NANO,
+	CONSTRAINT_IPHONE,
+	CONSTRAINT_HD,
+	CONSTRAINT_H264
+} Constraint;
+
+typedef [public] enum _BitrateMode {
+	BITRATEMODE_CBR,
+	BITRATEMODE_VBR_2PASS,
+	BITRATEMODE_MVBR,
+	BITRATEMODE_CQ_VBR,
+	BITRATEMODE_CQ
+} BitrateMode;
+
+typedef [public] enum _EncodeMode {
+	ENCODEMODE_NOINTERLACE,
+	ENCODEMODE_INTERLACE,
+	ENCODEMODE_32PULLDOWN,
+	ENCODEMODE_32PULLDOWN_INVERSE,
+} EncodeMode;
+
+typedef [public] enum _AspectRatio {
+	ASPECTRATIO_1TO1,
+	ASPECTRATIO_4TO3,
+	ASPECTRATIO_16TO9,
+	ASPECTRATIO_2D11TO1,
+} AspectRatio;
+
+[
+	uuid(37FAD0EE-EFE5-4A2F-ABDA-F595ECD72E02),
+	version(1.0),
+	helpstring("StandardMPEGCreator 1.0 Type Library")
+]
+library STANDARDMPEGCREATORLib
+{
+	importlib("stdole32.tlb");
+	importlib("stdole2.tlb");
+
+	[
+		uuid(42F0250E-09C9-4DFF-89B5-908269D5D389),
+		helpstring("_IMPEGConverterEvents Interface")
+	]
+	dispinterface _IMPEGConverterEvents
+	{
+		properties:
+		methods:
+		[id(1), helpstring("method OnComplete")] HRESULT OnComplete();
+	};
+	[
+		object,
+		uuid(ECA2893E-47C9-47FE-AFBF-6C29A8B235E3),
+		dual,
+		helpstring("IStatistics Interface"),
+		pointer_default(unique)
+	]
+	interface IStatistics : IDispatch
+	{
+		[propget, id(1), helpstring("property Progress")] HRESULT Progress([out, retval] double *pVal);
+		[propget, id(2), helpstring("property Duration")] HRESULT Duration([out, retval] double *pVal);
+		[id(3), helpstring("method SetInstance")] HRESULT SetInstance([in] long Ptr);
+		[propget, id(4), helpstring("property FramesEncoded")] HRESULT FramesEncoded([out, retval] long *pVal);
+		[propget, id(5), helpstring("property EncodeFramerate")] HRESULT EncodeFramerate([out, retval] long *pVal);
+		[propget, id(6), helpstring("property TimeElapsed")] HRESULT TimeElapsed([out, retval] double *pVal);
+	};
+
+
+	[
+		object,
+		uuid(7EC4D5A8-7E6A-4DCF-81F4-D464885428EE),
+		dual,
+		helpstring("ISettings Interface"),
+		pointer_default(unique)
+	]
+	interface ISettings : IDispatch
+	{
+	};
+
+	[
+		object,
+		uuid(A70F42FA-B3CF-4FCF-82FC-2E9E26CB419A),
+		dual,
+		helpstring("IMPEGConverter Interface"),
+		pointer_default(unique)
+	]
+	interface IMPEGConverter : IDispatch
+	{
+		[id(1), helpstring("method PassThruCmd")] HRESULT PassThruCmd([in] BSTR Param1);
+		[propget, id(2), helpstring("property SourceFile")] HRESULT SourceFile([out, retval] BSTR *pVal);
+		[propput, id(2), helpstring("property SourceFile")] HRESULT SourceFile([in] BSTR newVal);
+		[propget, id(3), helpstring("property TargetFile")] HRESULT TargetFile([out, retval] BSTR *pVal);
+		[propput, id(3), helpstring("property TargetFile")] HRESULT TargetFile([in] BSTR newVal);
+		[id(4), helpstring("method StartConversion")] HRESULT StartConversion();
+		[id(5), helpstring("method StopConversion")] HRESULT StopConversion();
+		[id(6), helpstring("method LoadPreset")] HRESULT LoadPreset([in] BSTR PresetName);
+		[propget, id(7), helpstring("property Statistics")] HRESULT Statistics([out, retval] IStatistics* *pVal);
+	};
+
+	[
+		uuid(AEF8D647-4BD1-4922-8E81-324897B1BFB1),
+		helpstring("MPEGConverter Class")
+	]
+	coclass MPEGConverter
+	{
+		[default] interface IMPEGConverter;
+		[default, source] dispinterface _IMPEGConverterEvents;
+	};
+	[
+		uuid(39A2FEEE-E83A-41BD-BA48-575B7D09AF10),
+		helpstring("Statistics Class")
+	]
+	coclass Statistics
+	{
+		[default] interface IStatistics;
+	};
+	[
+		uuid(21E055F2-DB1B-43F6-948E-1B655FE3E08F),
+		helpstring("Settings Class")
+	]
+	coclass Settings
+	{
+		[default] interface ISettings;
+	};
+};

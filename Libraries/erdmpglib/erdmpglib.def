@@ -1,0 +1,18 @@
+LIBRARY  erdmpg-6.dll
+EXPORTS
+MediaFileCreate		           @1
+MediaFileClose		           @2
+MediaFileSetEncodeParameters   @3
+MediaFileWriteVideoBGR24	   @4
+MediaFileWriteVideoRGB24	   @5
+MediaFileWriteVideoYUV420	   @6
+MediaFileWriteAudio	           @7
+MediaFileGetLibraryID          @8
+MediaFilePassThruCmd           @9
+MediaFileSetBufferCallback     @10
+MediaFileMultiplex             @11
+MediaFileLoadPreset            @12
+MediaFileInitialize            @13
+MediaFileEndOfStream           @14
+MediaFileSetParameter          @15
+MediaFileSetFormat             @16

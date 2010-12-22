@@ -1,0 +1,40 @@
+backpred.lo backpred.o: backpred.c \
+  c:/Mark/Software/Development/MinGW/bin/../lib/gcc/mingw32/3.4.5/../../../../include/math.h \
+  c:/Mark/Software/Development/MinGW/bin/../lib/gcc/mingw32/3.4.5/../../../../include/_mingw.h \
+  frame.h ../config.h \
+  c:/Mark/Software/Development/MinGW/bin/../lib/gcc/mingw32/3.4.5/../../../../include/sys/types.h \
+  c:/Mark/Software/Development/MinGW/bin/../lib/gcc/mingw32/3.4.5/include/stddef.h \
+  c:/Mark/Software/Development/MinGW/bin/../lib/gcc/mingw32/3.4.5/../../../../include/inttypes.h \
+  c:/Mark/Software/Development/MinGW/bin/../lib/gcc/mingw32/3.4.5/../../../../include/stdint.h \
+  coder.h channels.h psych.h fft.h aacquant.h ../include/faaccfg.h \
+  backpred.h
+
+c:/Mark/Software/Development/MinGW/bin/../lib/gcc/mingw32/3.4.5/../../../../include/math.h:
+
+c:/Mark/Software/Development/MinGW/bin/../lib/gcc/mingw32/3.4.5/../../../../include/_mingw.h:
+
+frame.h:
+
+../config.h:
+
+c:/Mark/Software/Development/MinGW/bin/../lib/gcc/mingw32/3.4.5/../../../../include/sys/types.h:
+
+c:/Mark/Software/Development/MinGW/bin/../lib/gcc/mingw32/3.4.5/include/stddef.h:
+
+c:/Mark/Software/Development/MinGW/bin/../lib/gcc/mingw32/3.4.5/../../../../include/inttypes.h:
+
+c:/Mark/Software/Development/MinGW/bin/../lib/gcc/mingw32/3.4.5/../../../../include/stdint.h:
+
+coder.h:
+
+channels.h:
+
+psych.h:
+
+fft.h:
+
+aacquant.h:
+
+../include/faaccfg.h:
+
+backpred.h:

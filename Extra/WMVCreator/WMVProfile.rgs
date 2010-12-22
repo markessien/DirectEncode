@@ -1,0 +1,27 @@
+HKCR
+{
+	WMVCreator.WMVProfile.1 = s 'Essien WMVProfile'
+	{
+		CLSID = s '{A27BF69D-5ACD-4A01-9913-827BBFE5BC83}'
+	}
+	WMVCreator.WMVProfile = s 'Essien WMVProfile'
+	{
+		CLSID = s '{A27BF69D-5ACD-4A01-9913-827BBFE5BC83}'
+		CurVer = s 'WMVCreator.WMVProfile.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {A27BF69D-5ACD-4A01-9913-827BBFE5BC83} = s 'Essien WMVProfile'
+		{
+			ProgID = s 'WMVCreator.WMVProfile.1'
+			VersionIndependentProgID = s 'WMVCreator.WMVProfile'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			val AppID = s '%APPID%'
+			'TypeLib' = s '{F7AFF85C-AC68-44F5-AE03-1896B27E423E}'
+		}
+	}
+}

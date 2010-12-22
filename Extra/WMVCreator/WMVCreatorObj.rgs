@@ -1,0 +1,34 @@
+HKCR
+{
+	WMVCreator.WMVCreator.4 = s 'Essien WMVCreator v4'
+	{
+		CLSID = s '{B6C1EA13-A642-4078-8E7F-5A9E62F0DBE9}'
+	}
+	WMVCreator.WMVCreator = s 'Essien WMVCreator v4'
+	{
+		CLSID = s '{B6C1EA13-A642-4078-8E7F-5A9E62F0DBE9}'
+		CurVer = s 'WMVCreator.WMVCreator.4'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {B6C1EA13-A642-4078-8E7F-5A9E62F0DBE9} = s 'Essien WMVCreator v4'
+		{
+			ProgID = s 'WMVCreator.WMVCreator.4'
+			VersionIndependentProgID = s 'WMVCreator.WMVCreator'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			val AppID = s '%APPID%'
+			ForceRemove 'Control'
+			ForceRemove 'ToolboxBitmap32' = s '%MODULE%, 102'
+			'MiscStatus' = s '0'
+			{
+			    '1' = s '%OLEMISC%'
+			}
+			'TypeLib' = s '{F7AFF85C-AC68-44F5-AE03-1896B27E423E}'
+			'Version' = s '4.0'
+		}
+	}
+}

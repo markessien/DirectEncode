@@ -1,0 +1,1 @@
+FSFWrap.dll is a C++ dll file that allows access to the filter writer

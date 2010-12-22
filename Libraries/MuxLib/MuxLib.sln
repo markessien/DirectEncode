@@ -1,0 +1,21 @@
+Microsoft Visual Studio Solution File, Format Version 7.00
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MuxLib", "MuxLib.vcproj", "{72254987-FF9D-47DC-909C-90D56D0F5ADF}"
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		ConfigName.0 = Debug
+		ConfigName.1 = Release
+	EndGlobalSection
+	GlobalSection(ProjectDependencies) = postSolution
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{72254987-FF9D-47DC-909C-90D56D0F5ADF}.Debug.ActiveCfg = Debug|Win32
+		{72254987-FF9D-47DC-909C-90D56D0F5ADF}.Debug.Build.0 = Debug|Win32
+		{72254987-FF9D-47DC-909C-90D56D0F5ADF}.Release.ActiveCfg = Release|Win32
+		{72254987-FF9D-47DC-909C-90D56D0F5ADF}.Release.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

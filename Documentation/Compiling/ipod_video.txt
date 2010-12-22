@@ -1,0 +1,313 @@
+Ubuntu Document Storage Facility	Main Page | About | Help | FAQ | Special pages | Log in
+The Free Encyclopedia	
+Printable version | Disclaimers
+Ipod video
+
+From Ubuntu Document Storage Facility
+Contents
+[hide]
+
+    * 1 Howto: encode video for iPod video
+          o 1.1 iPod Video Encoder
+          o 1.2 Transferring Video to the iPod Video
+                + 1.2.1 Installing mpeg4ip
+                + 1.2.2 Installing gtkpod
+          o 1.3 Encoding Video for the iPod Video
+                + 1.3.1 Installing ffmpeg
+                + 1.3.2 ipodvidenc Script
+          o 1.4 Credits:
+
+[edit]
+Howto: encode video for iPod video
+
+This HowTo is broken up into three sections:
+
+    * iPod Video Encoder
+    * Transferring Video to the iPod Video
+    * Encoding Video to the iPod Video 
+
+[edit]
+iPod Video Encoder
+
+As promised, I've written a GUI to rip and encode DVDs, as well as regular videos to iPod format. The full install actually also does this whole HowTo for you. I've called it, very unimaginitively, "iPod Video Encoder" or ipodvidenc for short. It's a bash script which uses zenity, since I don't know C++ nearly well enough to make it all pretty. However, it works, it uses GTK+, what more do you want?
+
+Notice: This program will only run on Gnome, but the other parts of the HowTo work on *buntu.
+
+Please see this thread in order to download ipodvidenc: http://ubuntuforums.org/showthread.php?p=651946
+
+Without further ado, here's how to install ipodvidenc onto your machine:
+
+1. Download the attached file (ipodvidenc-1.3.tar.gz) and save it to your home directory. It is important that you save it to your home directory.(see link to original thread at bottom for file)
+2. In the terminal:
+
+cd tar xzf ipodvidenc-1.0.tar.gz
+cd ipodvidenc
+
+3. Now, you have two types of installations. First, you can do a full install, which will install transferring and encoding support as well as ipodvidenc. Do not do the full install if you have already followed this HowTo. If you have run this HowTo, follow the base install instructions.
+
+Full Install
+
+./install
+
+
+Base Install
+
+./baseinstall
+
+
+4. It will now be installed in your Applications menu under Sound & Video.
+[edit]
+Transferring Video to the iPod Video
+
+In order to transfer videos to the iPod Video, you need to do two things:
+1. Install mpeg4ip
+2. Install gtkpod version 0.99.x or higher
+
+Please note that you cannot install these packages via the repositories, and must install them in as perscribed by this guide in order for it to work with your iPod Video.
+[edit]
+Installing mpeg4ip
+
+First, you need to remove faac capabilities from your machine temporarily (we'll reinstall them later). So, open up that trusty terminal and run:
+
+
+sudo apt-get remove libmp4v2-0 libmp4v2-dev faac gstreamer0.8-faac libfaac0 libfaac-dev
+
+
+There are two ways that you can load mpeg4ip onto your system. If you'd like the newest packages or are familiar with compiling programs from source, you can use the source method. If you'd like an easy install and are not familiar with compiling from source, use the .deb method.
+
+
+1. The .deb Method -- Recommended for those not familiar with compiling from source
+
+In the terminal:
+
+wget http://rarewares.org/debian/packages/unstable/mpeg4ip-libs_1.2.5+cvs20050126.20-0.0_i386.deb  sudo dpkg -i mpeg4ip-libs_1.2.5+cvs20050126.20-0.0_i386.deb
+
+
+2. The Source Method -- Recommended for advanced users who are familiar with compiling from source
+
+You need to grab the latest mpeg4ip version. As of this posting, that's version 1.4.1, and it can be found here.
+
+If you don't feel like doing that and want it all in the terminal:
+
+wget http://internap.dl.sourceforge.net/sourceforge/mpeg4ip/mpeg4ip-1.4.1.tar.gz
+
+Next, unpack it and configure it:
+
+tar xzf mpeg4ip-1.4.1.tar.gz
+cd mpeg4ip-1.4.1
+./bootstrap --disable-server
+sudo mkdir /usr/local/include
+sudo cp mpeg4ip_config.h /usr/local/include
+sudo cp include/mpeg4ip.h include/mpeg4ip_version.h /usr/local/include
+./configure
+cd lib/mp4v2
+sudo gedit Makefile
+
+
+Change the line "SUBDIRS = . test util" to "SUBDIRS = . "
+
+Save and close, and back in the terminal:
+
+
+cd ../../
+make
+sudo checkinstall -D make install
+
+
+Make sure you change the name (option #2) to just mpeg4ip when prompted.
+[edit]
+Installing gtkpod
+
+
+Next, you have to compile the latest version of gtkpod (0.99.2 as of this posting).
+
+First, we need to install the XML Parser of Perl. You'll need to make sure you meet dependencies before you can do that, though, like so:
+
+sudo apt-get install libexpat1-dev libglade2-0 libglade2-dev flex libid3tag0 libid3tag0-dev
+
+You can grab the XML Parser package from the Perl site here, or you can just use the wget command I've provided. Now, let's get it, unpack it, and install it.
+
+wget http://search.cpan.org/CPAN/authors/id/M/MS/MSERGEANT/XML-Parser-2.34.tar.gz
+tar xzf XML-Parser-2.34.tar.gz
+perl Makefile.PL
+make
+sudo checkinstall -D make install
+
+Now we need to install libgpod. If you do not want to runt he wget, you can find other mirrors here.
+
+wget http://umn.dl.sourceforge.net/sourceforge/gtkpod/libgpod-0.3.0.tar.gz
+tar xzf libgpod-0.3.0.tar.gz
+cd libgpod-0.3.0/
+./configure
+make
+sudo checkinstall -D make install
+
+Next, you need to copy some libraries to /usr/lib
+
+sudo cp /usr/local/lib/libgpod* /usr/lib
+
+Then, you can grab gtkpod here. Or, if you want to use wget, you can run:
+
+wget http://easynews.dl.sourceforge.net/sourceforge/gtkpod/gtkpod-0.99.2.tar.gz
+
+Now, we need to untar it, configure, and install it:
+
+tar xzf gtkpod-0.99.2.tar.gz
+cd gtkpod-0.99.2
+./configure
+make
+sudo checkinstall -D make install
+
+Make sure you change the name to gtkpod when prompted (and not gtkpod-0.99.2).
+
+Now, we get to reinstall aac support:
+
+sudo apt-get install libmp4v2-0 libmp4v2-dev faac gstreamer0.8-faac libfaac0 libfaac-dev
+
+gtkpod is now able to accept videos. Just add them like you would mp3's.
+
+Congratulations, you can now transfer videos to your iPod Video!
+[edit]
+Encoding Video for the iPod Video
+
+In order to encode video for the iPod Video, you need to install ffmpeg from source because it does not come with the support needed for the iPod Video format for a litany of legal reasons concerning the distribution of Ubuntu. Luckily, this is still very legal, and you are not breaking any law in the United States or anywhere else by configuring and installing ffmpeg in this way. This section of the guide is broken into two subsections:
+
+1. Installing ffmpeg
+2. ipodvidenc Script
+
+The ipodvidenc Script is a simple bash script written by me to make encoding videos for the iPod Video quick and painless. Now, without further interruption, how to encode video for the iPod Video:
+[edit]
+Installing ffmpeg
+
+First, we need to fix ffmpeg for Ubuntu. We'll build it from source...but don't worry, it won't hurt. We'll also need to install some other libraries. So, here goes:
+
+sudo apt-get build-dep ffmpeg
+sudo apt-get install liblame-dev libfaad2-dev libfaac-dev libxvidcore4-dev \
+liba52-0.7.4 liba52-0.7.4-dev
+apt-get source ffmpeg
+cd ffmpeg-*/
+./configure --enable-gpl --enable-pp --enable-zlib --enable-vorbis \
+--enable-libogg --enable-theora --enable-a52 --enable-dts \
+--enable-dc1394 --enable-libgsm --disable-debug --enable-mp3lame \
+--enable-faad --enable-faac --enable-xvid
+make
+sudo checkinstall -D make install
+
+
+It will go through a bunch of stuff and prompt you on the last command for a few things. First, hit y to create docs, then just hit enter at the EOF question. Next, it will take you to the name and version. Edit #2 (name) to be ffmpeg, then edit #3 (version) to be something newer than what it is...so, either 1.cvsxxxxxx or some other way. I had a bit of trouble with this step, so I simply did a sudo make install instead of the whole checkinstall. If you don't mind not having a dpkg for it, then I'd recommend going straight to a sudo make install. Now, ffmpeg is fixed, time to move onto gtkpod's abilities.
+[edit]
+ipodvidenc Script
+
+And last, but certainly not least, you can create a script for converting your videos to iPod Video format.
+
+
+gedit
+
+
+This should pop up a blank document. Now, just copy and paste this code into it:
+
+
+#!/bin/bash
+## ipodvidenc - The iPod Video Encoder for Linux.
+## Created by Eric Hewitt, January 9, 2006.
+## Released under the GPL. Go nuts.
+
+input_file=$1?
+echo "What would you like to name the output file (sans extension)?"
+read output_file_name
+echo "$output_file_name will be located in $PWD. Is this acceptable? [y/n]"
+read output_file_loc_permis
+
+if [ $output_file_loc_permis = 'n' ] || [ $output_file_loc_permis = 'N' ]
+then 
+   echo "Where would you like to store $output_file_name.mov?"
+   read output_dir
+else
+   output_dir=$PWD 
+fi
+
+ffmpeg -i ${input_file} -f mp4 -vcodec mpeg4 -maxrate 1000 -b 700 -qmin 3 -qmax 5 -bufsize 4096 -g 300 -acodec aac -ab 192 -s 320x240 -aspect 4:3 ${output_dir}/${output_file_name}.mov
+
+
+Save as ipodvidenc in your present working directory (it will be moved, anyway). Back in the terminal, run:
+
+
+chmod 755 ipodvidenc
+sudo mv ipodvidenc /usr/bin
+
+
+Now, when you want to encode a video to iPod format, run this command:
+
+
+ipodvidenc video.avi
+
+
+It will run you through a few prompts and then encode the video. You can now use gtkpod to upload the video onto your iPod just like you load mp3's onto it.
+
+    * Note: You can now use ipodvidenc to encode straight from a *.vob file. This way, you can rip your DVDs using dvd::rip, and then simply encode them by passing them through ipodvidenc. Make sure that you compile ffmpeg with a52 support in order to do this, though. 
+
+I'll get around to rewriting ipodvidenc when I get some more time, but for right now, this is the best that I can do.
+
+Happy encoding!
+[edit]
+Credits:
+
+Original Sources:
+
+   * http://ubuntuforums.org/showthread.php?t=108255
+   * http://clug.net.nz/index.php/IpodSupportUnderLinux
+   * A page that I can't find right now that supplied me with the correct ffmpeg command...I'd really like to give credit to them, but I can't seem to find it. If anybody finds it, let me know, and I'll update this to give them full credit.
+
+
+Much thanks to:
+
+   * Iandefor for countless suggestions, bugfixes, and corrections.
+   * Dromio for corrections.
+   * quietglow for corrections and the .deb support for mpeg4ip
+   * pestilence4hr for corrections regarding the building of ffmpeg
+
+
+    * Discussion here - http://ubuntuforums.org/showthread.php?p=651946
+    * Written by endersshadow
+    * Archived by --Lambert 15:36, 21 January 2006 (EST) 
+
+Retrieved from "http://doc.gwos.org/index.php/Ipod_video"
+
+This page has been accessed 409 times. This page was last modified 05:04, 11 February 2006. Content is available under Creative Commons Public Domain 2.5 License.
+
+ 	Edit this page | Discuss this page | Page history | What links here | Related changes
+
+
+Main Page | About Ubuntu Document Storage Facility |
+Find:
+
+This page has been accessed 409 times. This page was last modified 05:04, 11 February 2006. Content is available under Creative Commons Public Domain 2.5 License.
+Find
+
+Browse
+Main Page
+Community portal
+Current events
+Recent changes
+Random page
+Help
+Donations
+Edit
+Edit this page
+Editing help
+This page
+Discuss this page
+Post a comment
+Printable version
+Context
+Page history
+What links here
+Related changes
+My pages
+Create an account or log in
+Special pages
+New pages
+File list
+Statistics
+Bug reports
+More...

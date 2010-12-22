@@ -1,0 +1,137 @@
+bitstream.lo: bitstream.c ../config.h \
+  z:\bin\mingw\bin\../lib/gcc/mingw32/4.3.0/../../../../include/stdlib.h \
+  z:\bin\mingw\bin\../lib/gcc/mingw32/4.3.0/../../../../include/_mingw.h \
+  z:\bin\mingw\bin\../lib/gcc/mingw32/4.3.0/include/stddef.h \
+  z:\bin\mingw\bin\../lib/gcc/mingw32/4.3.0/../../../../include/stdio.h \
+  z:\bin\mingw\bin\../lib/gcc/mingw32/4.3.0/include/stdarg.h \
+  z:\bin\mingw\bin\../lib/gcc/mingw32/4.3.0/../../../../include/sys/types.h \
+  ../include/lame.h machine.h version.h \
+  z:\bin\mingw\bin\../lib/gcc/mingw32/4.3.0/../../../../include/assert.h \
+  z:\bin\mingw\bin\../lib/gcc/mingw32/4.3.0/../../../../include/string.h \
+  z:\bin\mingw\bin\../lib/gcc/mingw32/4.3.0/../../../../include/math.h \
+  z:\bin\mingw\bin\../lib/gcc/mingw32/4.3.0/../../../../include/limits.h \
+  z:\bin\mingw\bin\../lib/gcc/mingw32/4.3.0/../../../../include/ctype.h \
+  z:\bin\mingw\bin\../lib/gcc/mingw32/4.3.0/../../../../include/errno.h \
+  z:\bin\mingw\bin\../lib/gcc/mingw32/4.3.0/../../../../include/fcntl.h \
+  z:\bin\mingw\bin\../lib/gcc/mingw32/4.3.0/../../../../include/io.h \
+  z:\bin\mingw\bin\../lib/gcc/mingw32/4.3.0/../../../../include/sys/stat.h \
+  z:\bin\mingw\bin\../lib/gcc/mingw32/4.3.0/../../../../include/inttypes.h \
+  z:\bin\mingw\bin\../lib/gcc/mingw32/4.3.0/../../../../include/stdint.h \
+  z:\bin\mingw\bin\../lib/gcc/mingw32/4.3.0/../../../../include/windows.h \
+  z:\bin\mingw\bin\../lib/gcc/mingw32/4.3.0/../../../../include/windef.h \
+  z:\bin\mingw\bin\../lib/gcc/mingw32/4.3.0/../../../../include/winnt.h \
+  z:\bin\mingw\bin\../lib/gcc/mingw32/4.3.0/../../../../include/winerror.h \
+  z:\bin\mingw\bin\../lib/gcc/mingw32/4.3.0/../../../../include/basetsd.h \
+  z:\bin\mingw\bin\../lib/gcc/mingw32/4.3.0/../../../../include/pshpack4.h \
+  z:\bin\mingw\bin\../lib/gcc/mingw32/4.3.0/../../../../include/poppack.h \
+  z:\bin\mingw\bin\../lib/gcc/mingw32/4.3.0/../../../../include/wincon.h \
+  z:\bin\mingw\bin\../lib/gcc/mingw32/4.3.0/../../../../include/winbase.h \
+  z:\bin\mingw\bin\../lib/gcc/mingw32/4.3.0/../../../../include/wingdi.h \
+  z:\bin\mingw\bin\../lib/gcc/mingw32/4.3.0/../../../../include/winuser.h \
+  z:\bin\mingw\bin\../lib/gcc/mingw32/4.3.0/../../../../include/winnls.h \
+  z:\bin\mingw\bin\../lib/gcc/mingw32/4.3.0/../../../../include/winver.h \
+  z:\bin\mingw\bin\../lib/gcc/mingw32/4.3.0/../../../../include/winnetwk.h \
+  z:\bin\mingw\bin\../lib/gcc/mingw32/4.3.0/../../../../include/winreg.h \
+  z:\bin\mingw\bin\../lib/gcc/mingw32/4.3.0/../../../../include/winsvc.h \
+  z:\bin\mingw\bin\../lib/gcc/mingw32/4.3.0/../../../../include/float.h \
+  z:\bin\mingw\bin\../lib/gcc/mingw32/4.3.0/include/float.h encoder.h \
+  util.h l3side.h id3tag.h tables.h quantize_pvt.h lame_global_flags.h \
+  gain_analysis.h VbrTag.h bitstream.h
+
+../config.h:
+
+z:\bin\mingw\bin\../lib/gcc/mingw32/4.3.0/../../../../include/stdlib.h:
+
+z:\bin\mingw\bin\../lib/gcc/mingw32/4.3.0/../../../../include/_mingw.h:
+
+z:\bin\mingw\bin\../lib/gcc/mingw32/4.3.0/include/stddef.h:
+
+z:\bin\mingw\bin\../lib/gcc/mingw32/4.3.0/../../../../include/stdio.h:
+
+z:\bin\mingw\bin\../lib/gcc/mingw32/4.3.0/include/stdarg.h:
+
+z:\bin\mingw\bin\../lib/gcc/mingw32/4.3.0/../../../../include/sys/types.h:
+
+../include/lame.h:
+
+machine.h:
+
+version.h:
+
+z:\bin\mingw\bin\../lib/gcc/mingw32/4.3.0/../../../../include/assert.h:
+
+z:\bin\mingw\bin\../lib/gcc/mingw32/4.3.0/../../../../include/string.h:
+
+z:\bin\mingw\bin\../lib/gcc/mingw32/4.3.0/../../../../include/math.h:
+
+z:\bin\mingw\bin\../lib/gcc/mingw32/4.3.0/../../../../include/limits.h:
+
+z:\bin\mingw\bin\../lib/gcc/mingw32/4.3.0/../../../../include/ctype.h:
+
+z:\bin\mingw\bin\../lib/gcc/mingw32/4.3.0/../../../../include/errno.h:
+
+z:\bin\mingw\bin\../lib/gcc/mingw32/4.3.0/../../../../include/fcntl.h:
+
+z:\bin\mingw\bin\../lib/gcc/mingw32/4.3.0/../../../../include/io.h:
+
+z:\bin\mingw\bin\../lib/gcc/mingw32/4.3.0/../../../../include/sys/stat.h:
+
+z:\bin\mingw\bin\../lib/gcc/mingw32/4.3.0/../../../../include/inttypes.h:
+
+z:\bin\mingw\bin\../lib/gcc/mingw32/4.3.0/../../../../include/stdint.h:
+
+z:\bin\mingw\bin\../lib/gcc/mingw32/4.3.0/../../../../include/windows.h:
+
+z:\bin\mingw\bin\../lib/gcc/mingw32/4.3.0/../../../../include/windef.h:
+
+z:\bin\mingw\bin\../lib/gcc/mingw32/4.3.0/../../../../include/winnt.h:
+
+z:\bin\mingw\bin\../lib/gcc/mingw32/4.3.0/../../../../include/winerror.h:
+
+z:\bin\mingw\bin\../lib/gcc/mingw32/4.3.0/../../../../include/basetsd.h:
+
+z:\bin\mingw\bin\../lib/gcc/mingw32/4.3.0/../../../../include/pshpack4.h:
+
+z:\bin\mingw\bin\../lib/gcc/mingw32/4.3.0/../../../../include/poppack.h:
+
+z:\bin\mingw\bin\../lib/gcc/mingw32/4.3.0/../../../../include/wincon.h:
+
+z:\bin\mingw\bin\../lib/gcc/mingw32/4.3.0/../../../../include/winbase.h:
+
+z:\bin\mingw\bin\../lib/gcc/mingw32/4.3.0/../../../../include/wingdi.h:
+
+z:\bin\mingw\bin\../lib/gcc/mingw32/4.3.0/../../../../include/winuser.h:
+
+z:\bin\mingw\bin\../lib/gcc/mingw32/4.3.0/../../../../include/winnls.h:
+
+z:\bin\mingw\bin\../lib/gcc/mingw32/4.3.0/../../../../include/winver.h:
+
+z:\bin\mingw\bin\../lib/gcc/mingw32/4.3.0/../../../../include/winnetwk.h:
+
+z:\bin\mingw\bin\../lib/gcc/mingw32/4.3.0/../../../../include/winreg.h:
+
+z:\bin\mingw\bin\../lib/gcc/mingw32/4.3.0/../../../../include/winsvc.h:
+
+z:\bin\mingw\bin\../lib/gcc/mingw32/4.3.0/../../../../include/float.h:
+
+z:\bin\mingw\bin\../lib/gcc/mingw32/4.3.0/include/float.h:
+
+encoder.h:
+
+util.h:
+
+l3side.h:
+
+id3tag.h:
+
+tables.h:
+
+quantize_pvt.h:
+
+lame_global_flags.h:
+
+gain_analysis.h:
+
+VbrTag.h:
+
+bitstream.h:

@@ -1,0 +1,10 @@
+body,p,table { font-family:arial,sans-serif; font-size:10pt; }
+tr           { margin-bottom:8px; }
+p            { margin-top:0px;margin-bottom:5px; }
+pre          { background-color:#E0E0E0; color:#000000; padding:10px; }
+a:link       { color:#0000C0; text-decoration:none; }
+a:visited    { color:#000080; text-decoration:none; }
+a:hover      { text-decoration:underline; color:#0000C0; }
+h1           { font-family: Arial, sans-serif; font-size: 20 pt; }
+h2           { font-family: Arial, sans-serif; font-size: 16 pt; }
+h3           { font-family: Arial, sans-serif; font-size: 14 pt; }

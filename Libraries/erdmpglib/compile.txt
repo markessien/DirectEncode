@@ -1,0 +1,2 @@
+gcc -c -DBUILD_DLL dll.c
+gcc -shared -o message.dll dll.o -Wl,--out-implib,libmessage.a

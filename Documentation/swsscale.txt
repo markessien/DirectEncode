@@ -1,0 +1,249 @@
+
+Nabble | Old Nabble1
+| 
+libav-users
+Login : Register
+[swscale] How to use sws_scale ?
+View: New views
+4 Messages — Rating Filter:   Alert me  
+
+	
+[swscale] How to use sws_scale ?
+Click to flag this post
+
+by Stephane List Sep 11, 2008; 05:17pm :: Rate this Message: - Use ratings to moderate (?)
+
+Reply | Reply to Author | Print | View Threaded | Show Only this Message
+Hi,
+
+Since img_convert is deprecated, I'm trying to use sws_scale from the
+latest svn.
+
+The prototype of sws_scale is :
+int sws_scale(SwsContext *c, uint8_t* src[], int srcStride[], int
+srcSliceY, int srcSliceH, uint8_t* dst[], int dstStride[])
+
+I want to convert from RGB8 to YUV420P from a buffer srcdata to a buffer
+dstdata.
+
+Here is my code in C++:
+
+int src_pix_fmt = PIX_FMT_RGB8;
+int dst_pix_fmt = PIX_FMT_YUV420P;
+int w = 320;
+int h = 240;
+struct SwsContext *img_convert_ctx = sws_getContext(w, h, src_pix_fmt,
+w, h, dst_pix_fmt, SWS_BICUBIC, NULL, NULL, NULL);
+if (img_convert_ctx == NULL) {
+          qDebug() << "Cannot initialize the conversion context!";
+          return;
+}
+int srcStride[3];
+int dstStride[3];
+uint8_t *src[3]= {srcdata, NULL, NULL};
+uint8_t *dst[3]= {dstdata, NULL, NULL};
+sws_scale(img_convert_ctx, src, srcStride, 0, h, dst, dstStride);
+
+
+
+What should I put in srcStride and dstStride ?
+Is the rest correct ?
+
+Regards
+
+Stephane
+_______________________________________________
+libav-user mailing list
+libav-user@...
+https://lists.mplayerhq.hu/mailman/listinfo/libav-user
+
+	
+Re: [swscale] How to use sws_scale ?
+Click to flag this post
+
+by Rafael Maia-2 Sep 11, 2008; 06:12pm :: Rate this Message: - Use ratings to moderate (?)
+
+Reply | Reply to Author | Print | View Threaded | Show Only this Message
+
+Hi,
+ 
+here`s an example:
+ 
+ 
+ 
+ 
+SwsContext* encoderSwsContext;
+AVFrame* encoderRawFrame;
+AVFrame* encoderRescaledFrame;
+ 
+// init and fill the encoderRawFrame with your image data
+ 
+// init encoderRescaledFrame
+ 
+encoderSwsContext = sws_getCachedContext(encoderSwsContext, src_width, src_height, PIX_FMT_RGB24, dst_width, dst_height, YUV420P, SWS_BICUBIC, NULL, NULL, NULL);
+ 
+sws_scale(encoderSwsContext, encoderRawFrame->data, encoderRawFrame->linesize, 0, src_height, encoderRescaledFrame->data, encoderRescaledFrame->linesize);
+ 
+ 
+ 
+I hope this helps.
+ 
+Rafael Maia
+ 
+ 
+> Date: Thu, 11 Sep 2008 17:17:24 +0200> From: slist@...> To: libav-user@...> Subject: [libav-user] [swscale] How to use sws_scale ?> > Hi,> > Since img_convert is deprecated, I'm trying to use sws_scale from the> latest svn.> > The prototype of sws_scale is :> int sws_scale(SwsContext *c, uint8_t* src[], int srcStride[], int> srcSliceY, int srcSliceH, uint8_t* dst[], int dstStride[])> > I want to convert from RGB8 to YUV420P from a buffer srcdata to a buffer> dstdata.> > Here is my code in C++:> > int src_pix_fmt = PIX_FMT_RGB8;> int dst_pix_fmt = PIX_FMT_YUV420P;> int w = 320;> int h = 240;> struct SwsContext *img_convert_ctx = sws_getContext(w, h, src_pix_fmt,> w, h, dst_pix_fmt, SWS_BICUBIC, NULL, NULL, NULL);> if (img_convert_ctx == NULL) {> qDebug() << "Cannot initialize the conversion context!";> return;> }> int srcStride[3];> int dstStride[3];> uint8_t *src[3]= {srcdata, NULL, NULL};> uint8_t *dst[3]= {dstdata, NULL, NULL};> sws_scale(img_convert_ctx, src, srcStride, 0, h, dst, dstStride);> > > > What should I put in srcStride and dstStride ?> Is the rest correct ?> > Regards> > Stephane> _______________________________________________> libav-user mailing list> libav-user@...> https://lists.mplayerhq.hu/mailman/listinfo/libav-user
+_________________________________________________________________
+Cansado de espaço para só 50 fotos? Conheça o Spaces, o site de relacionamentos com até 6,000 fotos!
+http://www.amigosdomessenger.com.br
+_______________________________________________
+libav-user mailing list
+libav-user@...
+https://lists.mplayerhq.hu/mailman/listinfo/libav-user
+
+	
+Re: [swscale] How to use sws_scale ?
+Click to flag this post
+
+by Luca Abeni Sep 12, 2008; 08:12am :: Rate this Message: - Use ratings to moderate (?)
+
+Reply | Reply to Author | Print | View Threaded | Show Only this Message
+Stephane List wrote:
+
+> Hi,
+>
+> Since img_convert is deprecated, I'm trying to use sws_scale from the
+> latest svn.
+>
+> The prototype of sws_scale is :
+> int sws_scale(SwsContext *c, uint8_t* src[], int srcStride[], int
+> srcSliceY, int srcSliceH, uint8_t* dst[], int dstStride[])
+>
+> I want to convert from RGB8 to YUV420P from a buffer srcdata to a buffer
+> dstdata.
+... [show rest of quote]
+
+There is some example code that you can use as a reference in
+libswscale/swscale-example.c (I do not know why all the examples and demos
+are in different directories ;-); otherwise, you can look at ffmpeg.c for
+some seeing how to use sws_scale()
+
+
+> Here is my code in C++:
+>
+> int src_pix_fmt = PIX_FMT_RGB8;
+> int dst_pix_fmt = PIX_FMT_YUV420P;
+> int w = 320;
+> int h = 240;
+> struct SwsContext *img_convert_ctx = sws_getContext(w, h, src_pix_fmt,
+> w, h, dst_pix_fmt, SWS_BICUBIC, NULL, NULL, NULL);
+> if (img_convert_ctx == NULL) {
+>           qDebug() << "Cannot initialize the conversion context!";
+>           return;
+> }
+> int srcStride[3];
+> int dstStride[3];
+> uint8_t *src[3]= {srcdata, NULL, NULL};
+> uint8_t *dst[3]= {dstdata, NULL, NULL};
+... [show rest of quote]
+
+I do not know about RGB8, but for YUV420P this looks wrong (the Y, U, and
+V planes are in different components of the array) - see the "data" field
+in in AVFrame or AVPicture.
+
+
+> What should I put in srcStride and dstStride ?
+
+The number of bytes per line that you want to process. If you want to
+process the whole video frame at one time, you can use the "linesize"
+field of AVFrame or AVPicture.
+
+
+                                Luca
+_______________________________________________
+libav-user mailing list
+libav-user@...
+https://lists.mplayerhq.hu/mailman/listinfo/libav-user
+
+	
+Re: [swscale] How to use sws_scale ?
+Click to flag this post
+
+by Stephane List Sep 12, 2008; 11:46am :: Rate this Message: - Use ratings to moderate (?)
+
+Reply | Reply to Author | Print | View Threaded | Show Only this Message
+Hi,
+
+Thanks a lot Luca and Raphael,
+It's working know,
+
+I'm using AVPicture and avpicture_fill to avoid to have to fill all
+complicated structures needed by sws_scale.
+
+Regards
+
+Stephane
+
+Luca Abeni a écrit :
+
+> Stephane List wrote:
+>> Hi,
+>>
+>> Since img_convert is deprecated, I'm trying to use sws_scale from the
+>> latest svn.
+>>
+>> The prototype of sws_scale is :
+>> int sws_scale(SwsContext *c, uint8_t* src[], int srcStride[], int
+>> srcSliceY, int srcSliceH, uint8_t* dst[], int dstStride[])
+>>
+>> I want to convert from RGB8 to YUV420P from a buffer srcdata to a buffer
+>> dstdata.
+>
+> There is some example code that you can use as a reference in
+> libswscale/swscale-example.c (I do not know why all the examples and demos
+> are in different directories ;-); otherwise, you can look at ffmpeg.c for
+> some seeing how to use sws_scale()
+>
+>
+>> Here is my code in C++:
+>>
+>> int src_pix_fmt = PIX_FMT_RGB8;
+>> int dst_pix_fmt = PIX_FMT_YUV420P;
+>> int w = 320;
+>> int h = 240;
+>> struct SwsContext *img_convert_ctx = sws_getContext(w, h, src_pix_fmt,
+>> w, h, dst_pix_fmt, SWS_BICUBIC, NULL, NULL, NULL);
+>> if (img_convert_ctx == NULL) {
+>>           qDebug() << "Cannot initialize the conversion context!";
+>>           return;
+>> }
+>> int srcStride[3];
+>> int dstStride[3];
+>> uint8_t *src[3]= {srcdata, NULL, NULL};
+>> uint8_t *dst[3]= {dstdata, NULL, NULL};
+>
+> I do not know about RGB8, but for YUV420P this looks wrong (the Y, U, and
+> V planes are in different components of the array) - see the "data" field
+> in in AVFrame or AVPicture.
+>
+>
+>> What should I put in srcStride and dstStride ?
+>
+> The number of bytes per line that you want to process. If you want to
+> process the whole video frame at one time, you can use the "linesize"
+> field of AVFrame or AVPicture.
+>
+>
+> Luca
+> _______________________________________________
+> libav-user mailing list
+> libav-user@...
+> https://lists.mplayerhq.hu/mailman/listinfo/libav-user
+... [show rest of quote]
+
+_______________________________________________
+libav-user mailing list
+libav-user@...
+https://lists.mplayerhq.hu/mailman/listinfo/libav-user
+
+« Search Nabble for "sws_scale"
+Free embeddable forum powered by Nabble 	Forum Help

@@ -1,0 +1,1 @@
+./configure --enable-memalign-hack --target-os=mingw32 --enable-static --disable-shared --disable-debug --extra-ldflags="-mno-cygwin" --build-suffix=cu --enable-gpl --enable-nonfree

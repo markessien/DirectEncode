@@ -1,0 +1,47 @@
+ffmpeg -i test.wav -acodec aac -ac 1 -ar 8000 -ab 8 -vol 150 test1.3gp
+
+ffmpeg -i inputfile.avi -s 320x208 -vcodec mpeg4 -acodec amr_nb -ac 1 -ar 8000 -r 8 p900video.mp4
+
+After conversion we got five output files:
+1. File name: movie_350.mp4
+    Video: MPEG4 300x240, 286Kbps, 24 fps
+    Audio: AAC, single channel, 64 Kbps, 48000 Hz
+    Movie Bitrate: ~350Kbps (286 Kbps Video + 64 Kbps Audio)
+
+2. File name: movie_256.mp4
+    Video: MPEG4 300x240, 192Kbps, 12 fps
+    Audio: AAC, single channel, 64 Kbps, 48000 Hz
+    Movie Bitrate: ~256Kbps (192 Kbps Video + 64 Kbps Audio)
+
+3. File name: movie_128.mp4
+    Video: MPEG4 200x160, 96Kbps, 12 fps
+    Audio: AAC, single channel, 32 Kbps, 16000 Hz
+    Movie Bitrate: ~128Kbps (96 Kbps Video + 32 Kbps Audio)
+
+4. File name: movie_64.mp4
+    Video: MPEG4 200x160, 50Kbps, 6 fps
+    Audio: AAC, single channel, 14 Kbps, 8000 Hz
+    Movie Bitrate: ~64Kbps (50 Kbps Video + 14 Kbps Audio)
+
+5. File name: movie_33.mp4
+    Video: MPEG4 150x120, 19Kbps, 6 fps
+    Audio: AAC, single channel, 14 Kbps, 8000 Hz
+    Movie Bitrate: ~33Kbps (19 Kbps Video + 14 Kbps Audio)
+
+For the conversion we used the following command lines:
+---------------------------------------------------------------------------------------
+ffmpeg -hq -i movie.avi -vcodec mpeg4 -r 24 -s 300:240 -b 274 -acodec aac -ab 64 movie_350.mp4
+mp4creator.exe -optimize movie_350.mp4
+
+ffmpeg -hq -i movie.avi -vcodec mpeg4 -r 12 -s 300:240 -b 180 -acodec aac -ab 64 movie_256.mp4
+mp4creator.exe -optimize movie_256.mp4
+
+ffmpeg -hq -i movie.avi -vcodec mpeg4 -r 12 -s 200:160 -b 83 -acodec aac -ac 1 -ar 16000 -ab 32 movie_128.mp4
+mp4creator.exe -optimize movie_128.mp4
+
+ffmpeg -hq -i movie.avi -vcodec mpeg4 -r 6 -s 200:160 -b 39 -acodec aac -ac 1 -ar 8000 -ab 8 movie_64.mp4
+mp4creator.exe -optimize movie_64.mp4
+
+ffmpeg -hq -i movie.avi -vcodec mpeg4 -r 6 -s 150:120 -b 12 -acodec aac -ac 1 -ar 8000 -ab 8 movie_33.mp4
+mp4creator.exe -optimize movie_33.mp4
+----------------------------------------------------------

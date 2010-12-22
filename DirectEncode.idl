@@ -1,0 +1,541 @@
+//////////////////////////////////////////////////////////////////////////////////
+//
+// Public Interfaces for the Standard Mpeg Encoder DirectShow filter
+//
+// Copyright (c) 2004 - 2008, Standard MPEG
+// All rights reserved.
+//////////////////////////////////////////////////////////////////////////////////
+
+import "oaidl.idl";
+import "ocidl.idl";
+
+//=====================================================================
+//
+// Enumerations
+//
+//=====================================================================
+
+typedef [public] enum _VideoOutputFormat {
+	VIDEOFORMAT_NONE,
+	VIDEOFORMAT_MPEG1,
+	VIDEOFORMAT_MPEG2,
+	VIDEOFORMAT_MPEG4,
+	VIDEOFORMAT_H263,
+	VIDEOFORMAT_H264,
+	VIDEOFORMAT_FLV,
+	VIDEOFORMAT_VP6
+} VideoOutputFormat;
+
+typedef [public] enum _AudioOutputFormat {
+	AUDIOFORMAT_NONE,
+	AUDIOFORMAT_MP3,
+	AUDIOFORMAT_MP2,
+	AUDIOFORMAT_AC3,
+	AUDIOFORMAT_PCM,
+	AUDIOFORMAT_WAV,
+	AUDIOFORMAT_AAC,
+	AUDIOFORMAT_AMRNB
+} AudioOutputFormat;
+
+typedef [public] enum _SystemsOutputFormat {
+	SYSTEMSFORMAT_NONE,
+	SYSTEMSFORMAT_MPEG1,
+	SYSTEMSFORMAT_MPEG2,
+	SYSTEMSFORMAT_VCD,
+	SYSTEMSFORMAT_SVCD,
+	SYSTEMSFORMAT_DVD,
+	SYSTEMSFORMAT_VCD_STILL,
+	SYSTEMSFORMAT_SVCD_STILL,
+	SYSTEMSFORMAT_MP4,
+	SYSTEMSFORMAT_3GP,
+	SYSTEMSFORMAT_MOV,
+	SYSTEMSFORMAT_3G2,
+	SYSTEMSFORMAT_PSP,
+	SYSTEMSFORMAT_AVI,
+	SYSTEMSFORMAT_RM,
+	SYSTEMSFORMAT_KVCD,
+	SYSTEMSFORMAT_FLV,
+	SYSTEMSFORMAT_DVB
+} SystemsOutputFormat;
+
+typedef [public] enum _Constraint {
+	CONSTRAINT_NONE,
+	CONSTRAINT_NTSC,
+	CONSTRAINT_FILM,
+	CONSTRAINT_PAL,
+	CONSTRAINT_IPOD,
+	CONSTRAINT_IPOD_NANO,
+	CONSTRAINT_IPHONE,
+	CONSTRAINT_HD,
+	CONSTRAINT_H264
+} Constraint;
+
+typedef [public] enum _BitrateMode {
+	BITRATEMODE_CBR,
+	BITRATEMODE_VBR_2PASS,
+	BITRATEMODE_MVBR,
+	BITRATEMODE_CQ_VBR,
+	BITRATEMODE_CQ
+} BitrateMode;
+
+typedef [public] enum _EncodeMode {
+	ENCODEMODE_NOINTERLACE,
+	ENCODEMODE_INTERLACE,
+	ENCODEMODE_32PULLDOWN,
+	ENCODEMODE_32PULLDOWN_INVERSE,
+} EncodeMode;
+
+typedef [public] enum _AspectRatio {
+	ASPECTRATIO_1TO1,
+	ASPECTRATIO_4TO3,
+	ASPECTRATIO_16TO9,
+	ASPECTRATIO_2D11TO1,
+} AspectRatio;
+
+
+[
+	object,
+	uuid(587A41A2-FE3D-4BE0-A616-793961CAF7AC),
+	dual,
+	helpstring("IDirectEncodeVB Interface"),
+	pointer_default(unique)
+]
+interface IDirectEncodeVB : IDispatch
+{
+	[id(1), helpstring("method PassThru")] HRESULT PassThru([in] long nVal);
+};
+
+//=====================================================================
+//
+// IStandardMpegEncoderProfile : Get the statistics about the encode
+//
+//=====================================================================
+
+
+[
+	object,
+	uuid(7E772181-B7ED-4d9d-A364-0E8771AAFF70),
+	dual,
+	pointer_default(unique),
+	helpstring("IStandardMpegMultiplexerProfile Interface")
+]
+interface IStandardMpegMultiplexerProfile : IUnknown
+{
+	HRESULT SetDeleteElementaryStreams([in] BOOL bDelete);
+	HRESULT GetDeleteElementaryStreams([out] BOOL * bDelete);
+	HRESULT SetMultiplexRate([in] long nRate);
+	HRESULT GetMultiplexRate([out] long * pnMux);
+	HRESULT SetMultiplexPacketSize([in] long nSize);
+	HRESULT GetMultiplexPacketSize([out] long * pnSize);
+	HRESULT SetMultiplexPreload([in] float fPreload);
+	HRESULT GetMultiplexPreload([out] float * pfPreload);
+	HRESULT SetMultiplexMaxDelay([in] float fMaxDelay);
+	HRESULT SetMultiplexStreams([in] BOOL bMux);
+	HRESULT GetMultiplexStreams([out] BOOL * bMux);
+	HRESULT SetMultiplexFormat([in] SystemsOutputFormat format);
+	HRESULT GetMultiplexFormat([out] SystemsOutputFormat* format);
+	HRESULT AddMultiplexFile([in] BSTR strPath);
+	HRESULT SetOnFlyMultiplex([in] BOOL bOnFlyMultiplex);
+	HRESULT GetOnFlyMultiplex([out] BOOL * pbOnFlyMultiplex);
+	HRESULT SetMultiplexFrameBalance([in] BOOL bVal);
+	HRESULT SetMultiplexOnStop([in] BOOL bVal);
+	HRESULT GetMultiplexProgress([out] double* dProgress);
+};
+
+//=====================================================================
+//
+// IStandardMpegEncoderProfile : An encode profile object
+//
+//=====================================================================
+
+[
+	object,
+	uuid(182EB270-5FA5-46e8-83BA-40F7205C545B),
+	dual,
+	pointer_default(unique),
+	helpstring("IStandardMpegEncoderProfile Interface")
+]
+interface IStandardMpegEncoderProfile : IUnknown
+{
+	// serialisation
+	HRESULT SaveProfile(
+		[in] BSTR strKey
+		);
+
+	HRESULT LoadProfile(
+		[in] BSTR strKey
+		);
+
+	HRESULT GetProfileName(
+		[out] BSTR* strName
+		);
+
+	HRESULT SetProfileName(
+		[in] BSTR strName
+		);
+
+	// major and minor format
+	HRESULT SetAudioFormat(
+		[in] AudioOutputFormat audioFormat
+		);
+
+	HRESULT GetAudioFormat(
+		[out] AudioOutputFormat * audioFormat
+		);
+
+	HRESULT SetVideoFormat(
+		[in] VideoOutputFormat videoFormat
+		);
+
+	HRESULT GetVideoFormat(
+		[out] VideoOutputFormat * videoFormat
+		);
+
+	HRESULT SetSystemsFormat(
+		[in] SystemsOutputFormat systemsFormat
+		);
+
+	HRESULT GetSystemsFormat(
+		[out] SystemsOutputFormat * systemsFormat
+		);
+
+	HRESULT ConfigureForSystemsFormat(
+		[in] SystemsOutputFormat systemsFormat, 
+		[in] Constraint constraint
+		);
+
+	HRESULT SetConstraint(
+		[in] Constraint systemsConstraint
+		);
+
+	HRESULT GetConstraint(
+		[out] Constraint * systemsConstraint
+		);
+
+	// dimensions
+	HRESULT SetAspectRatio(
+		[in] AspectRatio aspectMode
+		);
+
+	HRESULT GetAspectRatio(
+		[out] AspectRatio * pAspectMode
+		);
+
+	HRESULT SetAutoSelectDimensions(
+		[in] BOOL bVal
+		);
+
+	HRESULT GetAutoSelectDimensions(
+		[out] BOOL * pbVal
+		);
+
+	HRESULT SetWidth(
+		[in] long nWidth
+		);
+
+	HRESULT GetWidth(
+		[out] long* nWidth
+		);
+
+	HRESULT GetHeight(
+		[out] long * pnHeight
+		);
+
+	HRESULT SetHeight(
+		[in] long nHeight
+		);
+	
+	// Bitrate
+	HRESULT SetVideoBitrate([in] long nBitrate);
+	HRESULT GetVideoBitrate([out] long * nBitrate);
+	HRESULT SetAutoSelectBitrate([in] BOOL bVal);
+	HRESULT GetAutoSelectBitrate([out] BOOL * pbVal);
+	HRESULT SetVideoBitrateMin([in] long nBitrate);
+	HRESULT GetVideoBitrateMin([out] long * nBitrate);
+	HRESULT SetVideoBitrateMax([in] long nBitrate);
+	HRESULT GetVideoBitrateMax([out] long * nBitrate);
+	HRESULT SetAudioBitrate([in] long nBitrate);
+	HRESULT GetAudioBitrate([out] long * nBitrate);
+	HRESULT SetAudioBitrateMin([in] long nBitrate);
+	HRESULT GetAudioBitrateMin([out] long * nBitrate);
+	HRESULT SetAudioBitrateMax([in] long nBitrate);
+	HRESULT GetAudioBitrateMax([out] long * nBitrate);
+
+	// Variable bitrate & 2-pass encoding
+	HRESULT SetVideoQuality([in] long nQualityPercent);
+	HRESULT GetVideoQuality([out] long * nQualityPercent);
+	HRESULT SetVideoVBRMode([in] BitrateMode vbrMode);
+	HRESULT GetVideoVBRMode([out]BitrateMode * pvbrMode);
+	HRESULT SetVideoVBVBufferSize([in] long vbvlen);
+	HRESULT GetVideoVBVBufferSize([out] long * vbvlen);
+	HRESULT SetAudioVBRMode([in] BitrateMode vbrMode);
+	HRESULT GetAudioVBRMode([out] BitrateMode* pvbrMode);
+	HRESULT Set2PassLogFile([in] BSTR Path);
+	HRESULT SetVideoQualityRange([in] long nMin,[in] long nMax);
+
+	// framerate
+	HRESULT SetFramerate([in] double fps);
+	HRESULT GetFramerate([out] double* fps);
+
+	// Audio
+	HRESULT SetAudioSampleRate([in] long nSampleRate); // Valid values are 44100, 48000, 32000 ONLY!
+	HRESULT GetAudioSampleRate([out] long * pnSampleRate);
+	HRESULT SetAudioChannels([in] long nChannelCount); // Valid values are 44100, 48000, 32000 ONLY!
+	HRESULT GetAudioChannels([out] long * pnChannelCount);
+	HRESULT SetAudioFlags([in] BOOL bErrorProtection, [in] BOOL bOriginal, [in] BOOL bCopyright, [in] BOOL bPrivate);
+
+	// Meta Info
+	HRESULT SetComments([in] BSTR strVal);
+	HRESULT SetInformation([in] BSTR strTitle, [in] BSTR strAuthor, [in] BSTR strCopyright);
+
+	// Image transformations
+	HRESULT SetEncodeMode([in] EncodeMode nValue); // interlace
+	HRESULT GetEncodeMode([out] EncodeMode * pnValue);
+	HRESULT SetBWVideo([in] BOOL bVal); // black white transform
+
+	// GOP
+	HRESULT SetGOPSize([in] long nGOPSize);
+	HRESULT GetGOPSize([out] long * nGOPSize);
+	HRESULT SetDetectSceneChange([in] BOOL bVal);
+	HRESULT GetDetectSceneChange([out] BOOL * nVal);
+	HRESULT SetSceneChangeThreshold([in] float f);
+	HRESULT SetClosedGOP([in] BOOL bVal);
+	HRESULT GetClosedGOP([out] BOOL * nVal);
+	HRESULT SetOutputIntervalOfSequenceHeader([in] long nVal);
+	HRESULT GetOutputIntervalOfSequenceHeader([in] long * nVal);
+	HRESULT SetGOPStructure( [in] BSTR strStructure);
+	HRESULT GetGOPStructure( [out] BSTR* pstrStructure);
+	HRESULT SetStrictGOP([in] BOOL bVal);
+
+	// Encode Algorithms (Advanced)
+	HRESULT SetProfileAndLevel([in] BSTR strProfileAndLevel);
+	HRESULT GetProfileAndLevel([out] BSTR * pstrProfileAndLevel);
+	HRESULT SetMotionSearchPrecision([in] long nVal);
+	HRESULT GetMotionSearchPrecision([out] long * nVal);
+	HRESULT SetQuantBias([in] long nIntra,[in] long nInter);
+	HRESULT SetIDCT([in] long n);
+	HRESULT SetQuantFactor([in] float fQuantFactor);
+	HRESULT GetQuantFactor([out] float * pfQuantFactor);
+	HRESULT SetInterlaceMode([in] BOOL bPreProcessDeinterlace, [in] BOOL bInterlacedOutputDCT, [in] BOOL bInterlacedOutputME);
+	HRESULT GetInterlaceMode([out] BOOL * bPreProcessDeinterlace, [out] BOOL * bInterlacedOutputDCT, [out] BOOL * bInterlacedOutputME);
+
+};
+
+//=====================================================================
+//
+// IStandardMpegEncoderStats : Get the statistics about the encode
+//
+//=====================================================================
+
+[
+	object,
+	uuid(C9510218-F457-4d51-8389-7386E6EDD0EF),
+	dual,
+	pointer_default(unique),
+	helpstring("IStandardMpegEncoderStats Interface")
+]
+interface IStandardMpegEncoderStats : IUnknown
+{
+
+	HRESULT GetFramesEncoded(
+		[out] long * lFramesEncoded
+		);
+
+	HRESULT GetVideoFramesDropped(
+		[out] long * lFramesDropped
+		);
+
+	HRESULT GetAudioTimeCorrected(
+		[out] double * dTimeCorrected
+		);
+
+	HRESULT GetWrittenBytes(
+		[out] long * lBytesWritten
+		);
+
+	HRESULT GetStatusString(
+		[out] BSTR* strValue
+		);
+
+};
+
+
+//=====================================================================
+//
+// IStandardMpegEncoder : Main filter interface
+//
+//=====================================================================
+
+[
+	object,
+	uuid(91D3D934-6DEE-42c5-A687-6F81E1162559),
+	dual,
+	pointer_default(unique),
+	helpstring("IStandardMpegEncoder Interface")
+]
+interface IStandardMpegEncoder : IUnknown
+{
+
+	HRESULT GetProfile(
+		[in] SystemsOutputFormat systemsFormat, 
+		[in] Constraint constraint, 
+		[out] IStandardMpegEncoderProfile** pProfile
+		);
+
+	HRESULT GetSelectedProfile(
+		[out] IStandardMpegEncoderProfile** pProfile
+		);
+
+	HRESULT SelectProfile(
+		[in] IStandardMpegEncoderProfile* pProfile
+		);
+
+	HRESULT SelectFormat(
+		[in] SystemsOutputFormat systemsFormat, 
+		[in] Constraint constraint
+		);
+
+	HRESULT SetFilterLicenseKey(
+		[in] BSTR strLicense
+		);
+
+	HRESULT SaveSettings(
+		[in] BSTR strKey
+		);
+
+	HRESULT LoadSettings(
+		[in] BSTR strKey
+		);
+
+	HRESULT PassThruCmd(
+		[in] BSTR strCmd, 
+		[in] long nCmd, 
+		[in] double dCmd, 
+		[out] BYTE* pCmd)
+		;
+
+	HRESULT SetErrorBoxDisplay(
+		[in] BOOL bVal
+		);
+
+	HRESULT SetPass(
+		[in] long n
+		);
+
+	HRESULT SetSourceFramerate(
+		[in] double dSourceFramerate, 
+		[out] double * dRequiredInputFramerate
+		);
+
+	HRESULT ActivateAudioVideoOutputPins(
+		[in] BOOL bVal
+		);
+
+	HRESULT GetAudioVideoOutputPinsActivated(
+		[out] BOOL* bVal
+		);
+
+	HRESULT EnableFramerateCorrection(
+		[in] BOOL bCorrectVideo, 
+		[in] BOOL bCorrectAudio
+		);
+		
+};
+
+
+//=====================================================================
+//
+// StandardMpegEncoderLib
+//
+//=====================================================================
+
+[
+	uuid(F8485A7F-42AE-4414-A09F-E1B262E68B0B),
+	version(6.00),
+	helpstring("Standard MPEG Encoder Library 6")
+]
+library StandardMpegEncoderLib
+{
+	importlib("stdole32.tlb");
+	importlib("stdole2.tlb");
+
+	// StandardMpegEncoder
+	[
+		uuid(CFD87339-C61F-46ca-B6A1-F87D6B96243E),
+		helpstring("Standard MPEG Encoder Class")
+	]
+	coclass StandardMpegEncoder
+	{
+		[default] interface IStandardMpegEncoder;
+	};
+
+	// StandardMpegEncoderStats 
+	[
+		uuid(1C356305-4D1C-45e1-AA93-1AE16C7DE429),
+		helpstring("Standard MPEG Encoder Stats Class")
+	]
+	coclass StandardMpegEncoderStats
+	{
+		[default] interface IStandardMpegEncoderStats;
+	};
+
+	// IStandardMpegEncoderProfile
+	[
+		uuid(D4D68F8A-B665-41d4-94D1-E8843001E346),
+		helpstring("Standard MPEG Encoder Profile Class")
+	]
+	coclass StandardMpegEncoderProfile
+	{
+		[default] interface IStandardMpegEncoderProfile;
+	};
+
+	// IStandardMpegMultiplexerProfile
+	[
+		uuid(022A32A5-3689-4d5f-B8CC-C26655C2BA03),
+		helpstring("Standard MPEG Multiplexer Profile Class")
+	]
+	coclass StandardMpegMultiplexerProfile
+	{
+		[default] interface IStandardMpegMultiplexerProfile;
+	};
+
+	// General Property page
+	[
+		uuid(4A6D5C73-270C-4c05-871A-28230F2A8BCC),
+		helpstring("Standard MPEG Encoder General Properties Page")
+	]
+	coclass StandardMpegEncoderGeneralProps
+	{
+		[default] interface IPropertyPage;
+	};
+
+	// Video Property page
+	[
+		uuid(DCD4E0B0-FE55-44c6-9B4C-1E78FA2D6D2C),
+		helpstring("Standard MPEG Encoder Video Properties Page")
+	]
+	coclass StandardMpegEncoderVideoProps
+	{
+		[default] interface IPropertyPage;
+	};
+
+	// Audio Property page
+	[
+		uuid(BDB70B23-BAA7-44a5-8CB5-A3F5F34865C8),
+		helpstring("Standard MPEG Encoder Audio Properties Page")
+	]
+	coclass StandardMpegEncoderAudioProps
+	{
+		[default] interface IPropertyPage;
+	};
+
+	[
+		uuid(02E4605E-D632-4249-AA9F-3B215BE86981),
+		helpstring("DirectEncodeVB Class")
+	]
+	coclass DirectEncodeVB
+	{
+		[default] interface IDirectEncodeVB;
+	};
+};
+

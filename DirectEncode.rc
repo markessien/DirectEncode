@@ -1,0 +1,278 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#define APSTUDIO_HIDDEN_SYMBOLS
+#include "windows.h"
+#undef APSTUDIO_HIDDEN_SYMBOLS
+#include "winver.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// German (Germany) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_DEU)
+#ifdef _WIN32
+LANGUAGE LANG_GERMAN, SUBLANG_GERMAN
+#pragma code_page(1252)
+#endif //_WIN32
+
+#ifndef _MAC
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 6,4,0,0
+ PRODUCTVERSION 6,4,0,0
+ FILEFLAGSMASK 0x30001fL
+#ifdef _DEBUG
+ FILEFLAGS 0xbL
+#else
+ FILEFLAGS 0xaL
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x2L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904e4"
+        BEGIN
+            VALUE "ActiveMovie", "Filter dll\0"
+            VALUE "Comment", "MPEG Encoder Filter\0"
+            VALUE "Comments", "There are many Mpeg Encoders, but there is only one Standard Mpeg Encoder\0"
+            VALUE "CompanyName", "Standard MPEG\0"
+            VALUE "FileDescription", "DirectShow MPEG Encoding and Multiplexing DirectShow Filter\0"
+            VALUE "FileVersion", "6.4\0"
+            VALUE "InternalName", "DirectEncode.dll\0"
+            VALUE "LegalCopyright", "Copyright (C) 2002-2009 Standard MPEG\0"
+            VALUE "LegalTrademarks", "\0"
+            VALUE "OLESelfRegister", "AM20\0"
+            VALUE "OriginalFilename", "DirectEncode.dll\0"
+            VALUE "PrivateBuild", "Build 1640\0"
+            VALUE "ProductName", "Standard MPEG Encoder Filter\0"
+            VALUE "ProductVersion", "6.4\0"
+            VALUE "SpecialBuild", "\0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1252
+    END
+END
+
+#endif    // !_MAC
+
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE MOVEABLE PURE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE MOVEABLE PURE 
+BEGIN
+    "#define APSTUDIO_HIDDEN_SYMBOLS\r\n"
+    "#include ""windows.h""\r\n"
+    "#undef APSTUDIO_HIDDEN_SYMBOLS\r\n"
+    "#include ""winver.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE MOVEABLE PURE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_PROPS_GENERAL DIALOGEX 0, 0, 232, 219
+STYLE WS_CHILD
+FONT 8, "MS Sans Serif"
+BEGIN
+    RTEXT           "Container Format:",IDC_STATIC4,6,51,56,8
+    COMBOBOX        IDC_CMB_FORMAT,69,49,143,115,CBS_DROPDOWNLIST | 
+                    WS_VSCROLL | WS_TABSTOP
+    CONTROL         "",IDC_STATIC2,"Static",SS_ETCHEDHORZ,12,80,212,1
+    CONTROL         110,IDC_STATIC,"Static",SS_BITMAP | SS_CENTERIMAGE | 
+                    SS_REALSIZEIMAGE,30,4,15,32,WS_EX_TRANSPARENT
+    LTEXT           "Standard Mpeg Encoder v6.4 [Build 1640]\n\n(c) 2009 Standard MPEG",
+                    IDC_STATIC,74,5,135,34
+    CONTROL         "",IDC_STATIC,"Static",SS_ETCHEDHORZ,12,40,204,1
+    CONTROL         "Two Output Pins (MPEG Elementary Video Stream && MPEG Elementary Audio Stream)",
+                    IDC_RADIO_DOUBLE,"Button",BS_AUTORADIOBUTTON | 
+                    BS_MULTILINE,34,178,186,17
+    GROUPBOX        "Statistics",IDC_STATIC,12,87,214,54
+    CONTROL         "Single Output Pin (MPEG Systems File)",IDC_RADIO_SINGLE,
+                    "Button",BS_AUTORADIOBUTTON,34,162,186,10
+    CONTROL         "Multiplex audio and video streams",IDC_CHK_MUX,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,70,66,144,10
+    GROUPBOX        "Filter Type",IDC_STATIC,12,148,215,54
+    LTEXT           "Not connected at the moment. Please connect and start encoding to view the statistics.",
+                    IDC_STATISTICS,30,102,185,18
+    CTEXT           "http://www.standardmpeg.com",IDC_STATIC,0,207,231,8
+END
+
+IDD_PROPS_VIDEO DIALOGEX 0, 0, 231, 227
+STYLE WS_CHILD
+FONT 8, "MS Sans Serif"
+BEGIN
+    RTEXT           "Video Stream Type:",IDC_STATIC,1,52,66,8
+    COMBOBOX        IDC_CMB_VIDEO_FORMAT,74,50,139,94,CBS_DROPDOWNLIST | 
+                    WS_VSCROLL | WS_TABSTOP
+    LTEXT           "X",IDC_STATIC,118,76,9,8
+    COMBOBOX        IDC_CMB_ASPECT_RATIO,74,92,137,87,CBS_DROPDOWN | 
+                    WS_VSCROLL | WS_TABSTOP
+    CONTROL         "",IDC_STATIC,"Static",SS_ETCHEDHORZ,12,67,204,1
+    RTEXT           "Video Dimensions:",IDC_STATIC,7,76,60,8
+    EDITTEXT        IDC_EDIT_X,74,75,36,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_Y,132,75,36,12,ES_AUTOHSCROLL
+    RTEXT           "Aspect Ratio:",IDC_STATIC,7,94,60,8
+    COMBOBOX        IDC_CMB_FRAMERATE,74,109,137,81,CBS_DROPDOWN | 
+                    WS_VSCROLL | WS_TABSTOP
+    RTEXT           "Framerate:",IDC_STATIC,7,111,60,8
+    CONTROL         "",IDC_STATIC,"Static",SS_ETCHEDHORZ,12,126,204,1
+    COMBOBOX        IDC_CMB_BITRATEMODE,74,132,137,85,CBS_DROPDOWNLIST | 
+                    WS_VSCROLL | WS_TABSTOP
+    RTEXT           "Bitrate Mode:",IDC_STATIC,7,134,60,8
+    RTEXT           "Target Bitrate:",IDC_STATIC,7,154,60,8
+    COMBOBOX        IDC_CMB_TARGET_BITRATE,74,152,103,54,CBS_DROPDOWN | 
+                    WS_VSCROLL | WS_TABSTOP
+    LTEXT           "kbit/sec",IDC_STATIC,184,154,40,8
+    RTEXT           "Bitrate Range:",IDC_STATIC,7,173,60,8
+    COMBOBOX        IDC_CMB_BITRATE_MIN,74,170,42,66,CBS_DROPDOWN | 
+                    WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_CMB_BITRATE_MAX,135,170,42,50,CBS_DROPDOWN | 
+                    WS_VSCROLL | WS_TABSTOP
+    LTEXT           "kbit/sec",IDC_STATIC,184,171,40,8
+    LTEXT           "to",IDC_STATIC,119,172,8,8
+    CONTROL         "",IDC_STATIC,"Static",SS_ETCHEDHORZ,12,189,204,1
+    COMBOBOX        IDC_CMB_INTERLACE,74,195,137,17,CBS_DROPDOWN | 
+                    WS_DISABLED | WS_VSCROLL | WS_TABSTOP
+    RTEXT           "Interlace Mode:",IDC_STATIC,7,197,60,8
+    CONTROL         110,IDC_STATIC,"Static",SS_BITMAP | SS_CENTERIMAGE | 
+                    SS_REALSIZEIMAGE,30,4,15,32,WS_EX_TRANSPARENT
+    LTEXT           "Standard Mpeg Encoder v6.4 [Build 1640]\n\n(c) 2009 Standard MPEG",
+                    IDC_STATIC,74,5,135,34
+    CONTROL         "",IDC_STATIC,"Static",SS_ETCHEDHORZ,12,40,204,1
+    LTEXT           "pixel",IDC_STATIC,175,77,40,9
+    CTEXT           "http://www.standardmpeg.com",IDC_STATIC,0,217,231,8
+    CONTROL         "",IDC_STATIC,"Static",SS_ETCHEDHORZ,17,213,204,1
+END
+
+IDD_PROPS_AUDIO DIALOGEX 0, 0, 227, 205
+STYLE WS_CHILD
+FONT 8, "MS Sans Serif"
+BEGIN
+    CONTROL         110,IDC_STATIC,"Static",SS_BITMAP | SS_CENTERIMAGE | 
+                    SS_REALSIZEIMAGE,30,4,15,32,WS_EX_TRANSPARENT
+    LTEXT           "Standard Mpeg Encoder v6.4 [Build 1640]\n\n(c) 2009 Standard MPEG",
+                    IDC_STATIC,74,5,135,34
+    CONTROL         "",IDC_STATIC,"Static",SS_ETCHEDHORZ,12,40,204,1
+    COMBOBOX        IDC_CMB_AUDIOSTREAM,74,46,137,87,CBS_DROPDOWN | 
+                    WS_VSCROLL | WS_TABSTOP
+    RTEXT           "Audio Stream Type:",IDC_STATIC,0,48,67,8
+    COMBOBOX        IDC_CMB_SAMPLERATE,74,63,137,81,CBS_DROPDOWN | 
+                    WS_VSCROLL | WS_TABSTOP
+    RTEXT           "Sampling Rate:",IDC_STATIC,7,65,60,8
+    COMBOBOX        IDC_CMB_CHANNELMODE,74,79,137,87,CBS_DROPDOWN | 
+                    WS_VSCROLL | WS_TABSTOP
+    RTEXT           "Channel Mode:",IDC_STATIC,8,81,60,8
+    COMBOBOX        IDC_CMB_AUDIO_BITRATE,74,95,101,81,CBS_DROPDOWN | 
+                    WS_VSCROLL | WS_TABSTOP
+    RTEXT           "Bitrate:",IDC_STATIC,8,97,60,8
+    LTEXT           "kbit/sec",IDC_STATIC,181,96,27,8
+    CONTROL         "",IDC_STATIC,"Static",SS_ETCHEDHORZ,17,114,204,1
+    CTEXT           "http://www.standardmpeg.com",IDC_STATIC,0,119,223,8
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDB_DEMO_TEXT           BITMAP  MOVEABLE PURE   "images\\demo.bmp"
+IDB_REEL                BITMAP  MOVEABLE PURE   "Images\\reel.bmp"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDI_LOGO                ICON    DISCARDABLE     "images\\logo.ico"
+IDI_INFO                ICON    DISCARDABLE     "images\\info_16.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO MOVEABLE PURE 
+BEGIN
+    IDD_PROPS_AUDIO, DIALOG
+    BEGIN
+        BOTTOMMARGIN, 152
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// REGISTRY
+//
+
+IDR_DIRECTENCODEVB      REGISTRY DISCARDABLE    "DirectEncodeVB.rgs"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_TITLE_GENERAL       "General Settings"
+    IDS_TITLE_VIDEO         "Video Settings"
+    IDS_TITLE_AUDIO         "Audio Settings"
+END
+
+#endif    // German (Germany) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

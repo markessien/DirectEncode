@@ -1,0 +1,34 @@
+HKCR
+{
+	StandardMPEGCreator.MPEGConverter.1 = s 'MPEGConverter Class'
+	{
+		CLSID = s '{AEF8D647-4BD1-4922-8E81-324897B1BFB1}'
+	}
+	StandardMPEGCreator.MPEGConverter = s 'MPEGConverter Class'
+	{
+		CLSID = s '{AEF8D647-4BD1-4922-8E81-324897B1BFB1}'
+		CurVer = s 'StandardMPEGCreator.MPEGConverter.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {AEF8D647-4BD1-4922-8E81-324897B1BFB1} = s 'MPEGConverter Class'
+		{
+			ProgID = s 'StandardMPEGCreator.MPEGConverter.1'
+			VersionIndependentProgID = s 'StandardMPEGCreator.MPEGConverter'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			ForceRemove 'Control'
+			ForceRemove 'Insertable'
+			ForceRemove 'ToolboxBitmap32' = s '%MODULE%, 101'
+			'MiscStatus' = s '0'
+			{
+			    '1' = s '131473'
+			}
+			'TypeLib' = s '{37FAD0EE-EFE5-4A2F-ABDA-F595ECD72E02}'
+			'Version' = s '1.0'
+		}
+	}
+}

@@ -1,0 +1,183 @@
+// WMVCreator.idl : IDL source for WMVCreator
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (WMVCreator.tlb) and marshalling code.
+
+#include "olectl.h"
+import "oaidl.idl";
+import "ocidl.idl";
+
+
+[
+	object,
+	uuid(27DCE088-4143-4E1B-8A52-496E963DA094),
+	dual,
+	nonextensible,
+	helpstring("IWMVCodec Interface"),
+	pointer_default(unique)
+]
+interface IWMVCodec : IDispatch{
+	[propget, id(1), helpstring("property CodecName")] HRESULT CodecName([out, retval] BSTR* pVal);
+	[propput, id(1), helpstring("property CodecName")] HRESULT CodecName([in] BSTR newVal);
+	[propget, id(2), helpstring("property CodecDescription")] HRESULT CodecDescription([out, retval] BSTR* pVal);
+	[propput, id(2), helpstring("property CodecDescription")] HRESULT CodecDescription([in] BSTR newVal);
+	[propget, id(3), helpstring("property MajorType")] HRESULT MajorType([out, retval] long* pVal);
+	[propget, id(4), helpstring("property MaxPasses")] HRESULT MaxPasses([out, retval] long* pVal);
+	[propget, id(5), helpstring("property Passes")] HRESULT Passes([out, retval] LONG* pVal);
+	[propput, id(5), helpstring("property Passes")] HRESULT Passes([in] LONG newVal);
+	[propget, id(6), helpstring("property Quality")] HRESULT Quality([out, retval] LONG* pVal);
+	[propput, id(6), helpstring("property Quality")] HRESULT Quality([in] LONG newVal);
+	[propget, id(7), helpstring("property Bitrate")] HRESULT Bitrate([out, retval] LONG* pVal);
+	[propput, id(7), helpstring("property Bitrate")] HRESULT Bitrate([in] LONG newVal);
+	[propget, id(8), helpstring("property VBRMode")] HRESULT VBRMode([out, retval] LONG* pVal);
+	[propput, id(8), helpstring("property VBRMode")] HRESULT VBRMode([in] LONG newVal);
+	[propget, id(9), helpstring("property KeyframeFrequency")] HRESULT KeyframeFrequency([out, retval] LONG* pVal);
+	[propput, id(9), helpstring("property KeyframeFrequency")] HRESULT KeyframeFrequency([in] LONG newVal);
+	[propget, id(10), helpstring("property Framerate")] HRESULT Framerate([out, retval] DOUBLE* pVal);
+	[propput, id(10), helpstring("property Framerate")] HRESULT Framerate([in] DOUBLE newVal);
+	[propget, id(11), helpstring("property Complexity")] HRESULT Complexity([out, retval] LONG* pVal);
+	[propput, id(11), helpstring("property Complexity")] HRESULT Complexity([in] LONG newVal);
+	[propget, id(12), helpstring("property FormatIndex")] HRESULT FormatIndex([out, retval] LONG* pVal);
+	[propput, id(12), helpstring("property FormatIndex")] HRESULT FormatIndex([in] LONG newVal);
+	[propget, id(13), helpstring("property CodecGuid")] HRESULT CodecGuid([out, retval] BSTR* pVal);
+	[propget, id(14), helpstring("property ComplexityMax")] HRESULT ComplexityMax([out, retval] LONG* pVal);
+	[propget, id(15), helpstring("property ComplexityOffline")] HRESULT ComplexityOffline([out, retval] LONG* pVal);
+	[propget, id(16), helpstring("property ComplexityLive")] HRESULT ComplexityLive([out, retval] long* pVal);
+	[propget, id(17), helpstring("property IsVBRSupported")] HRESULT IsVBRSupported([out, retval] VARIANT_BOOL* pVal);
+	[id(18), helpstring("method SupportedVBRModes")] HRESULT SupportedVBRModes([out] VARIANT_BOOL* CBR1Pass, [out] VARIANT_BOOL* CBR2Pass, [out] VARIANT_BOOL* VBR1Pass, [out] VARIANT_BOOL* VBR2Pass, [out] LONG* ConstrainValue);
+	[propget, id(19), helpstring("property FormatCount")] HRESULT FormatCount([out, retval] long* pVal);
+	[id(20), helpstring("method LoadCodecFormats")] HRESULT LoadCodecFormats(void);
+	[propget, id(21), helpstring("property FormatName")] HRESULT FormatName([in] LONG Index, [out, retval] BSTR* pVal);
+	[propget, id(22), helpstring("property CodecIndex")] HRESULT CodecIndex([out, retval] LONG* pVal);
+
+};
+[
+	object,
+	uuid(DE417BB1-A32F-477F-A73B-AD478C259C57),
+	dual,
+	nonextensible,
+	helpstring("IWMVProfile Interface"),
+	pointer_default(unique)
+]
+interface IWMVProfile : IDispatch{
+	[propget, id(1), helpstring("property ProfileName")] HRESULT ProfileName([out, retval] BSTR* pVal);
+	[propput, id(1), helpstring("property ProfileName")] HRESULT ProfileName([in] BSTR newVal);
+	[propget, id(2), helpstring("property ProfileDescription")] HRESULT ProfileDescription([out, retval] BSTR* pVal);
+	[propput, id(2), helpstring("property ProfileDescription")] HRESULT ProfileDescription([in] BSTR newVal);
+	[propget, id(3), helpstring("property HasVideoStream")] HRESULT HasVideoStream([out, retval] VARIANT_BOOL* pVal);
+	[propput, id(3), helpstring("property HasVideoStream")] HRESULT HasVideoStream([in] VARIANT_BOOL newVal);
+	[propget, id(4), helpstring("property HasAudioStream")] HRESULT HasAudioStream([out, retval] VARIANT_BOOL* pVal);
+	[propput, id(4), helpstring("property HasAudioStream")] HRESULT HasAudioStream([in] VARIANT_BOOL newVal);
+	[propget, id(5), helpstring("property Bitrate")] HRESULT Bitrate([out, retval] LONG* pVal);
+	[propput, id(5), helpstring("property Bitrate")] HRESULT Bitrate([in] LONG newVal);
+	[propget, id(6), helpstring("property StringEquivalent")] HRESULT StringEquivalent([in] BSTR Param, [out, retval] BSTR* pVal);
+	[propput, id(6), helpstring("property StringEquivalent")] HRESULT StringEquivalent([in] BSTR Param, [in] BSTR newVal);
+	[propget, id(7), helpstring("property VideoWidth")] HRESULT VideoWidth([out, retval] LONG* pVal);
+	[propput, id(7), helpstring("property VideoWidth")] HRESULT VideoWidth([in] LONG newVal);
+	[propget, id(8), helpstring("property VideoHeight")] HRESULT VideoHeight([out, retval] LONG* pVal);
+	[propput, id(8), helpstring("property VideoHeight")] HRESULT VideoHeight([in] LONG newVal);
+	[propget, id(9), helpstring("property VideoCodec")] HRESULT VideoCodec([out, retval] IWMVCodec** pVal);
+	[propput, id(9), helpstring("property VideoCodec")] HRESULT VideoCodec([in] IWMVCodec* newVal);
+	[propget, id(10), helpstring("property AudioCodec")] HRESULT AudioCodec([out, retval] IWMVCodec** pVal);
+	[propput, id(10), helpstring("property AudioCodec")] HRESULT AudioCodec([in] IWMVCodec* newVal);
+	[propget, id(11), helpstring("property KeyFrameSpacing")] HRESULT KeyFrameSpacing([out, retval] long* pVal);
+	[propput, id(11), helpstring("property KeyFrameSpacing")] HRESULT KeyFrameSpacing([in] long newVal);
+	[propget, id(12), helpstring("property Framerate")] HRESULT Framerate([out, retval] DOUBLE* pVal);
+	[propput, id(12), helpstring("property Framerate")] HRESULT Framerate([in] DOUBLE newVal);
+	[propget, id(13), helpstring("property Quality")] HRESULT Quality([out, retval] long* pVal);
+	[propput, id(13), helpstring("property Quality")] HRESULT Quality([in] long newVal);
+	[propget, id(14), helpstring("property VideoBitrate")] HRESULT VideoBitrate([out, retval] long* pVal);
+	[propput, id(14), helpstring("property VideoBitrate")] HRESULT VideoBitrate([in] long newVal);
+	[propget, id(15), helpstring("property AudioBitrate")] HRESULT AudioBitrate([out, retval] long* pVal);
+	[propput, id(15), helpstring("property AudioBitrate")] HRESULT AudioBitrate([in] long newVal);
+	[id(16), helpstring("method CopyProfile")] HRESULT CopyProfile([in] IWMVProfile* ProfileToCopy);
+	[propget, id(17), helpstring("property Seekable")] HRESULT Seekable([out, retval] VARIANT_BOOL* pVal);
+	[propput, id(17), helpstring("property Seekable")] HRESULT Seekable([in] VARIANT_BOOL newVal);
+
+};
+
+[
+	object,
+	uuid(A4AB6D61-6831-4535-B39C-981630AD3109),
+	dual,
+	nonextensible,
+	helpstring("Essien WMVCreator Interface v4"),
+	pointer_default(unique)
+]
+interface IWMVCreatorObj : IDispatch{
+	[id(1), helpstring("method StartConversion")] HRESULT StartConversion(void);
+	[id(2), helpstring("method StopConversion")] HRESULT StopConversion(void);
+	[propget, id(3), helpstring("property Duration")] HRESULT Duration([out, retval] DOUBLE* pVal);
+	[propget, id(4), helpstring("property Progress")] HRESULT Progress([out, retval] DOUBLE* pVal);
+	[propput, id(4), helpstring("property Progress")] HRESULT Progress([in] DOUBLE newVal);
+	[id(5), helpstring("method LoadSystemProfiles")] HRESULT LoadSystemProfiles(void);
+	[propget, id(6), helpstring("property SystemProfileCount")] HRESULT SystemProfileCount([out, retval] long* pVal);
+	[propget, id(7), helpstring("property SystemProfile")] HRESULT SystemProfile([in] LONG Index, [out, retval] IWMVProfile** pVal);
+	[id(8), helpstring("method LoadSystemCodecs")] HRESULT LoadSystemCodecs(void);
+	[propget, id(9), helpstring("property VideoCodecCount")] HRESULT VideoCodecCount([out, retval] long* pVal);
+	[propget, id(10), helpstring("property VideoCodec")] HRESULT VideoCodec([in] LONG Index, [out, retval] IWMVCodec** pVal);
+	[propget, id(11), helpstring("property InputFile")] HRESULT InputFile([out, retval] BSTR* pVal);
+	[propput, id(11), helpstring("property InputFile")] HRESULT InputFile([in] BSTR newVal);
+	[propget, id(12), helpstring("property OutputFile")] HRESULT OutputFile([out, retval] BSTR* pVal);
+	[propput, id(12), helpstring("property OutputFile")] HRESULT OutputFile([in] BSTR newVal);
+	[propget, id(13), helpstring("property ConversionProfile")] HRESULT ConversionProfile([out, retval] IWMVProfile** pVal);
+	[propputref, id(13), helpstring("property ConversionProfile")] HRESULT ConversionProfile([in] IWMVProfile* newVal);
+	[propget, id(14), helpstring("property ProfileCount")] HRESULT ProfileCount([out, retval] LONG* pVal);
+	[propget, id(15), helpstring("property Profile")] HRESULT Profile([in] long Index, [out, retval] IWMVProfile** pVal);
+	[propputref, id(15), helpstring("property Profile")] HRESULT Profile([in] long Index, [in] IWMVProfile* newVal);
+	[propget, id(16), helpstring("property AudioCodec")] HRESULT AudioCodec([in] long Index, [out, retval] IWMVCodec** pVal);
+	[propget, id(17), helpstring("property AudioCodecCount")] HRESULT AudioCodecCount([out, retval] long* pVal);
+	[propget, id(18), helpstring("property EncodeFramerate")] HRESULT EncodeFramerate([out, retval] long* pVal);
+	[propput, id(19), helpstring("property LicenseKey")] HRESULT LicenseKey([in] BSTR newVal);
+};
+
+
+[
+	uuid(F7AFF85C-AC68-44F5-AE03-1896B27E423E),
+	version(1.0),
+	helpstring("Essien WMVCreator v4")
+]
+library WMVCreatorLib
+{
+	importlib("stdole2.tlb");
+	[
+		uuid(7D38D249-06FC-4D98-AF7D-6C649C11F986),
+		helpstring("_IWMVCreatorObjEvents Interface")
+	]
+	dispinterface _IWMVCreatorObjEvents
+	{
+		properties:
+		methods:
+		[id(1), helpstring("method OnAboutToRun")] HRESULT OnAboutToRun(void);
+		[id(2), helpstring("method OnComplete")] HRESULT OnComplete(void);
+		[id(3), helpstring("method OnError")] HRESULT OnError([in] long Number, [in] BSTR Message);
+
+	};
+	[
+		uuid(B6C1EA13-A642-4078-8E7F-5A9E62F0DBE9),
+		licensed,
+		helpstring("Essien WMVCreator v4")
+	]
+	coclass WMVCreator
+	{
+		[default] interface IWMVCreatorObj;
+		[default, source] dispinterface _IWMVCreatorObjEvents;
+	};
+	[
+		uuid(804B1182-1C09-414C-851F-7F4AAA813091),
+		helpstring("WMVCodec Class")
+	]
+	coclass WMVCodec
+	{
+		[default] interface IWMVCodec;
+	};
+	[
+		uuid(A27BF69D-5ACD-4A01-9913-827BBFE5BC83),
+		helpstring("WMVProfile Class")
+	]
+	coclass WMVProfile
+	{
+		[default] interface IWMVProfile;
+	};
+};

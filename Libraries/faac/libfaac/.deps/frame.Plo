@@ -1,0 +1,75 @@
+frame.lo frame.o: frame.c \
+  c:/Mark/Software/Development/MinGW/bin/../lib/gcc/mingw32/3.4.5/../../../../include/stdio.h \
+  c:/Mark/Software/Development/MinGW/bin/../lib/gcc/mingw32/3.4.5/../../../../include/_mingw.h \
+  c:/Mark/Software/Development/MinGW/bin/../lib/gcc/mingw32/3.4.5/include/stddef.h \
+  c:/Mark/Software/Development/MinGW/bin/../lib/gcc/mingw32/3.4.5/include/stdarg.h \
+  c:/Mark/Software/Development/MinGW/bin/../lib/gcc/mingw32/3.4.5/../../../../include/sys/types.h \
+  c:/Mark/Software/Development/MinGW/bin/../lib/gcc/mingw32/3.4.5/../../../../include/stdlib.h \
+  c:/Mark/Software/Development/MinGW/bin/../lib/gcc/mingw32/3.4.5/../../../../include/assert.h \
+  c:/Mark/Software/Development/MinGW/bin/../lib/gcc/mingw32/3.4.5/../../../../include/math.h \
+  frame.h ../config.h \
+  c:/Mark/Software/Development/MinGW/bin/../lib/gcc/mingw32/3.4.5/../../../../include/inttypes.h \
+  c:/Mark/Software/Development/MinGW/bin/../lib/gcc/mingw32/3.4.5/../../../../include/stdint.h \
+  coder.h channels.h psych.h fft.h aacquant.h ../include/faaccfg.h \
+  midside.h bitstream.h filtbank.h util.h \
+  c:/Mark/Software/Development/MinGW/bin/../lib/gcc/mingw32/3.4.5/../../../../include/memory.h \
+  c:/Mark/Software/Development/MinGW/bin/../lib/gcc/mingw32/3.4.5/../../../../include/string.h \
+  huffman.h tns.h ltp.h backpred.h version.h
+
+c:/Mark/Software/Development/MinGW/bin/../lib/gcc/mingw32/3.4.5/../../../../include/stdio.h:
+
+c:/Mark/Software/Development/MinGW/bin/../lib/gcc/mingw32/3.4.5/../../../../include/_mingw.h:
+
+c:/Mark/Software/Development/MinGW/bin/../lib/gcc/mingw32/3.4.5/include/stddef.h:
+
+c:/Mark/Software/Development/MinGW/bin/../lib/gcc/mingw32/3.4.5/include/stdarg.h:
+
+c:/Mark/Software/Development/MinGW/bin/../lib/gcc/mingw32/3.4.5/../../../../include/sys/types.h:
+
+c:/Mark/Software/Development/MinGW/bin/../lib/gcc/mingw32/3.4.5/../../../../include/stdlib.h:
+
+c:/Mark/Software/Development/MinGW/bin/../lib/gcc/mingw32/3.4.5/../../../../include/assert.h:
+
+c:/Mark/Software/Development/MinGW/bin/../lib/gcc/mingw32/3.4.5/../../../../include/math.h:
+
+frame.h:
+
+../config.h:
+
+c:/Mark/Software/Development/MinGW/bin/../lib/gcc/mingw32/3.4.5/../../../../include/inttypes.h:
+
+c:/Mark/Software/Development/MinGW/bin/../lib/gcc/mingw32/3.4.5/../../../../include/stdint.h:
+
+coder.h:
+
+channels.h:
+
+psych.h:
+
+fft.h:
+
+aacquant.h:
+
+../include/faaccfg.h:
+
+midside.h:
+
+bitstream.h:
+
+filtbank.h:
+
+util.h:
+
+c:/Mark/Software/Development/MinGW/bin/../lib/gcc/mingw32/3.4.5/../../../../include/memory.h:
+
+c:/Mark/Software/Development/MinGW/bin/../lib/gcc/mingw32/3.4.5/../../../../include/string.h:
+
+huffman.h:
+
+tns.h:
+
+ltp.h:
+
+backpred.h:
+
+version.h:

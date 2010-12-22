@@ -1,0 +1,12 @@
+prefix=
+exec_prefix=
+libdir=${pcfiledir}
+includedir=/c/Mark/Development/DirectEncode/Libraries/ffmpeg-0.5
+
+Name: libavutil
+Description: FFmpeg utility library
+Version: 49.15.0
+Requires: 
+Conflicts:
+Libs: ${libdir}/libavutilcu.a 
+Cflags: -I${includedir}

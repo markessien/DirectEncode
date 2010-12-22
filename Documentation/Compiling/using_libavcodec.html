@@ -1,0 +1,388 @@
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"><title>Using libavformat and libavcodec</title>
+
+<link rel="stylesheet" type="text/css" media="screen" href="using_libavcodec_dateien/screen.css">
+<link rel="stylesheet" type="text/css" media="print" href="using_libavcodec_dateien/print.css"></head><body bgcolor="#ffffff">
+
+
+<h1>Using libavformat and libavcodec</h1>
+<h3><a href="http://www.inb.uni-luebeck.de/staff/boehme-d.html">Martin
+Böhme</a> (<tt>boehme@inb.uni-luebeckREMOVETHIS.de</tt>)</h3>
+<p>
+
+</p><h3>February 18, 2004</h3>
+
+<div style="margin-left: 3em;">
+
+<b>Update (July 22 2004):</b> I discovered that the code I originally
+presented contained a memory leak (<tt>av_free_packet()</tt> wasn't being
+called). My apologies - I've updated the demo program and the code in the 
+article to eliminate the leak.
+<p></p>
+<p>
+<b>Update (July 21 2004):</b> There's a new prerelease of ffmpeg
+(0.4.9-pre1). I describe the changes to the libavformat / libavcodec API in
+this <a href="http://www.inb.uni-luebeck.de/%7Eboehme/libavcodec_update.html">article</a>.
+</p>
+
+</div> 
+
+<p>
+The libavformat and libavcodec libraries that come with 
+<a href="http://ffmpeg.sourceforge.net/">ffmpeg</a>
+are a great way of accessing a large variety of video file formats.
+Unfortunately, there is no real documentation on using these libraries in your
+own programs (at least I couldn't find any), and the example programs aren't
+really very helpful either.
+</p>
+
+<p>
+This situation meant that, when I used libavformat/libavcodec on a recent
+project, it took quite a lot of experimentation to find out how to use them.
+Here's what I learned - hopefully I'll be able to save others from having to 
+go through the same trial-and-error process. There's also a small 
+<a href="http://www.inb.uni-luebeck.de/%7Eboehme/avcodec_sample.cpp">demo program</a> that you can download. The code
+I'll present works with libavformat/libavcodec as included in version 0.4.8 of
+ffmpeg (the most recent version as I'm writing this). If you find that later
+versions break the code, please let me know.
+</p>
+
+<p>
+In this document, I'll only cover how to read video streams from a file;
+audio streams work pretty much the same way, but I haven't actually used them,
+so I can't present any example code.
+</p>
+
+<p>
+In case you're wondering why there are two libraries, libavformat and
+libavcodec: Many video file formats (AVI being a prime example) don't actually
+specify which codec(s) should be used to encode audio and video data; they
+merely define how an audio and a video stream (or, potentially, several
+audio/video streams) should be combined into a single file. This is why
+sometimes, when you open an AVI file, you get only sound, but no picture -
+because the right video codec isn't installed on your system. Thus,
+libavformat deals with parsing video files and separating the streams
+contained in them, and libavcodec deals with decoding raw audio and video
+streams.
+</p>
+
+<h2>Opening a Video File</h2>
+
+<p>
+First things first - let's look at how to open a video file and get at the
+streams contained in it. The first thing we need to do is to initialize
+libavformat/libavcodec:
+</p>
+
+<pre>av_register_all();
+</pre>
+
+<p>
+This registers all available file formats and codecs with the library so they
+will be used automatically when a file with the corresponding format/codec is
+opened. Note that you only need to call <tt>av_register_all()</tt> once, so
+it's probably best to do this somewhere in your startup code. If you like,
+it's possible to register only certain individual file formats and codecs, but
+there's usually no reason why you would have to do that.
+</p>
+
+<p>
+Next off, opening the file:
+</p>
+
+<pre>AVFormatContext *pFormatCtx;
+const char      *filename="myvideo.mpg";
+
+// Open video file
+if(av_open_input_file(&amp;pFormatCtx, filename, NULL, 0, NULL)!=0)
+    handle_error(); // Couldn't open file
+</pre>
+
+<p>
+The last three parameters specify the file format, buffer size and format
+parameters; by simply specifying NULL or 0 we ask libavformat to auto-detect 
+the format and use a default buffer size. Replace <tt>handle_error()</tt> with
+appropriate error handling code for your application.
+</p>
+
+<p>
+Next, we need to retrieve information about the streams contained in the file:
+</p>
+
+<pre>// Retrieve stream information
+if(av_find_stream_info(pFormatCtx)&lt;0)
+    handle_error(); // Couldn't find stream information
+</pre>
+
+<p>
+This fills the <tt>streams</tt> field of the <tt>AVFormatContext</tt> with
+valid information. As a debugging aid, we'll dump this information onto
+standard error, but of course you don't have to do this in a production
+application:
+</p>
+
+<pre>dump_format(pFormatCtx, 0, filename, false);
+</pre>
+
+<p>
+As mentioned in the introduction, we'll handle only video streams, not audio
+streams. To make things nice and easy, we simply use the first video stream we
+find:
+</p>
+
+<pre>int            i, videoStream;
+AVCodecContext *pCodecCtx;
+
+// Find the first video stream
+videoStream=-1;
+for(i=0; i&lt;pFormatCtx-&gt;nb_streams; i++)
+    if(pFormatCtx-&gt;streams[i]-&gt;codec.codec_type==CODEC_TYPE_VIDEO)
+    {
+        videoStream=i;
+        break;
+    }
+if(videoStream==-1)
+    handle_error(); // Didn't find a video stream
+
+// Get a pointer to the codec context for the video stream
+pCodecCtx=&amp;pFormatCtx-&gt;streams[videoStream]-&gt;codec;
+</pre>
+
+<p>
+OK, so now we've got a pointer to the so-called codec context for our video
+stream, but we still have to find the actual codec and open it:
+</p>
+
+<pre>AVCodec *pCodec;
+
+// Find the decoder for the video stream
+pCodec=avcodec_find_decoder(pCodecCtx-&gt;codec_id);
+if(pCodec==NULL)
+    handle_error(); // Codec not found
+
+// Inform the codec that we can handle truncated bitstreams -- i.e.,
+// bitstreams where frame boundaries can fall in the middle of packets
+if(pCodec-&gt;capabilities &amp; CODEC_CAP_TRUNCATED)
+    pCodecCtx-&gt;flags|=CODEC_FLAG_TRUNCATED;
+
+// Open codec
+if(avcodec_open(pCodecCtx, pCodec)&lt;0)
+    handle_error(); // Could not open codec
+</pre>
+
+<p>
+(So what's up with those "truncated bitstreams"? Well, as we'll see in a
+moment, the data in a video stream is split up into packets. Since the amount
+of data per video frame can vary, the boundary between two video frames need
+not coincide with a packet boundary. Here, we're telling the codec that we can
+handle this situation.)
+</p>
+
+<p>
+One important piece of information that is stored in the
+<tt>AVCodecContext</tt> structure is the frame rate of the video. To allow for
+non-integer frame rates (like NTSC's 29.97 fps), the rate is stored as a
+fraction, with the numerator in <tt>pCodecCtx-&gt;frame_rate</tt> and the
+denominator in <tt>pCodecCtx-&gt;frame_rate_base</tt>. While testing the library
+with different video files, I noticed that some codecs (notably ASF) seem to 
+fill these fields incorrectly (<tt>frame_rate_base</tt> contains 1 instead of
+1000). The following hack fixes this:
+</p>
+
+<pre>// Hack to correct wrong frame rates that seem to be generated by some 
+// codecs
+if(pCodecCtx-&gt;frame_rate&gt;1000 &amp;&amp; pCodecCtx-&gt;frame_rate_base==1)
+    pCodecCtx-&gt;frame_rate_base=1000;
+</pre>
+
+<p>
+Note that it shouldn't be a problem to leave this fix in place even if the bug 
+is corrected some day - it's unlikely that a video would have a frame rate of
+more than 1000 fps.
+</p>
+
+<p>
+One more thing left to do: Allocate a video frame to store the decoded images
+in:
+</p>
+
+<pre>AVFrame *pFrame;
+
+pFrame=avcodec_alloc_frame();
+</pre>
+
+<p>
+That's it! Now let's start decoding some video.
+</p>
+
+<h2>Decoding Video Frames</h2>
+
+<p>
+As I've already mentioned, a video file can contain several audio and video
+streams, and each of those streams is split up into packets of a particular
+size. Our job is to read these packets one by one using libavformat, filter
+out all those that aren't part of the video stream we're interested in, and
+hand them on to libavcodec for decoding. In doing this, we'll have to take
+care of the fact that the boundary between two frames can occur in the middle
+of a packet.
+</p>
+
+<p>
+Sound complicated? Lucikly, we can encapsulate this whole process in a routine
+that simply returns the next video frame:
+</p>
+
+<pre>bool GetNextFrame(AVFormatContext *pFormatCtx, AVCodecContext *pCodecCtx, 
+    int videoStream, AVFrame *pFrame)
+{
+    static AVPacket packet;
+    static int      bytesRemaining=0;
+    static uint8_t  *rawData;
+    static bool     fFirstTime=true;
+    int             bytesDecoded;
+    int             frameFinished;
+
+    // First time we're called, set packet.data to NULL to indicate it
+    // doesn't have to be freed
+    if(fFirstTime)
+    {
+        fFirstTime=false;
+        packet.data=NULL;
+    }
+
+    // Decode packets until we have decoded a complete frame
+    while(true)
+    {
+        // Work on the current packet until we have decoded all of it
+        while(bytesRemaining &gt; 0)
+        {
+            // Decode the next chunk of data
+            bytesDecoded=avcodec_decode_video(pCodecCtx, pFrame,
+                &amp;frameFinished, rawData, bytesRemaining);
+
+            // Was there an error?
+            if(bytesDecoded &lt; 0)
+            {
+                fprintf(stderr, "Error while decoding frame\n");
+                return false;
+            }
+
+            bytesRemaining-=bytesDecoded;
+            rawData+=bytesDecoded;
+
+            // Did we finish the current frame? Then we can return
+            if(frameFinished)
+                return true;
+        }
+
+        // Read the next packet, skipping all packets that aren't for this
+        // stream
+        do
+        {
+            // Free old packet
+            if(packet.data!=NULL)
+                av_free_packet(&amp;packet);
+
+            // Read new packet
+            if(av_read_packet(pFormatCtx, &amp;packet)&lt;0)
+                goto loop_exit;
+        } while(packet.stream_index!=videoStream);
+
+        bytesRemaining=packet.size;
+        rawData=packet.data;
+    }
+
+loop_exit:
+
+    // Decode the rest of the last frame
+    bytesDecoded=avcodec_decode_video(pCodecCtx, pFrame, &amp;frameFinished, 
+        rawData, bytesRemaining);
+
+    // Free last packet
+    if(packet.data!=NULL)
+        av_free_packet(&amp;packet);
+
+    return frameFinished!=0;
+}
+</pre>
+
+<p>
+Now, all we have to do is sit in a loop, calling <tt>GetNextFrame()</tt> until
+it returns false. Just one more thing to take care of: Most codecs return
+images in YUV 420 format (one luminance and two chrominance channels, with the
+chrominance channels samples at half the spatial resolution of the luminance
+channel). Depending on what you want to do with the video data, you may want
+to convert this to RGB. (Note, though, that this is not necessary if all you
+want to do is display the video data; take a look at the X11 Xvideo extension,
+which does YUV-to-RGB and scaling in hardware.) Fortunately, libavcodec
+provides a conversion routine called <tt>img_convert</tt>, which does
+conversion between YUV and RGB as well as a variety of other image formats.
+The loop that decodes the video thus becomes:
+</p>
+
+<pre>while(GetNextFrame(pFormatCtx, pCodecCtx, videoStream, pFrame))
+{
+    img_convert((AVPicture *)pFrameRGB, PIX_FMT_RGB24, (AVPicture*)pFrame, 
+        pCodecCtx-&gt;pix_fmt, pCodecCtx-&gt;width, pCodecCtx-&gt;height);
+
+    // Process the video frame (save to disk etc.)
+    DoSomethingWithTheImage(pFrameRGB);
+}
+</pre>
+
+<p>
+The RGB image <tt>pFrameRGB</tt> (of type <tt>AVFrame *</tt>) is allocated
+like this:
+</p>
+
+<pre>AVFrame *pFrameRGB;
+int     numBytes;
+uint8_t *buffer;
+
+// Allocate an AVFrame structure
+pFrameRGB=avcodec_alloc_frame();
+if(pFrameRGB==NULL)
+    handle_error();
+
+// Determine required buffer size and allocate buffer
+numBytes=avpicture_get_size(PIX_FMT_RGB24, pCodecCtx-&gt;width,
+    pCodecCtx-&gt;height);
+buffer=new uint8_t[numBytes];
+
+// Assign appropriate parts of buffer to image planes in pFrameRGB
+avpicture_fill((AVPicture *)pFrameRGB, buffer, PIX_FMT_RGB24,
+    pCodecCtx-&gt;width, pCodecCtx-&gt;height);
+</pre>
+
+<h2>Cleaning up</h2>
+
+OK, we've read and processed our video, now all that's left for us to do is
+clean up after ourselves:
+
+<pre>// Free the RGB image
+delete [] buffer;
+av_free(pFrameRGB);
+
+// Free the YUV frame
+av_free(pFrame);
+
+// Close the codec
+avcodec_close(pCodecCtx);
+
+// Close the video file
+av_close_input_file(pFormatCtx);
+</pre>
+
+<p>
+Done!
+</p>
+
+<h2>Sample Code</h2>
+
+A sample app that wraps all of this code up in compilable form is 
+<a href="http://www.inb.uni-luebeck.de/%7Eboehme/avcodec_sample.cpp">here</a>. If you have any additional comments, 
+please contact me at <tt>boehme@inb.uni-luebeckREMOVETHIS.de</tt>. Standard 
+disclaimer: I assume no liability for the correct functioning of the code
+and techniques presented in this article.
+
+</body></html>

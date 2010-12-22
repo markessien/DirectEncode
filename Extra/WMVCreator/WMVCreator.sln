@@ -1,0 +1,21 @@
+Microsoft Visual Studio Solution File, Format Version 7.00
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "WMVCreator", "WMVCreator.vcproj", "{8788C8D7-C9B4-407B-9531-47782A8B7448}"
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		ConfigName.0 = Debug
+		ConfigName.1 = Release
+	EndGlobalSection
+	GlobalSection(ProjectDependencies) = postSolution
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{8788C8D7-C9B4-407B-9531-47782A8B7448}.Debug.ActiveCfg = Debug|Win32
+		{8788C8D7-C9B4-407B-9531-47782A8B7448}.Debug.Build.0 = Debug|Win32
+		{8788C8D7-C9B4-407B-9531-47782A8B7448}.Release.ActiveCfg = Release|Win32
+		{8788C8D7-C9B4-407B-9531-47782A8B7448}.Release.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal
