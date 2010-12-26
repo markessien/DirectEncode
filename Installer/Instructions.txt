@@ -1,3 +1,0 @@
-This version of the MPEG Encoder requires the Visual Studio 6 runtimes. It will run without additional dependencies on all windows versions greater than XP. If you wish to use on Windows 2000 or 98, you will need to install the VC6 redistributables.
-
-The DirectEncode.dll file is the directshow filter, and the erdmpg-6.dll is the Mpeg Encoder library.
