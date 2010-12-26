@@ -1,3 +1,4 @@
+
 /** This file is part of The Standard Mpeg Encoder.
 
 The Standard Mpeg Encoder is free software: you can redistribute it 
